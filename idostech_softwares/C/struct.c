@@ -3,7 +3,7 @@
 
 struct Player
 {
-    char name[12];
+    char name[15];
     int score; 
 };
 
