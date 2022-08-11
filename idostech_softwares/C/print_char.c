@@ -24,7 +24,7 @@ while (format[i])
                 i += 2;
                 break;
             case 's':
-                -printed += print_string(args);
+                printed += print_string(args);
                 i += 2;
                 break;
             default:
@@ -42,4 +42,4 @@ i++
 
 }
 va_end;
-return (printed);
+return (printed)

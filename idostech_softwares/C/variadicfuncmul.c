@@ -3,6 +3,7 @@
 #include <stdarg.h>
 
 int mul(const unsigned int n, ...)
+// <return datatype> <function name>(<datatypeparam> paramnames) 
 {
     int i, multin = 0;
     va_list args;
