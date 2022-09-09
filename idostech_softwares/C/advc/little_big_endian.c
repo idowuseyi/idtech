@@ -9,8 +9,10 @@ int main()
 	union id_un u;
 
 	u.val = 258;
+	printf("Before idostech val :%d\n", u.val);
+	
 	u.ch = 1;
 
-	printf("idostech val :%d\n", u.val);
-	printf("idostech val :%d\n", u.ch);
+	printf("After idostech val :%d\n", u.val);
+	printf("After idostech val :%d\n", u.ch);
 }	
