@@ -8,7 +8,7 @@ int main()
 
 	union id_un u;
 
-	u.val = 258;
+	u.val = 257; //or 258
 	printf("Before idostech val :%d\n", u.val);
 	
 	u.ch = 1;
