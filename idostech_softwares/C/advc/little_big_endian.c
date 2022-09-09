@@ -14,5 +14,5 @@ int main()
 	u.ch = 1;
 
 	printf("After idostech val :%d\n", u.val);
-	printf("After idostech val :%d\n", u.ch);
+	printf("After idostech ch :%d\n", u.ch);
 }	
