@@ -15,3 +15,5 @@ int main()
 	b.f3 = 5;
 	printf("f1, f2, f3 :%d %d %d\n", b.f1, b.f2, b.f3);
 }
+
+// the reason for the output the first part of the binary always go for the signed value
