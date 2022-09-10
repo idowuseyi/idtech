@@ -9,4 +9,6 @@ int main()
 	printf("sizeof surname = %lu\n", sizeof(surname));
 	printf("strlen str = %lu\n", sizeof(str));
 	printf("strlen surname = %lu\n", sizeof(surname));
+
+	return (0);
 }
