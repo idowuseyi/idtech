@@ -7,8 +7,8 @@ int main()
 
 	printf("sizeof str = %lu\n", sizeof(str));
 	printf("sizeof surname = %lu\n", sizeof(surname));
-	printf("strlen str = %lu\n", sizeof(str));
-	printf("strlen surname = %lu\n", sizeof(surname));
+	printf("strlen str = %lu\n", strlen(str));
+	printf("strlen surname = %lu\n", strlen(surname));
 
 	return (0);
 }
