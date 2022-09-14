@@ -1,7 +1,8 @@
 price = 10
 price = 20
 rating = 4.9 #float
-name = 'Idowu O.S'
+name = 'Idowu O.S' # string
+is_coding = True 
 print(price)
 
 
