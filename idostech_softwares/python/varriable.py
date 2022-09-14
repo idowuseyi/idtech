@@ -1,7 +1,7 @@
 price = 10
 price = 20
 rating = 4.9 #float
-name = 
+name = 'Idowu O.S'
 print(price)
 
 
