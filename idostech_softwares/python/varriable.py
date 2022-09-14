@@ -6,3 +6,4 @@ print(price)
 
 
 #  a var is always converted to its binary before storage
+# python execute top to bottom
