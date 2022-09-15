@@ -1,5 +1,7 @@
 #This program calculate your age
 
-birth_year = int(input('Birth year: '))
-age = 2022 - birth_year
+birth_year = (input('Birth year: '))
+print(type(birth_year))
+age = 2022 - int(birth_year)
+print(type(birth_year))
 print(age)
