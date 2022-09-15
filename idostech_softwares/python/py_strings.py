@@ -12,4 +12,4 @@ This is me programming in Python
 Nothing is impossible
 We can all do it
 '''
-print(long_name)
+print(long_name[0-2])
