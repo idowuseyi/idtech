@@ -32,3 +32,4 @@ print(course.replace('Beginners', 'Absolute Beginners'))
 
 print('Python' in course)
 # note the find method produces an index while the in operator produces a boolean value
+print(len(course))
