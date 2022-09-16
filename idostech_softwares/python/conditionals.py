@@ -15,7 +15,8 @@ print("Enjoy your day")
 '''
 
 price = 1000000
-good_credit_buyer = False
+
+good_credit_buyer = True
 
 print("Your down payment is ")
 if good_credit_buyer:
