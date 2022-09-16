@@ -28,9 +28,21 @@ else:
 has_high_income = True
 has_good_credit = True
 
+#logical operators
+
 if has_high_income and has_good_credit:
     print("Eligible for loan")
 if has_high_income or has_good_credit:
     print("Eligible for loan")
 if has_high_income and not has_good_credit:
     print("Eligible for loan")
+# Comparism Operator
+
+temperature = 30
+
+if temperature > 30:
+    print("It's a hot day")
+elif temperature == 30:
+    print("It's a hot day")
+else:
+    print("It's not a hot day")
