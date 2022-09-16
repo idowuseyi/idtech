@@ -13,7 +13,7 @@ else:
     print("It's a lovely day")
 print("Enjoy your day")
 '''
-
+'''
 price = 1000000
 
 good_credit_buyer = True
@@ -23,3 +23,10 @@ if good_credit_buyer:
     print(f"${price*(10/100)}")
 else:
     print(f"${price*(20/100)}")
+'''
+
+has_high_income = True
+has_good_credit = True
+
+if has_high_income and has_good_credit
+    print("Eligible for loan")
