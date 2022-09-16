@@ -1,6 +1,6 @@
 # This program takes user input weight and convert it to the other unit
 
-weight = float(input('Input your weight'))
+weight = int(input('Input your weight'))
 
 weight_unit = input("(L)bs or (K)g: ")
 
