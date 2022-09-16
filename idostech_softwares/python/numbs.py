@@ -1,5 +1,5 @@
 print(6/3*2+4-5)
-#order ofprecedence = BEDM
+#order ofprecedence = BEDMAS
 #augmented assignment operator
 
 x = 10
