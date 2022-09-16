@@ -30,4 +30,4 @@ note methods do not change string but create a new one entirely
 print(course.replace('Beginners', 'Absolute Beginners'))
 # we can do plenty things with methods
 
-print('python' in course)
+print('Python' in course)
