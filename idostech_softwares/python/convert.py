@@ -9,6 +9,6 @@ if weight_unit == 'L' or 'l':
     print(f"You are {weight} kg ")
 elif weight_unit == 'K' or 'k':
     weight *= 2.2
-    print(f"You are {weight} kg")
+    print(f"You are {weight} pounds")
 else:
     print("Input the right weight unit")
