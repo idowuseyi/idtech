@@ -1,5 +1,5 @@
 #conditional helps in decision
-
+'''
 is_hot = False
 is_cold = True
 
@@ -12,3 +12,13 @@ elif is_cold:
 else:
     print("It's a lovely day")
 print("Enjoy your day")
+'''
+
+price = 1000000
+good_credit_buyer = True
+
+print("Your down payment is ")
+if good_credit_buyer:
+    print(price*(10/100))
+else:
+    print(price*(20/100))
