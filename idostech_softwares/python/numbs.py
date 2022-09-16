@@ -1,5 +1,5 @@
 print(6/3*2+4-5)
-#order ofprecedence = ED
+#order ofprecedence = BEDM
 #augmented assignment operator
 
 x = 10
