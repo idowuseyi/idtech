@@ -17,7 +17,7 @@ print(long_name[0:-2])
 # string functions: we can access this with the dot operator
 
 print(len(course))
-course.upper()
+print(course.upper())
 
 '''
 There is a difference between functions and methods. When a functions belongs or is meant for a specific purpose we call it method
