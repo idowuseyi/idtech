@@ -43,6 +43,6 @@ temperature = 30
 if temperature > 30:
     print("It's a hot day")
 elif temperature == 30:
-    print("It's a hot day")
+    print("It's a good day")
 else:
     print("It's not a hot day")
