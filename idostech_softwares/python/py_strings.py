@@ -27,4 +27,4 @@ while upper, isalpha, etc are all methods cos they are used only on strings
 note methods do not change string but create a new one entirely
 '''
 
-print(find('e'))
+print(course.find('e'))
