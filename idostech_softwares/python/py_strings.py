@@ -31,3 +31,4 @@ print(course.replace('Beginners', 'Absolute Beginners'))
 # we can do plenty things with methods
 
 print('Python' in course)
+# note the find method produces an index while the in operator produces a boolean value
