@@ -20,6 +20,6 @@ good_credit_buyer = True
 
 print("Your down payment is ")
 if good_credit_buyer:
-    print(price*(10/100))
+    print(f"${price*(10/100)}")
 else:
-    print(price*(20/100))
+    print(f"${price*(20/100)}")
