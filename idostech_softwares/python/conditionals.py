@@ -18,7 +18,7 @@ price = 1000000
 
 good_credit_buyer = True
 
-print("Your down payment is ")
+print("Your down payment is: ")
 if good_credit_buyer:
     print(f"${price*(10/100)}")
 else:
