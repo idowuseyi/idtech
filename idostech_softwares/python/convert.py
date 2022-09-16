@@ -5,10 +5,10 @@ weight = int(input('Input your weight: '))
 weight_unit = input("(L)bs or (K)g: ")
 
 if weight_unit.upper() == "L":
-    weight /= 2.2
-    print(f"You are {weight} kg ")
-elif weight_unit.upper() == "K"
-    weight *= 2.2
-    print(f"You are {weight} pounds")
+    converted = weight / 2.2
+    print(f"You are {converted} kilos ")
+elif weight_unit.upper() == "K":
+    converted = weight * 2.2
+    print(f"You are {converted} pounds")
 else:
     print("Input the right weight unit")
