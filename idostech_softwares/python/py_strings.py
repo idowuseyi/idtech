@@ -23,4 +23,6 @@ print(course.upper())
 There is a difference between functions and methods. When a functions belongs or is meant for a specific purpose we call it method
 len is a general operand so we call it function
 while upper, isalpha, etc are all methods cos they are used only on strings
+
+note methods do not change string but create a new one entirely
 '''
