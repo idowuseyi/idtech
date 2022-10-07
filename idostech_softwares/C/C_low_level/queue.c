@@ -70,14 +70,14 @@ init_queue(&q2);
 init_queue(&q3);
 
 
-enque(&q1, 56);
-enque(&q2, 78);
-enque(&q2, 23);
-enque(&q2, 988);
-enque(&q3, 133);
+enqueue(&q1, 56);
+enqueue(&q2, 78);
+enqueue(&q2, 23);
+enqueue(&q2, 988);
+enqueue(&q3, 133);
 
 int t;
-while ((t = dequeue(&Q2)) != QUEUE_EMPTY) {
+while ((t = dequeue(&q2)) != QUEUE_EMPTY) {
 	printf("t = %d\n", t);
 	}
 }
