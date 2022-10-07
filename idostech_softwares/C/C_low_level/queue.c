@@ -31,7 +31,7 @@ typedef struct node {
 		newnode->next = NULL;
 		// if there is a tail, connect that tail to this new node
 		if (q->tail != NULL) {
-		q->tail-> = newnode;
+		q->tail->next = newnode;
 		}
 		// make sure the head makes sense
 		q->tail = newnode;
