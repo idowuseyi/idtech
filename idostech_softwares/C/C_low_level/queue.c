@@ -33,9 +33,10 @@ typedef struct node {
 		if (q->tail != NULL) {
 		q->tail->next = newnode;
 		}
-		// make sure the head makes sense
 		q->tail = newnode;
+		// make sure the head makes sense
 		if (q->head == NULL) {
+		q->head = newnode;
 		}
 		return true;
 	}
