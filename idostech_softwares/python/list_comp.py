@@ -4,6 +4,16 @@ List comprehencsion allows for easy operation
 
 
 '''
+
+s = 2
+r = 37
+my_list = [1, 2, 3, 4, 5, 2, 1, 4, 89]
+n_list = list(map(lambda x: x, my_list))
+nn_list = [x if (x != x) for x in my_list]
+
+
+print(nn_list)
+
 # say we want to create list containing squares
 # with a for loop
 squares = []
