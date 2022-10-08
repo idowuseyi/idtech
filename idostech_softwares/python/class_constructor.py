@@ -12,3 +12,6 @@ class Point:
 
     def draw(self):
         print('draw')
+
+point = Point(10, 20)
+print(point.x)
