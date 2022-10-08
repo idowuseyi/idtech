@@ -21,13 +21,17 @@ for key in phone:
 '''
 Dictionary methods
 '''
-message = input(">")
-words = message.split(' ')
-emojis = {
-    ":)": "😀",
-    ":(": "😕"
-}
-newoutput = ""
-for word in words:
-    newoutput += emojis.get(word, word) + " "
-print(newoutput)
+def message_emoji(message):
+    words = message.split(' ')
+    emojis = {
+        ":)": "😀",
+        ":(": "😕"
+    }
+    newoutput = ""
+    for word in words:
+        newoutput += emojis.get(word, word) + " "
+    return newoutput
+
+
+greetings = input(">")
+print(message_emoji(greetings))
