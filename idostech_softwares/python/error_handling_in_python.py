@@ -3,6 +3,8 @@ try:
     income = 8000
     earn_index = income / age
     print(earn_index)
+except ZeroDivisionError:
+    print('Age cannot be 0')
 except ValueError:
     print('Invalid Value')
 
