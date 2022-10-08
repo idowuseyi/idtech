@@ -36,6 +36,7 @@ class Person:
     def talk(self):
         print(f"Hi, I am {self.name}")
 
+
 john = Person("John Smith")
 id = Person("Oluwaseyi Idowu")
 john.talk()
