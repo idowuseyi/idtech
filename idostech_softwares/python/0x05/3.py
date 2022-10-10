@@ -15,7 +15,7 @@ b = -1
 result = safe_print_division(a, b)
 print("{:d} / {:d} = {}".format(a, b, result))
 
-a = 12
+a = 8
 b = -2
 result = safe_print_division(a, b)
 print("{:d} / {:d} = {}".format(a, b, result))
