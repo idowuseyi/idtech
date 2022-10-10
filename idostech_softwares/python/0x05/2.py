@@ -19,7 +19,7 @@ def safe_print_list(my_list=[], x=0):
     print()
     return count
 
-my_list = [1, 2, 3, 4, 5]
+my_list = [1, 2, 3, 4, 5, 6]
 
 nb_print = safe_print_list(my_list, 2)
 print("nb_print: {:d}".format(nb_print))
