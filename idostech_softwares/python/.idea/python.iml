@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
+    <content url="file://$APPLICATION_HOME_DIR$/plugins/python-ce/helpers/typeshed/stubs/openpyxl/openpyxl" />
     <orderEntry type="jdk" jdkName="Python 3.10 (python)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
