@@ -9,10 +9,10 @@ s = 2
 r = 37
 my_list = [1, 2, 3, 4, 5, 2, 1, 4, 89]
 n_list = list(map(lambda x: x, my_list))
-nn_list = [x if (x != x) for x in my_list]
+#nn_list = [x if (x != x) for x in my_list]
 
 
-print(nn_list)
+#print(nn_list)
 
 # say we want to create list containing squares
 # with a for loop
@@ -47,3 +47,9 @@ for x in [1, 2, 3]:
 
 note = [(x, (x/(x+1)), (x**2)) for x in range(10)]
 print(note)
+
+
+me_list = [1, 33, 5, 6, 8]
+
+new_me_list = [i for i in me_list]
+print(new_me_list)

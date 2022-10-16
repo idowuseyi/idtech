@@ -1,17 +1,18 @@
 def list_division(my_list_1, my_list_2, list_length):
     i = 0
 
-    for i in range(0, max(len(my_l_1), len(my_l_2))):
-        try:
+    try:
+        for i in range(0, max(len(my_l_1), len(my_l_2))):
             list_length[i] = my_list_1[i] / my_list_2[i]
-        except ZeroDivisionError:
-            print("division by 0")
-            continue
-        except TypeError:
-            print("out of range")
-            continue
-        finally:
-            return list_length
+            print(list_length)
+    except ZeroDivisionError:
+        print("division by 0")
+        continue
+    except TypeError:
+        print("out of range")
+        continue
+    finally:
+        return list_length
 
 
 my_l_1 = [10, 8, 4]
