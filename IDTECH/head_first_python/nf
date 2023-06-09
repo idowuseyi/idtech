@@ -1,0 +1,23 @@
+#include <string.h>
+#include <stdio.h>
+/*
+**
+** QWASAR.IO -- my_strrchr
+**
+** @param {char*} param_1
+** @param {char} param_2
+**
+** @return {char*}
+**
+*/
+
+
+char* find_last_char(char* str, char c) {
+    // start searching from the end of the string
+    char* last_char = strrchr(str, c);
+    return (char*)last_char;
+}
+// char* my_strrchr(char* str, char ch) {
+//     int i, j = strlen(str);
+//     return j;
+// }
