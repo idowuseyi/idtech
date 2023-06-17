@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oluwaseyi Idowu</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <table cellSpacing="20">
+      <tr>
+        <td><img src="image/me-modified.png" alt="Profile Picture"></td>
+        <td><h1>Oluwaseyi Idowu</h1>
+          <br>
+          <em><p><strong>Chief Technology Offier</strong> @ Fitzzy Tech Institute</p></em>
+          <br>
+          <p>I am a software engineer. I love building web solutions for individual and enterprises. I constantly research new technolgy and implement new technology at Fitzzy Tech where I work as the Chief Technology Offier</p>
+          <hr size="3" noshade="$0"></td>
+      </tr>
+    </table>
+  
+    <h3>Education</h3>
+    <ol type="I">
+      <li><strong><p>Software Engineering</p></strong>
+        <em><p>ALX - Holberton School 2022 - 2023</p></em>
+      </li>
+      <li><strong><p>Meteorology</p></strong>
+        <em><p>Federal University of Technology Akure (FUTA) 2012-2018</p></em>
+      </li>
+    </ol>
+    <hr>
+    <h3>Experience</h3>
+    <table cellspacing="10">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Position</th>
+          <th>Organisation</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>2023</td>
+        <td>Chief Technology officer</td>
+        <td>Fitzzy Tech Institute</td>
+      </tr>
+      <td>2019-2022</td>
+        <td>Manager</td>
+        <td>Neolife</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>More</td>
+        <td>More</td>
+        <td>More</td>
+      </tr>
+    </tfoot>
+    </table>
+    <hr>
+    <h3>Skills</h3>
+    <table cellSpacing="2">
+      <tr>
+        <td>
+          <table cellSpacing="10">
+            <tr>
+              <td>Web development</td>
+              <td>3 star</td>
+            </tr>
+            <tr>
+              <td>Problem solving</td>
+              <td>4 star</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table cellSpacing="10">
+            <tr>
+              <td>Research</td>
+              <td>3 star</td>
+            </tr>
+            <tr>
+              <td>Technical Writing</td>
+              <td>5 star</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <hr>
+     <a href="hobies.html">My Hobbies</a>
+     <a href="contact.html">Contact me</a>
+     <a href="htmlSiteChallenge.html">htmlSiteChallenge</a>
+  </body>
+</html>
+<!-- colorhunt.co -->
