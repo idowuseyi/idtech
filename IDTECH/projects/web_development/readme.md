@@ -169,3 +169,72 @@ To use, go to the site, then documentation, then components and locate the compo
 You can play with boostrap working with the documentation on codeplay.com
 
 You can save your work on codeplay
+
+### Bootstrap Grid System
+The first thing to check out is the documentation. There will be different usage depending on version. e.g in styling or changing the bacground color of the navbar to dark, in version 4 this will be navbar-dark or bg-dark but in 5.3 you have to use data-bs-theme="dark"
+
+Bootstrap makes columns and row styling very easy.
+
+for example say we want to create some role and style them. This can easily be achieved with divs and bootstrap
+
+<div class="row">
+  <div class="col-lg-3 col-md-4 col-sm-6" style="background-color:green; border: 1px solid">
+  col-3 col-md-4 col-sm-6
+  </div>
+  <div class="col-lg-3 col-md-4 col-sm-6" style="background-color:green; border: 1px solid">
+  col-3 col-md-4 col-sm-6
+  </div>
+  <div class="col-lg-3 col-md-4 col-sm-6" style="background-color:green; border: 1px solid">
+  col-3 col-md-4 col-sm-6
+  </div>
+  <div class="col-lg-3 col-md-4 col-sm-6" style="background-color:green; border: 1px solid">
+  col-3 col-md-4 col-sm-6
+  </div>
+</div>
+
+<div class="container shadow min-vh-100 py-2">
+    <div class="row">
+        <div class="col-lg-2 col-md-3 col-sm-12" style="background-color:blue; border:1px solid">
+            col-lg-2
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-12" style="background-color:blue; border:1px solid">
+            col-lg-2
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-12" style="background-color:blue; border:1px solid">
+            col-lg-2
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-12" style="background-color:blue; border:1px solid">
+            col-lg-2
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-12" style="background-color:blue; border:1px solid">
+            col-lg-2
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-12" style="background-color:blue; border:1px solid">
+            col-lg-2
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-2 col-md-3 col-sm-12" style="background-color:blue; border:1px solid">
+            col-lg-2
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-12" style="background-color:blue; border:1px solid">
+            col-lg-2
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-12" style="background-color:blue; border:1px solid">
+            col-lg-2
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-12" style="background-color:blue; border:1px solid">
+            col-lg-2
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-12" style="background-color:blue; border:1px solid">
+            col-lg-2
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-12" style="background-color:blue; border:1px solid">
+            col-lg-2
+    </div>
+</div>
+
+The above will start out as 6 columns in a role on a large screen (laptop and above), then 4 col on a medium(tablet) size and then 1 col on a small(mobile size and below)
