@@ -9,6 +9,12 @@
   background-color: #ff4c68;
 }
 
+h1 {
+  font-family: Montserrat-Black;
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;

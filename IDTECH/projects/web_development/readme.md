@@ -238,3 +238,6 @@ for example say we want to create some role and style them. This can easily be a
 </div>
 
 The above will start out as 6 columns in a role on a large screen (laptop and above), then 4 col on a medium(tablet) size and then 1 col on a small(mobile size and below)
+
+### Using Fonts
+We can also use external fonts for our work. Just go to fonts.google.com
