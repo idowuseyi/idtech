@@ -241,3 +241,10 @@ The above will start out as 6 columns in a role on a large screen (laptop and ab
 
 ### Using Fonts
 We can also use external fonts for our work. Just go to fonts.google.com
+
+Select the fonts you want and then copy the link and insert it as a link in your html file.
+
+Very important: Unlike HTML and Javascript where the code is read in order, in CSS the last style is implemented. So if you have a CSS file you link in your header and also a bootstrap link in your header for your own style to take priority it must be below the bootstrap link.
+
+Your personal styling must be the last styling in the heaer file. I.e it must come after the boostrap style.
+
