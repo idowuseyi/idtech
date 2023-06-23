@@ -269,3 +269,6 @@ Copy the unique cdn link and put it in your html header file.
 Once the above is done, come back to the site, sign in and search for any icon you want, copy the class identifier and use in your html file
 
 NOTE: For all third party element, having an internet connection is required for loading them.
+
+#### Rotating an html element
+This can be achieved by checkinggoogle and stack overflow for the specific how to of the usage.

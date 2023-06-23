@@ -1,6 +1,11 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
 
 #title {
   background-color: #ff4c68;
+  color: #fff;
 }
 
 .container-fluid {
@@ -12,9 +17,28 @@ h1 {
   font-size: 3rem;
   line-height: 1.5;
   font-weight: 900;
-  color: white;
 }
 
 .rotated {
   transform: rotate(25deg);
+}
+
+/* Navigation Bar */
+
+.navbar {
+  padding-bottom: 4.5rem;
+}
+
+.navbar-brand {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.nav-item {
+  padding: 0 18px;
+}
+
+.nav-link {
+  font-size: 1.2rem;
 }
