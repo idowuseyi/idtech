@@ -248,3 +248,9 @@ Very important: Unlike HTML and Javascript where the code is read in order, in C
 
 Your personal styling must be the last styling in the heaer file. I.e it must come after the boostrap style.
 
+### Bootstrap Container
+
+Container help to hold elements in a design. They are basic building block. It helps you to styleor pad or center out your content. A container can contain anything.
+A container can be default i.e block. For this maxwidth changes with responsiveness whilethecontainer maintaining the padding and all. It allows everything inthe container to be totally responsive relative to the size of the viewport.
+
+Fluid container: This type of container adapt to the 100% of the view port.
