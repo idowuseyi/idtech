@@ -254,3 +254,6 @@ Container help to hold elements in a design. They are basic building block. It h
 A container can be default i.e block. For this maxwidth changes with responsiveness whilethecontainer maintaining the padding and all. It allows everything inthe container to be totally responsive relative to the size of the viewport.
 
 Fluid container: This type of container adapt to the 100% of the view port.
+
+### Bootstrap button
+The details of this is in the documentation section of bootstrap with the respective colour and use cases.
