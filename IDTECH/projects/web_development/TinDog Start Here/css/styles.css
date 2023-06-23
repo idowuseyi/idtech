@@ -8,8 +8,13 @@
 }
 
 h1 {
-  font-family: "Montserrat";
+  font-family: 'Montserrat', sans-serif;
   font-size: 3rem;
   line-height: 1.5;
+  font-weight: 900;
+  color: white;
 }
 
+.rotated {
+  transform: rotate(25deg);
+}

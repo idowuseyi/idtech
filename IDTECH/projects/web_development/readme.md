@@ -256,4 +256,16 @@ A container can be default i.e block. For this maxwidth changes with responsiven
 Fluid container: This type of container adapt to the 100% of the view port.
 
 ### Bootstrap button
-The details of this is in the documentation section of bootstrap with the respective colour and use cases.
+The details of this is in the documentation section of bootstrap with the respective colour and use cases. Locate exact style you want and copy the class name into your html element.
+
+Note: The usage of third party elements changes with time. SO always read the documentation for the way out.
+
+### Using Font Awesome Icon
+go to fontawesome.com
+
+you might need to register for a free account.
+Copy the unique cdn link and put it in your html header file.
+
+Once the above is done, come back to the site, sign in and search for any icon you want, copy the class identifier and use in your html file
+
+NOTE: For all third party element, having an internet connection is required for loading them.
