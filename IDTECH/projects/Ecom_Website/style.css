@@ -99,6 +99,10 @@ body {
   left: 20px;
 }
 
+.shopping {
+  color: #088178;
+}
+
 /* Home Page */
 #hero {
   background-image: url(img/Libran\ Kitup\ Designs/hero5.png);
@@ -156,8 +160,9 @@ body {
   box-shadow: 10px 10px 54px rgba(70, 62, 221, 0.1);
 }
 
-#feature .fe-box img {
+#feature .fe-box i {
   width: 100%;
+  height: 40px;
   margin-bottom: 10px;
 }
 
@@ -218,9 +223,9 @@ body {
   border-radius: 20px;
 }
 
-#product1 .star-style {
+/* #product1 .star-style {
   display: inline-flex;
-}
+} */
 
 /* #product1 .star-itself {
   height: 20px;
@@ -248,13 +253,10 @@ body {
   font-size: 14px;
 }
 
-#product1 .pro .des .star-style .star-itself {
-  height: 20px;
-  font-size: 12px;
+#product1 .pro .des i {
+    font-size: 12px;
   color: rgba(245, 181, 25);
 }
-
-#product1 .pro .des .st
 
 #product1 .pro .des h4 {
   padding-top: 7px;
