@@ -9,7 +9,11 @@ body {
 }
 
 .container-fluid {
-  padding: 3% 15%;
+  padding: 3% 15% 7%;
+}
+
+.tindog {
+  padding: 2% 0
 }
 
 h1 {
@@ -39,6 +43,11 @@ p {
 
 /* Navigation Bar */
 
+#navbarNav {
+  padding-left: 20%;
+  padding-right: 0;
+}
+
 .navbar {
   padding: 0 0 4.5rem;
 }
@@ -54,23 +63,34 @@ p {
   padding: 0 18px;
 }
 
+.menu {
+  margin-left: 5%;
+}
+
 .nav-link {
   font-size: 1.2rem;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
+  font-weight: 300;
+  color: #8f8f8f;
+}
+
+.active {
+  
 }
 
 /* Download Buttons */
 
 .download-button {
-  margin: 5% 3% 5% 0;
+  margin: 5% 3% 5%;
 }
 
 /* Title-image */
 
 .title-image {
-  width: 60%;
+  width: 23%;
   transform: rotate(25deg);
+  position: absolute;
+  right: 23%;
 }
 
 
@@ -78,6 +98,8 @@ p {
 
 #features {
   padding: 7% 15%;
+  background-color: #fff;
+  position: relative;
 }
 
 .feature {
@@ -97,9 +119,42 @@ p {
 /* Testimonial Section */
 
 #testimonials {
-  padding: 7% 15%;
+  
   text-align: center;
   background-color: #ef8172;
   color: #fff;
 
 }
+
+.testimonial-image {
+  width: 10%;
+  border-radius: 100%;
+  margin: 20px;
+}
+
+.carousel-item {
+  padding: 7% 15%;
+}
+
+#press {
+  background-color:#ef8172;
+  text-align: center;
+  padding-bottom: 3%;
+}
+
+.press-logo {
+  width: 15%;
+  margin: 20px 20px 50px;
+}
+
+
+/* Pricing */
+
+#pricing {
+  padding: 100px;
+}
+
+.pricing {
+  padding: 3% 2%;
+}
+

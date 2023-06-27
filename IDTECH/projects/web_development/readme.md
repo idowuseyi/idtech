@@ -272,3 +272,91 @@ NOTE: For all third party element, having an internet connection is required for
 
 #### Rotating an html element
 This can be achieved by checkinggoogle and stack overflow for the specific how to of the usage.
+
+
+### Bootstrap Carousel
+Anything about bootstrap is boil down to looking at the documentation and implementing it while changing its properties or adding your own style.
+
+#### Making an image circular
+This can simply be achieved by changing the border radius property of the element in css to 100%
+
+### Prricing section
+You can achieve this using the card section on Bootstrap. You can also get code snippet smples from bootsnipp.com
+
+#### Boostrap cards
+The documentation explains it out.
+
+
+### The CSS Z index
+Html elements are stacked exept for a child and parent. A child always sit on the parent. One way we can achieve the z index
+The z index is moving things either towards or away from the user. The z index can be edited specifically using the z-index preperty of an element. By default the z index value of any element is 0, changing this value changes the z index of element. z index is one of the ways we chnage the orders of stacked elements.
+For z index to work, the position property must be set to absolute/absolute but not static. The z index will not worrk if the position property is not set at all in the script.
+
+To change the z index of an element, we change the z index of the items involved but for it to work we must change the position property of the elements to absolute also.
+
+## MEDIA QUERY
+Since October 2016 the number of people visiting the web with their phone overtook those using their laptop or computer.
+
+To guarantee mobile first we can use media query to make our website responsive.
+
+WHY DO WE HAVE TO DESIGN FOR MOBILE or ensure responsiveness for mobile
+The number of people who use the mobile are now more so its the generation of mobile first.
+
+HOW DO WE DO THIS
+1. Do nothing and get punished for it
+
+Webpages get ranking based also on mobile responsiveness. Google even developed a page to test mobile responsiveness.
+search.google.com/test/mobile-friendly
+
+This is very important for any webpage especially businesses.
+
+2. Make a different webpage for mobile
+facebook does this. This takes a lot of work.
+
+3. The best is to make your website responsive.
+We can do this by normal css functions called media query. This is without bootstrap or jquery or any framework but pure css.
+
+Media query helps implement styling based on some evaluation.If the evaluation is true then it implement the styling and versa.
+
+Cosider the below
+
+Let say we have the below in our index.html
+<h1>Hellow World</h1>
+
+and the below in our style.css
+
+h1 {
+    color: red;
+}
+
+Initially if we run our html file, we are supposed to have a red Hello World text on the screen.
+
+But if we change our css to what we have below
+
+@media print {
+h1 {
+    color: red;
+}
+}
+
+Now if we run our html file, we will only see a black Hello World text. This is because we now have a query that determines whether or not the styling would be implemented.
+In the case here since the query evaluates to false, our styling is not implemented.
+The query here will evaluate to true when will try to print the page from the browser.
+
+There are other query method which includes:
+screen or screen resolution: which evaluates the screen
+Speech: which will be true when the screen is being read to a visually impaired person.
+
+This is the media query structure
+
+@media <type> <feature>
+
+@media which says everything that comes afterwards is a media query
+type: means type of media we are querying on, whether screen, print, etc.
+feature: specifies the condition we are checking to be true or not.
+
+e.g
+@media screen (min-width: 900px) {
+    //Change Something
+}
+
