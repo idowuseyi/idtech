@@ -18,4 +18,8 @@ Scope: The guide will cover the following topics:
     The guide must be accessible to target audience which are frontend or fullstack engineers and developers who are want to master CSS and its best practices
     The guide should be up to date with latest terms and practices in CSS styling and its techniques
 
-  Deadline: 2 week
+Word COunt: 1000 minimum words
+
+Timeline: 2 week
+
+conclusion: This write up will equip all reader - frontend or fullstack software engineer and developers with adequate knowledge on different CSS selector and best practices in CSS styling.
