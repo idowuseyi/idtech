@@ -44,10 +44,10 @@ body {
 
 /* Header Start */
 #logo {
-  max-width: 100px;
-  max-height: 100px;
-  background-color: #222
-
+  max-width: 80px;
+  max-height: 80px;
+  background-color: #222;
+  border-radius: 100%;
 }
 
 #header {
@@ -108,10 +108,10 @@ body {
   background-image: url(img/Libran\ Kitup\ Designs/hero5.png);
   height: 90vh;
   width: 100%;
-  /* background-position-x: 300px;
-  background-position-y: -300px; */
+  background-position-x: 250px;
+  background-position-y: 28%;
   background-size: cover;
-  background-position: top 25% right 0;
+  /* background-position: top 25% right 0; */
   padding: 0 80px;
   display: flex;
   flex-direction:column;
@@ -199,6 +199,12 @@ body {
   text-align: center;
 }
 
+#product1 .pro-container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
 
 
 #product1 .pro {
@@ -217,9 +223,10 @@ body {
 #product1 .pro:hover {
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
 }
-
+ 
 #product1 .pro img {
   width: 100%;
+  height: 260px;
   border-radius: 20px;
 }
 
@@ -280,6 +287,18 @@ body {
 }
 
 
+#banner {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+ background-image: url("img/Libran\ Kitup\ Creatives/clothing_outfit.png");
+ width: 100%;
+ height: 40vh;
+ background-size: cover;
+ background-position: center; 
+}
 
 
 /* Shop Page */
