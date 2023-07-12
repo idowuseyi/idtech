@@ -24,3 +24,4 @@ thirdList.innerHTML = "Oluwaseyi is a great winner";
 //document.querySelector("#list li a").style.color = "red";
 document.querySelector("ul .list a").style.color = "red";
 
+document.querySelector("body button").style.backgroundColor = "yellow";

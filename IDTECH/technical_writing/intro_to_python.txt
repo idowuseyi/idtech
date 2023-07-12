@@ -1,0 +1,21 @@
+Title: An Introduction to Python Programming Language
+
+Purpose: To provide a comprehensive guide for software engineers and developers to understand the basics of the Python programming language and its uses in software development.
+
+Scope: The guide will cover the following topics:
+  Basic syntax and data types in Python
+  COntrol structures and loops
+  Functions and modules
+  Object-oriented programming in Python
+  Error handling and debugging
+  Applications of Python in software development, such as web development, data analysis, and machine learning.
+
+Target Audience: Software engineers and developers who are new to the Python programming language and want to learn the basics of the language anf its uses in software development.
+
+Technical Requirement:
+  The guide must be written in clear and concise language
+  The guide must include examples and excercises for the readers to practice.
+  The guide must be accessible to the target audience, which are software engineers and developers who are new to the Python programming language.
+  The guide should be up-to-date with the latest version of Python and its development libraries.
+
+Deadline: 2 weeks

@@ -608,7 +608,7 @@ Find fonts that are similar or that communicates similar moods. Also choose forn
 ### USER INTERFACE DESIGN
 The human eye is always drawn to a bigger, bolder, squarer things. Asdesigners we can use this to define hierarchy. Let's say you are writing a birthday invite to me and you write everything in the same font, it will take me more time to understand what is writing compare to the other way round. On the other hand if hierarchy is archieved with fontsize different, the most important information is communicate first.
 
-#### HOWTO ESTABLISH HIERARCHY
+#### HOW TO ESTABLISH HIERARCHY
 We can establish hierarchy in some number of ways:
 1. Using colours: it makes things pop immediately. It is achieve importance first. Other than your colour pallete some other colour can be used to command importance and action. Many company are careful to use colour to cammand attention on their page.
 
@@ -1288,4 +1288,17 @@ querrySelector() and querrySelectorAll() allows for more advance and helps to ta
 document.querySelector("#list .list a").style.color = "red";
 document.querySelector("#list li a").style.color = "red";
 document.querySelector("ul .list a").style.color = "red";
-*/
+*/  
+
+#### CHANGING ELEMENTS WITH JAVASCRIPT: WHAT TO NOTE!
+Every properties of a tag can be changed using the query selector but the property name migth look a bit different. Like the querySelector it is camel case. This is standard naming method in javascript.So say you want to change font size it will be camelcase i.e fontSize and you can find all the details in the dom style documentation. They are the same with css but for dom it is camel case. Then to specify any value for any property it has to be in a string.
+
+### SEPARATION OF CONCERNS - Keeping our style in css and using javascript to turn it on and off.
+
+It is very important to understand the separation of concerns in web development.
+This means we know what each of out files or scripts is to do.
+The HTML is for content only
+The CSS is for styling the website
+Javascript is there for behaviour.
+
+It is important to follow this rule. This means it is wrong to cahnge style with javascript. But still if we need to change things on the fly then we must still use javascript. So how do we get it done.
