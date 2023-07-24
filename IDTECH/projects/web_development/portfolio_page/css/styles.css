@@ -43,7 +43,7 @@ h1 {
 /* Container */
 
 .container-fluid {
-  padding: 7% 15%;
+  padding: 0% 0%;
 }
 
 
@@ -100,7 +100,7 @@ h1 {
 /* Title Section */
 
 #title .container-fluid {
-  padding: 3% 15% 7%;
+  padding: 3% 5% 3%;
   text-align: left;
 }
 

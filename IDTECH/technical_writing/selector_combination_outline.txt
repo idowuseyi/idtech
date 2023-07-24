@@ -1,0 +1,256 @@
+Technical Writing Outline
+https://docs.google.com/document/d/1poXmA2JlQS3bquX9a7eWyje_3UVfWw8Z-_nSaDP6ULk/edit?usp=sharing
+
+Title: CSS Selectors, Selector Combination In CSS And How To Avoid Conflicting Styling
+Subtitle: CSS Selector Mastery and Best practices
+
+Introduction
+Cascading Style Sheet has stood out as the ultimate tool for styling a webpage. While the HTML helps in structuring and outlining our webpage, the CSS is used to colour, design and style our webpage. Let's say our webpage or website is a building, the HTML is will be the block which are layered to give the shape of the building The CSS will be the painting, styling and decorating our building. It is also good to state where javascript stands in all of this. Ultimately, javascript is used in maintaining or giving functionality to the elements in our webpage. A simple colour combination implemented with CSS can make a lot of difference in a webpage or site. Though there are many things to learn about CSS styling but in this article, you will learn about CSS selectors and how to avoid conflicting styling in your web projects.
+
+Table of Content
+  What are CSS selectors
+    i. What is CSS
+    ii. What are selectors 
+  What are the uses of different CSS selectors
+    i. What are the different CSS selectors available
+    ii. What are the specific uses of CSS selectors
+  Examples of different CSS selectors and their uniquesness.
+    i. Examples of different CSS selectors
+    ii. What are the uniquesness of each CSS selector
+  Combination of different CSS selectors with examples
+  How to avoid to avoid conflicting styling in our web design.
+    i. Understanding conflicting styling in web design
+    ii. What are the major causes of conflicting styling
+    iii. Ways and How to avoid conflict styling
+    iv. Principles and best practices in good CSS styling
+
+Prerequisites
+  To get the most out of this guide, it is expected that you should have a basic understanding of HTML, CSS and or Javascript. If you are not familiar with these technologies, we recommend that you take some few minutes checking them out to familiarize yourself with them before you proceed with this guide.
+
+Body
+  What are CSS selectors
+  Before we look at CSS selectors, it is important to undertand CSS itself. So we will quickly look at the following to properly understand CSS and CSS selectors.
+  i. What is CSS: According to the several sources including official documentation, tutorials and books, Cascading Style Sheet (CSS) can be define as a style language used to describe the presentation and formating of a document written in a markup language such as HyperText Markup Language (HTML) or XML. It allows developers and web designers to control the layout, design and appearance of web pages, making it easier to separate content from presentation. For example,if our webpage is a bulding, the markup language HTML will be used for the layed blocks or structure of the building while our CSS will be used for the painting, designing and decorating of our building.
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+    </head>
+    <body>
+      <h1>Hello World!</h1>
+    </body>
+    </html>
+
+    Note: You can generate the above by pressing control button + exclamation mark in vs code. 
+    
+    If we put the above in a filename.html file and open it with any browser, A white page with a black Hello World text is displayed.
+    Let say we want the colour of the text to be red, this is where CSS comes in
+    We can include some style in the markup above by doing the below
+
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+      </head>
+      <body>
+        <h1 style="color: red;">Hello World!</h1>
+      </body>
+    </html>
+    <h1 >Hello World!</h1>
+
+    Note the difference!
+
+  ii. What are selectors: Selectors can be referred to as markers or reference name with which we can style our HTML elements. In writing a good css, it is always good to keep all our css and styling files in a separate file. This is a good practice. Most of the time, software engineers or developers name this file styles.css. So instead of including our css styling in our html we will keep it in a separate file. Atimes, some put it in  a separate folder entirely. Create a new file named style.css in the same folder where we have the html file. All our css styling will be written in this style.css file.
+      To style our h1 heading above, first we need to remove the inline styling in the h1 above, so that our style can reflect.
+      Now in our style.css file we can use a selector to select our h1 and then write our style. See the sample below.
+      In our css file, write the write or paste the styling below;
+
+      h1 {
+        color: red;
+      }
+
+      This change the colour of our h1 just as we have it when we write it within the h1 tag in our html file.
+      This is what we call an external CSS and for it to work we have to connect it to our html file by including the below within the head of our html file.
+
+      <link rel="stylesheet" href="style.css">
+
+      In the example above, h1 is a selector. 
+
+  What are the uses of different CSS selectors: As we have seen above, selector is simply, a reference with which we can use to apply styles on our HTML elements. They are used as references through which we can apply a disting or unique styling to any HTML elements.
+    i. What are the different CSS selectors available
+      Imagine if we only have one selector and we have multiple h1 in our HTML document. Applying a different styles to each of them would have been impossible because if the browser see different style for a single element, the last one is retained.
+      Take a look;
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8">background-color: black;
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>My page</title>
+      </head>
+      <body>
+        <h1>Welcome to my site</h1>
+        <h3>First Selector</h3>
+        <p>This is a paragraph tag. We can include many sentences within here.</p>
+        <h3>Second Selector</h3>
+        <p>HTML is for layout. It is for inputing and arranging our document in our webpage</p>
+      </body>
+    </html>
+    
+    In our style.css, Let say we want to apply different bacground-color to the h3
+
+      h3 {
+        background-color: black;
+      }
+
+      h3 {
+        background-color: brown;
+      }
+
+      The background-color that we will see for both h3 will be brown. This is because the h3 tag select all the h3 elements in our HTML. So what is the way out.
+      There are other CSS selectors we can use. This includes;
+        a. HTML tagname
+        b. class
+        c. id
+
+    ii. What are the specific uses of CSS selectors
+      As we know all CSS selectors can be used to apply style to our HTML elements. With the different selectors above, each HTML elements or content on our webpage or a group of content on our webpage can have a unique style applied to them separately or as a group.
+  Examples of different CSS selectors and their uniquesness: You might be wondering, what are the difference between all this CSS selectors? Each of this selectors althugh have a lot of similarities but they also have their uniqueness.
+    i. Examples of different CSS selectors
+      Take a look at this
+      Lets edit our body in the HTML above to the one below:
+      
+      <body>
+        <section id="section1">
+          <h1 class="header1 brown">Welcome to my site</h1>
+          <h3 class="blue">First Selector</h3>
+          <p class="brown">This is a paragraph tag. We can include many sentences within here.</p>
+          <h3 class="brown">Second Selector</h3>
+          <p class="blue">HTML is for layout. It is for inputing and arranging our document in our webpage</p>
+        </section>
+      </body>
+
+      Then in our style.css, let's include the following styles
+
+      body {
+        background-color: #8f8f8f
+      }
+      #section {
+        font-family: sans-serif;
+      }
+
+      .header1 {
+        font-size: 3.5rem;
+        line-height: 1.5;
+        font-weight: 900;
+        color: #fff;
+      }
+
+      h3 {
+        font-size: 2.5rem;
+        }
+
+      .blue {
+        color: blue;
+      }
+
+      .brown {
+        color: brown
+      }
+
+      You can try to predict how the page will look like. Check it below
+Image
+
+     There are many things to note about our output as displayed here. The body and h3 are HTML tag selectors. header1, blue, brown are all class selectors while section1 is an id. It is important to pay attetion to how each of them are used. By carefully using our CSS selectors, we can apply multiple styles and unique styles to any HTML element. 
+    ii. What are the uniquesness of each CSS selector: It is important to know the uniqueness of each of this CSS selectors. The first way to establish this is by their usage in our styling. We can look at how they are used also in both our html and also in our CSS file.
+        a. Looking at the way they are used or appear in each of our files.
+        for HTML tagname if we have <h2>Heading<h2> in our css we can say h2 {our style}. Just like we have above, body and h3 are HTML tagname used in styling. For example the ash backgound color on our output in our browser was a style applied to the body.
+        for class: we include class="classname" withing the opening tag of our HTML element. Looking at the usage, we use .classname {our style} to apply a specific style to our an HTML element using the classname.Looking at our sample above, our h1, first paragraph and second h3 content has the color brown because of the style on the class brown. Look at the word brown in our HTML file and .brown in our style.css. With this we are able to apply same style to multiple elements using classes.
+        For id: it has same almost the same implementation with class in our HTML file. The difference is that for id we use id in our html and in our css we use #idname to style it.
+        
+        b. Another way to consider their uniqueness is in the priority and peculiarity of each of them. In order of priority, and id is the most. It is the most prioritized in an external styling, follow by a class and then HTML tagname.
+        id are the most unique and has special usage case which include the following:
+          Unlike a class that can be used on many element at a time, a particular id can not occur twice in an HTML file.
+          It is the most prioritized in an external CSS styling.
+
+  Combination of different CSS selectors with examples: We can also combine the selectors to pick specific HTML element to style in our CSS.
+    Pick & Mix Selectors
+
+1. Multiple selectors
+
+a selector, another selector {
+
+}
+
+Say we have an h1 and p with colour red
+
+we can just 
+h1, p {
+    color: red
+}
+
+2. Hierarchical Selectors
+This is selecting by hierarchy. That is selection based on the hierarchy of the selectors
+
+e.g 
+#title .container-fluid {
+    padding-top: 3%;
+    text-align: left;
+}
+
+selector1 selector2
+The first selector is a parent while the 2nd is a child.
+So in using this, we will go from outside in, selecting the parents till we get to the specific child.
+
+.container-fluid h1 {color: red}
+
+Then we read the hierarchy from right to left. The one on the right is the child and the one on the left is the parent.
+
+3. Combined Selectors
+This is combining selector
+selector1.selector2 {
+
+}
+
+selector1#selector2
+
+We will read this from left to right.
+What is the difference between the one with space and one without space.
+Without the separator, we are targetting an element that have the classes we state but with the space it means we are following the hierarchy moving from the parent to child.
+It is good to remember this about selectors, they have hierarchy ID's are the most specific which means they take much priority and then classes and lastly htmltags.  
+Also it is good to note that the last styling will always be applied.
+Also class  selector is superior to html tag while id is superior to class ans html tag. This are css rule.
+
+Then also inline css is the strongest when it comes to where our styling is positioned.
+
+  How to avoid to avoid conflicting styling in our web design: It is important to understand the ways and methods to avoid conflicting styling in our development. We can have style conflict when the style implemented by the browser is different from the one specify by the designer or the developer. This can be very frustrating at times.
+    i. Understanding conflicting styling in web design
+      Conflicting styling is when the style on our page output by the browser is defferent fron the one specified in our code. If you observe this, you can inspect the page by right click on the browser, then select inspect. Chrome is a good tools to see what style is applied on what element on the page.
+    ii. What are the major causes of conflicting styling
+      COnflicting styling can occur from any of the following;
+       a. Having multiple form of styling. e.g having inline, internal and external or any two together.
+       b. Having multiple style sources. This can cause style conflict is not properly addressed or monitored.
+       c. Ommiting separators and proper formating of styles.
+       d. Improper linking of style files in HTML file.
+
+    iii. Ways and How to avoid conflict styling
+      Ways to avoid conflict styling is to ensure to carefully attend to the everything stated above and sticking to best practices in CSS styling.
+
+    iv. Principles and best practices in good CSS styling
+
+      a. Use id's very sparingly. Not only that you have one of that thing but that it is distinct so use class instead. Only use id when you need to but always consider using class first.
+      b. When you want to use class, always use one class. Try to apply only one class as much as possible.
+      c. Avoid inline styling as much as possible. It is a very bad pratice so dont do it.
+      Keeping to all the above helps you reduce debugging to the barest minimum.
+
+Conclusion
+  Now that you have properly mastered CSS selectors and best best practices for great styling, make further effort to refactor your previous styling, practice what you have learnt and work on more wed design projects using html, css and javascript.
+  

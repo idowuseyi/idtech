@@ -1,0 +1,112 @@
+### WET AND DRY CODE
+One important thing about writing code especially css is to make it dry and not wet.
+Do not
+Repeat
+Yourself
+
+A code that has a lot of repetition is called WET
+We
+Enjoy
+Typing
+
+After writing the styles it is always a good practice to remove all sort of repetition. That is to make it dry as much as possible.
+
+This is much called refactoring in the coding space.
+
+
+There is a idea or concept that has been giving for developers to think when handing over code and it is to think ofthe next person coming to check the code as an axe murderer. Such that they will mostly use their axe if they find it difficult to understand the code or find something quickly in the code.
+
+### CODE REFACTORING
+There are few things to consider when refactoring code and the one to take as a priority depends on the programmer.
+But in general the include the following in priority as mentioned.
+1. Readability
+2. Modularity
+3. Efficiency
+4. Length
+
+1. Easy to understand not just for others but also for your future self. Is everything well arranged, labelled,commented, formated, etc. Make it readable.
+
+2. This is related to how easy to reuse bits of your code.i.eif any part go down is it easy to resolve quickly. This helps in debugging.
+
+3. How fast doesyour code run. You want something fast choose something like C but still it is still possible to make a code in a particular language more readable.
+
+4. You can cut down on lenght to increase readability, this willbe good but doing it the other way round is very bad.
+
+If you are interested in coding challenge involving this, you can go to:
+codegolf.stackexchange.com
+
+So go back and refactor your code.
+
+
+Looking at our code especially in our css, it is good to have all our html element brought together.
+
+Less repeatition gives more modular code. Refactoring should not break your website
+
+Modularity helps to narrow down and change anything without affecting the others.
+
+### SELECTOR COMBINATION IN CSS
+
+#### Pick & Mix Selectors
+
+1. Multiple selectors
+
+a selector, another selector {
+
+}
+
+Say we have an h1 and p with colour red
+
+we can just 
+h1, p {
+    color: red
+}
+
+2. Hierarchical Selectors
+This is selecting by hierarchy. That is selection based on the hierarchy of the selectors
+
+e.g 
+#title .container-fluid {
+    padding-top: 3%;
+    text-align: left;
+}
+
+selector1 selector2
+The first selector is a parent while the 2nd is a child.
+So in using this, we will go from outside in, selecting the parents till we get to the specific child.
+
+.container-fluid h1 {color: red}
+
+Then we read the hierarchy from right to left. The one on the right is the child and the one on the left is the parent.
+
+3. Combined Selectors
+This is combining selector
+selector1.selector2 {
+
+}
+selector1#selector2
+
+We will read this fromleft to right.
+
+What is the difference between the one with space and one without space.
+
+Without the separator, we are targetting an element that have the classes we state but with the space it means we are following the hierarchy moving from the parent to child.
+
+It is good to remember this about selectors, they have hierarchy ID's are the most specific which means they take much priority and then classes and lastly htmltags.  
+
+Also it is good to note that the last styling will always be applied.
+Also class  selector is superior to html tag while id is superior to class ans html tag. This are css rule.
+
+Then also inline css is the strongest when it comes to where our styling is positioned.
+
+#### HOW TO PREVENT CONFLICTING STYLING
+
+1. Use id's very sparingly. Not only that you have one of that thing but that it is distinct so use class instead. Only use id when you need to but always consider using class first.
+
+2. When you want to use class, always use one class. Try to apply only one class as much as possible.
+
+3. Avoid inline styling as much as possible. It is a very bad pratice so dont do it.
+
+Keeping to all the above helps you reduce debugging to the barest minimum.
+
+Some things that help with coding better is to study your habbit queue.
+The way to keep an habit going is to put it next to an already ongoing habit. Your onging habit will help your new habit to stick.

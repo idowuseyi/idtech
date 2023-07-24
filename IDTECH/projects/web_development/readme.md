@@ -1301,4 +1301,510 @@ The HTML is for content only
 The CSS is for styling the website
 Javascript is there for behaviour.
 
-It is important to follow this rule. This means it is wrong to cahnge style with javascript. But still if we need to change things on the fly then we must still use javascript. So how do we get it done.
+It is important to follow this rule. This means it is wrong to change style with javascript. But still if we need to change things on the fly then we must still use javascript. So how do we get it done. There is always a way. What we can tap into is what we call class list and its always a part of the DOM. 
+
+usage:
+document.querySelector("button").classList;
+
+Once we can access this, we can add a new class to any html tag or element
+
+document.querySelector("button").classList.add("invisible");
+
+This will add a new class called individual to the button tag inside our html.
+
+Say we have already have a styling for invisible as a class in our css.
+Immediately that we add that class to the button, the styling will be applied.
+By this we can keep all our styling inside the css and use javascript to turn it on and off.
+
+The same way we can add a class, we can also remove a class.
+
+document.querySelector("button").classList.remove("invisible");
+
+Another one like the above is toggle. It switch a class one and off.
+
+usage:
+
+document.querySelector("button").classList.toggle("invisible");
+
+By doing all this we stay true to the separation of concerns. If any error happens it is easier for us to debug our code. So if any element is not looking the way it should, we will go into our css and change it. At the same time if any element does not act the way is should we'll go into our javascript and change it.
+
+This makes our styling and our behaviour to be smooth and easy to manage.
+
+#### Text Manipulation and the Text Content Property CHANGING TEXT WITH OUR JAVASCRIPT SELECTOR
+Before now we have been manipulating text in our html element using .innerHTML property. We can also do this with another property called textContent.
+
+For example:
+document.getElementById("title").innerHTML = "Good Bye";
+document.getElementById(h1).textContent = "Good Bye";
+
+If we run the two example above, it seems they are doing the same thing i.e just change the text of the element that we select. But actually not totally the same.
+
+innerHTML changes all the HTML content in-between the selected tag. It gives all the HTML elements between the html tag including any HTML tags there. This means we can write HTML file on the go also.
+On the other way round, textContent property only changes the text between the specified tag without tampering with any other html tags within the selected tag.
+
+Say we have the html file below:
+<h1><em>Hello</em></h1>
+
+Using innerHTML will change eveerything within the h1 tag to whatever text or content we specify while textContent will only change the Hello text within the tags. This can help us in properly adding either other HTML tags or just changing the text within our tags.
+
+So if we have this in our html file
+<h1>Hello</h1>
+
+running
+document.querySelector("h1").innerHTML = "<em>Good Bye<em>"
+This will also add the em tag to the text content he Hello text is changed to.
+Note that the tags will also be within the quotation and if not it will be taken as javascript code.
+
+#### MANIPULATING THE ATTRIBUTE OF ANY ELEMENT
+Apart from changing the style and also the content of our html element, we can also change their attributes. Anything that go inside the tag other than the tag name itself is an attribute.
+
+Say we have a link tag that points to google and we want to make it point to another link, this can be done using Js.
+
+document.querySelector("a").attributes;
+
+The above will give us all the attributes associated with that a tag.
+
+document.querySelector("a")getAttribute("href");
+
+The above will give us the link embeded in the anchor tag.
+
+We can go ahead to change it by using setAttribute. This property takes two (2) paramenters, the first is what attribute you want to change and the second is what you want to change it to. Say we want to change the href to openai - chatGPT running the code below will get the job done.
+
+document.querySelector("a").setAtrribute("href", "https://www.chat.openai.com/chat");
+
+Once this code runs, if anyone click on the link, though it still says google since we didn't change the innerHTML, it will go straight to chatGPT page.
+
+So we can get, set or see what any attribute of our elements are in the DOM.
+
+
+#### ANOTHER TIPS TO GET GOING
+Sometimes it har getting started and keeping the consistency in learning or doing something. This happens to almost everyone but there is a simple trick that can get you going. It is all about tricking your brain to just get started. So you can say to yourself, I will just sit down and work on this for just 20 minutes. Just 20 mins and your body can go ahead and do whatever it wants to do. This is what you say to your body and then you get started. The idea is immediately you get started, their is an inertia that is starting up and will mostly keep you going beyond the 20 mins duration you set for yourself. On the other way round if what you are just able to do is that 20 mins then it is just fine. Go and do something else but mostly an innertial will keep you going beyond this time you set.
+
+### ADDING EVENT LISTNERS TO BUTTONS, INPUTS AND GIVINGS RIGHT RESPONSES
+
+Though we might have buttons in our design if we click on it nothing happens until we add an event listener to it.
+
+Before we go further in our js file we can just add a function to take note of a time our button is clicked.
+
+function handleClick() {
+  alert("I got clicked");
+}
+
+To go further, we now have to select our button and add an event listener to it whenever it's clicked and when it does, call the function above.
+
+document.querySelector("button").addEventlistener("click", handleClick);
+
+
+we do this using a method called addEventListener
+
+In general, using addEventListener is as follows
+Usage:
+target.addEventListener(type, listener[, options]);
+target.addEventListener(type, listener[, useCapture]);
+
+target is the object we are calling event listener on, in our example above it is our button. The add event listener method has two usually has two parameter.
+
+The first is the type of event. There are many of them - you can check the documentation to know more. In our example here and for our button we will use a very simple one which is the click.
+
+The second parameter is a listener and this listener is usually a javascript function that is going to be called when that click is encountered or the event is done. So here we will call our function handleClick().
+
+
+document.querySelector("button").addEventlistener("click", handleClick);
+
+So the code above select our first  button, add an event listener to it and when it occur, it call our function handleClick. This should show our alert "I got clicked".
+
+Running the code. Eveerytime, our first button got clicked, we'll have an alert that says "I got clicked" in our browser.
+
+This is something important to note. This is how we call our function in this program. We use handleClick to call the function intead of our normal handleClick(). This is because if we use handleClick(), the browser will see the function 
+and execute it immediately it reads the html file and encountered the function call in the js file. This implies that the alert will come up immediately our browser loads-up.
+
+document.querySelector("button").addEventlistener("click", handleClick()); // This will call the function immediately the browser loads i.e it will display our alert immediately the browser loads up.
+
+But we only want it to trigger when the event happened and that is what the event listener is there for. This is part of the things we need to get acquinted to in writing javascript and manipulating the DOM.
+
+It is the idea of passing an imput so it can be called later in the program.
+
+document.querySelector("button").addEventListener("click", handleClick);
+function handleClick() {
+  alert("I got clicked");
+}
+
+Most of the time many people will write this as an annonymous function
+
+
+#### ANNONYMOUS FUNCTION
+Annonymous function are functions that are annonymous that means they dont have a name. And most of the time they are added directly to where the function would be called.
+Let's turn the above to an annonymous function.
+
+document.querySelector("button").addEventListener("click", function () {
+  alert("I got clicked");
+
+  // Everyting do be done when the button get clicked goes here.
+});
+
+Quick Excercise:
+write a the code that wil add an event listener to all the buttons.
+
+
+Once done look at the code below:
+var x = document.querySelectorAll("button").length;
+for (let i = 0; i < x; i++) {
+  document.querySelectorAll("button")[i].addEventListener("click", function () {
+  alert("I got clicked");
+})};
+
+This does exactly the same thing with what we have before.
+
+The code above, although add an event listener to the button but it is very dangerous. Consider a situation where we add another button to our page. This code will capture it too which is not a good practice. What we can do is to be specific about the button selected. To do this we can use the class drum which is added to all the specific buttons. Take a look at the code below.
+
+var numberOfDrumButtons = document.querySelectorAll(".drum").length;
+for (let i = 0; i < numberOfDrumButtons; i++) {
+  document.querySelectorAll("button")[i].addEventListener("click", function () {
+  alert("I got clicked");
+})};
+
+The code above uses for loop and when any button is clicked the for loop is ran assigning the clicked button value to i and that value determine the button the event listener is added to which then displays our alert.
+
+You can also use while loop for the above. The only thing you should not do is to write the code 7 times listening to each of the button. If you seems to be a little bit unconvenient with the solution above or finds it a bit difficult, try and revisit the loops in javasscript.
+
+### HIGHER ORDER FUNCTION
+As we have a named function we also have annonymous fucntion.
+In our Chrome we can inspect any webpage and use the console to make changes to the page. Though this changes will be removed once we refresh the page but this can help us to understand how the browser works.
+
+$0.addEventListener("click", function() { console.log("I got clicked")}); //This code will pick the first html element content, add a click event listener to it and log the message I got clicked when clicked.
+
+Looking at the addEventListener above we can see that it looks a bit different from the normal functions we used to have. It takes in two paramenter where one is another function entirely.
+
+We can try and observe the code that the browser (Chrome) used to implement the event listener.
+
+Say we want to create a calculator.
+
+if we just say
+
+fucntion calculator(num1, num2) {
+  return num1 + num2;
+}
+
+if we continue to create this function for all operations, it might be tiresom. Instead of this we can create a function that also take the operations we want to do.
+
+So we can create all our operator function and call them in our calculator function. This means our calculator function will take three parameter, the first is the first number, second the second number and the third will be our operator fucntion.
+
+function add(num1, num2) {return num1 + num2};
+function subtract(num1, num2) {return num1 - num2};
+function multiply(num1, num2) {return num1 * num2};
+function divide(num1, num2) {return num1 / num2};
+
+function calculator(num1, num2, operator) {return operator(num1, num2)};
+
+We can learn more on how this processes works by using the debugger in the chrome developer tools. To get that just type debugger in the chrome console press shif + enter and then type the function you want to call. This runs the function in the debugger allowing us to follow step by step as the code runs. This is very useful because it helps us to catch error in our code instead of us playing computer in our head.
+
+Once the code is in the bebugger space, press the down arrow button by the right panel to see as the processing of the code proceed till it returns the output in the console.
+
+This functions that can take another function as a parameter is called higher order function.
+Higher order functions are functions that can take other functions as inputs. This feature is available in many other modern languages and javascript use it a lot.
+
+
+
+#### ADDING A SPECIFIC EVENT 
+Now we want our buttons in our last work, instead of console.log("I got clicked") to paly a sound. This can be done with the code below
+
+var x = document.querySelectorAll(".drum").length;
+for (let i = 0; i < x; i++) {
+  document.querySelectorAll("button")[i].addEventListener("click", function () {
+    var audio = new Audio('sounds/tom-1.mp3');
+    audio.play();
+})};
+ML audio element and then call the play method on it to play the sound. At the background this code will create an HTML audio element and we can perform several operations on it. Check the HTMLMediaElement documentation for details.
+
+we an add a background image to any of the button in our css using the code blow and specifying the source.
+
+background-image: url(images/tom1.png);
+
+Now to get the identity of the button clicked, we can use the this method and specifying the property we want to get which in this case is the innerHTML
+
+So to pick the identity of the specific button we can use this.
+
+this.innerHTML
+
+The above will give us the innerHTML of the button that got clicked.
+
+We can also change the color of the button by writing the code below
+
+this.style.color = "#fff";
+
+### JAVASCRIPT OBJECTS Dominating the Web, One Object at at Time.
+
+Say we have multiple items with different properties, In real life the easiest thing to do would have been to put the details in a table.
+
+Say the new enrol students in our school. Now each of them will have a firstname, lastname, age, address, parent job, likes and dislikes. To capture this data instead of writing a long dcument, we can easily do that using a table. This will capture their properties easily and quickly.
+In Javascript, we can create an object to perform the same operation.
+
+var student1 = {
+  fullName: "Ademola Femo",
+  age: 21,
+  stateOfOrigin: "Ogun",
+  veryBrilliant: True,
+  likes: ["food", "game", film]
+}
+
+With the above we can quickly get any information about the student. Say we want to know the fullname of this student, we can create an alert that like below.
+
+alert("Hello, my name is " + student1.name)
+
+We are using the . to access the name property of the student1. This makes our data more structured and easy to access. With this we have created a javascript object. We can create any object depending on the data that we want. For different object we can create different properties depending on the object.
+
+if we just type student1, it wil return all the properties of the object and we can tap into any of the properties with the . notation.
+
+var houseKeeper1 = {
+    name: "Beauty",
+    age: 17,
+    skill: ["wash", "clean", "mob", "decorate"]
+}
+
+saying housekeepr1.name wil give us the name of this housekeeper.
+
+If we want to create more object of this same property we dont need to start all over, we will only need to change the value of some to the properties.
+
+### CONSTRUCTOR FUNCTION
+In javascript we can create a factory that helps create many object of the same type, this is called a constructor function.
+
+It looks like the below
+
+function HouseKeeper (name, age, hasWorkPermit, languages) {
+  this.name = name;
+  this.age = age;
+  this.hasWorkPermit = hasworkPermit;
+  this.languages = languages;
+}
+
+The unique identity about a constructor function is that the firstletter of the first word has to be capitalized or the first letter of the words has to be capitalized and not camel case like we used to have. It also take a number of input and this is what we will supply when creating a new object.
+
+#### INITIALIZING A CONTRUCTOR FUNCTION
+
+var houseKeeper1 = new HouseKeeper("Beauty", 19, true, ["French", "English"]);
+
+In the above, we have the name of the new housekeeper as an object, then we use the constructor function supplying its. The name, age, hasWorkPermit and languages values. This is shorter than creating a new object all the time.
+
+The difference here is the new and the name of the Constructor function.
+
+We can write a constructor function that create a new student
+
+function SchoolStudent (name, age, likes) {
+    this.name = name;
+    this.age = age;
+    this.likes = likes;
+}
+
+var student1 = new SchoolStudent("Ade", 17, ["food", "football", "story", "film"])
+
+#### SETTING A NEW SOUND FOR EACH OF OUR BUTTON
+
+To change assign a different sound for each btton, we will need to write a long if statement. A better way to make this easier is using the switch statement.
+
+Usage:
+
+switch (var) {
+  case expression;
+
+  break;
+  default;
+}
+
+Between the colum and the break statement, is everything we want the code to do once the expression is true.
+
+The default is the last statement, it is like the case else in our if statement. It it is always a good practice to set it. We can just console log the innerHTML of the button should incase it happens.
+
+See the full code for the drum skit below
+
+var x = document.querySelectorAll(".drum").length;
+for (let i = 0; i < x; i++) {
+  document.querySelectorAll("button")[i].addEventListener("click", function () {
+    var buttonInnerHTML = this.innerHTML;
+    switch (buttonInnerHTML) {
+        case "w":
+          var tom1 = new Audio('sounds/tom-1.mp3');
+          tom1.play();
+        break;
+        case "a":
+          var tom2 = new Audio('sounds/tom-2.mp3');
+          tom2.play();
+        break;
+        case "s":
+          var tom3 = new Audio('sounds/tom-3.mp3');
+          tom3.play();
+        break;
+        case "d":
+          var tom4 = new Audio('sounds/tom-4.mp3');
+          tom4.play();
+        break;
+        case "j":
+          var snare = new Audio('sounds/snare.mp3');
+          snare.play();
+        break;
+        case "k":
+          var crash = new Audio('sounds/crash.mp3');
+          crash.play();
+        break;
+        case "l":
+          var kick = new Audio('sounds/kick-bass.mp3');
+          kick.play();
+        break;
+        default: console.log(buttonInnerHTML);
+    }
+})};
+
+#### METHODS AND THE DOT NOTATION
+
+We can make our object have a function, this function can simply be added as one of the attribute of our object.
+
+var houseKeeper1 = {
+    name: "Beauty",
+    age: 17,
+    skill: ["wash", "clean", "mob", "decorate"],
+    washPlate: function() {
+      alert("May I pack the plate for washing?");
+      packPlate();
+      wash();
+    }
+}
+
+In the above we just put an annonymous function as on of the properties of the houseKeeper1 as an object.
+
+The function above is a method.
+
+We can simply call the method by saying
+
+houseKeeper1.washPlate();
+
+We always use the . notation for using a method attached to an object. The difference between the calling of object property or method is the parenthesis (). So look out for it.
+
+We can also incorporate the method into the constructor function so that whenever we create a new object it also has the method.
+
+function HouseKeeper (name, age, hasWorkPermit, languages) {
+  this.name = name;
+  this.age = age;
+  this.hasWorkPermit = hasworkPermit;
+  this.languages = languages;
+  this.washPlate = function() {
+      alert("May I pack the plate for washing?");
+      packPlate();
+      wash();
+    }
+}
+
+var houseKeeper1 = new Housekeeper("Bola", 13, ["waashing", "Bathroom"]);
+
+houseKeeper1.newPlate();
+This will give the alert "May I pack the plate for washing?"
+
+The above is just like that of our audio
+
+function AUdio (fileLocation) {
+  this.fileLocation = fileLocation;
+  this.play = function() {
+    //Tap into the audio hardware
+    //Check the fifle at fileLocation exists
+    //Check the file at fileLocation is a sound file
+    //Play the file at fileLocation
+  }
+}
+
+var tom1 = new Audio("sounds/tom-1.mp3");
+tom1.paly();
+
+The above is what the constructor function for our audio play. We initialized it and use the method play on our new audio object.
+
+
+### jQuery : The JavaScript Library that will Prevent Our Fingers From Breaking
+
+This is like the most popular javascript library. Though there are many of JavaScript library but jQuery is most downloaded and used.
+
+Imagine how many line of code we write just to do something simple to manipulate the dom. This is more painful for John Risik. He decided to create a library that will make all this easy. This is how jQuery was born.
+
+JQuery was born. It was a set of code that you can use in your work. The same way we use bootstrap to make how UI looks nice, jQuery makes DOM manipulation easy.
+
+say we have
+document.querySelector("h1");
+
+If we are to use JQuery to do the above, it will be
+jQuery("h1")
+
+The shorter way is to say
+$("h1");
+
+So document.querySelector("h1") with jQuery si simply $("h1"). This is extremely easier and shorter so we dont have to break our hands by typing a lot of javascript codes.
+
+#### HOW TO INCORPORATE JQUERY INTO WEBSITES
+
+You can just head to jquery.com. Just like our bootstrap, you can just download all the jQuery or you use their cdn. In our bootstrap section we explain what Content Delivery Network (cdn) is. You can go back to read or review it.
+
+The most popular option is to use Googlecdn. The beauty about using a popular jQuery is that if user have visit a site that uses the same channel to fetch jQuery data, it means that it would have been cached on their browser thereby making it fast to fetch when they load your site. They would not need to fetch another one. Check under library, download, Copy the cdn with the script tag and create a new project called jQuery and create all the necessary files.
+
+If you'll use jQuery, it must be linked in the right place in our html. Mostly before the body closing tag and above our main index.js file.
+If you place the jQuery cdn link below the js file link, there would be an error because the browser will check the index.js file first, once it encountered the dollar sign since it doesn't have a definition for it, it's sure to return an error.
+
+Also if you put the 2 links i.e jQuery and js in the head tag of you rhtml file. When you load your website there might not be any error because the html element is not even encountered yet. But with this we can still set our script code to be fetched only when it is ready
+
+(document).ready(function () {
+  $("h1").css("color", "red");
+});
+
+Putting our jQuery and script tag in the head must be done carefully.
+
+The code above will wait until our jQuery library is ready and then access the h1 to change its color.
+
+you can choose what works fro you but it is good to just put the jQuery cdn link and your script tag before the closing of the body. This means all the html element must have loaded before tapping into them and manipulating them.
+
+#### HOW MINIFICATION WORKS TO REDUCE FILE SIZE
+If you copy the jQuery cdn link and paste it into the browser, you will only see a reduce page full od some code. It is a minified version of the jQuery code.
+
+The same way bootsrap is for css is jQuery for javascript. If we copy some part of the code and put it in an editor, it is the normal code with all the spaces removed to reduce it size.
+You can go to minify.org to reduce your code to a minified version. It makes our code smaller in size and easier to load by the browser since it doesn't care about the spaces, tabs and comments. This will still take some time on the client browser.
+So if we download the jQuery, we'll have the main version that is human readable and a minified version for the browser. Also we can customize the human readable version and minified it for use in your project.
+
+#### SELECTING ELEMENTS WITH JQUERY
+We already know that we can select html elements with javascript.
+document.querySelector("h1"); will select h1. In jquery we can remove many parts there to just say $("h1").
+We can also work with the CSS properties.
+
+$("button")
+this select all the button. In javascript, we use selecorAll but in jQuery there is no difference bewteen selecting all or selecting one.
+
+We can manipulate the css properties of any elements by using the .css method on any element.
+$("h1").css("color", "green");
+This will change the color of the h1 to green.
+
+we can also console log any property value.
+
+console.log($("h1").css("font-family"));
+
+If we have one parameter in the .css method, we will get the value, if we have two then we are setting the value.
+
+$("h1").css("font-family", "sans-serif");
+
+But changing our style in our javascript looks dirty and is not too good because we need to keep to the matter of concern.
+
+What we should do is set our class in our css file and then use javascript to turn add it to an element.
+
+$("h1").addClass("big-title");
+
+This will add the clss big-title styling to our h1. If we refresh our page the style specified by the class will be applied. This is a good way of separating our style from our functionality.
+
+The same way we can add a class, we can remove a class. We can also add or remove multiple classes. All we need to do is to include them within the same quotation mark we input the class with spacing between them.
+
+$("h1").addClass("big-title ");
+
+We can also query if a class is used 
+$("h1").hasClass("margin-50"); // will return true or false.
+
+#### CHANGING ELEMENT TEXT WITH JQUERY
+We can change the text element of an HTML element with jQuery in two ways.
+
+$("h1").text("Bye");
+
+When we use jQuery to select element, it select all element that matches the selected element. The .text method can change the text.
+
+$("button").text("Dont click me")
+This will change all the text of the button to what's specified above.
+
+Also, we have used innerHTML, we can also use this to change the text and also 
