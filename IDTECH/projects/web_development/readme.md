@@ -1807,4 +1807,169 @@ When we use jQuery to select element, it select all element that matches the sel
 $("button").text("Dont click me")
 This will change all the text of the button to what's specified above.
 
-Also, we have used innerHTML, we can also use this to change the text and also 
+Also, we have used innerHTML, we can also use this to change the text and also add other HTML element. In DOM it is innerHTML but with jQuery it is shorter, it is .html.
+
+$("button").html("<em>Hey</em>");
+
+.html can be used to add other HTML element while .text will just take everything as text and ignore any HTML tag in it.
+
+As we have discussed on methods, jQuery uses methods that helps to shorten the codes we need to write. You can take a look at the downloaded jQuery file to see the codes. The plain javascript - vanilla javascript must be properly understood for one to successfully work with the web development tools like jQuery or any other library.
+
+#### MANIPULATING ATTRIBUTES WITH JQUERY
+
+As we have learnt about attributes. For an image we have src
+<img src="drum.png" alt="">
+for a tag its href
+<a href="https://google.com"></a>
+We have a simpler way of setting attributes in jQuery
+
+$("img").attr("src");
+We can use the above to get the value of an attribute
+Also we can set the value of the attribute with the second parameter
+
+$("a").attr("href", "https://www.yahoo.com");
+
+The code above will select all the anchor tag and set their value to what we specified.
+
+Also note that a class is also an attribute. We can use the .attr to print out the class of an element.
+$("h1").attr("class");
+
+#### ADDING EVENT LISTENER TO OUT HTML ELEMENT USING JQUERY
+
+$("h1").click(function() {
+  $("h1").css("color", "purple");
+});
+
+Formerly if we want to add an event listener to multiple element of the same type, we need to use a for loop.
+
+for (var i = 0; i<(document.querySelectorAll).length; i++) {
+  document.querySelectorAll("button")[i].addEventListener("click", function() {
+    document.querySelector("h1").style.color = "purple";
+  });
+}
+
+This can be done easily using jQuery
+
+$("button").click(function() {
+  $("h1").css("color", "purple");
+});
+
+This seems more shorter and easier, no need of any for loop.
+
+Apart from click event, we can also bind a keypress event listener
+
+Let's add an input to our html
+ <input type="text" name="" value="">
+
+ we can easily listen for a keypress/keystrokes in that input/textbox
+
+ $("input").keypress(function(event) {
+  console.log(event.key);
+ });
+
+ This will console.log any key press in the console.
+
+ If we want to do what we do in our drum kit, we can easily do it in jQuery.
+
+
+ $(document).keypress(function(event) {
+  console.log(event.key);
+ });
+
+ This add a keypress event listener to the entire document.
+
+ Say we want to change our h1 text to any keypress, we can easily do that with the code below
+
+ $(document).keypress(function(event) {
+  $("h1").text(event.key);
+ });
+
+ Now there is also an easy way to add event listener, instead of using .click, .keypress etc we can simply use .on
+
+ .on takes two parameter, the first is the event we are listening for and the second is the action or function to do.
+
+ $("h1").on("mouseover", function() {
+  $("h1").css("color", ("purple"));
+ });
+
+ We can also listen for any event that are listed in the MDN event list.
+
+ #### ADDING AND REMOVING ELEMENTS WITH JQUERY
+
+ While our website is live and running we cna also use jQuery to add element on the fly.
+
+We can use the before method
+ $("h1").before("<button>New</button>");
+
+ We have done this without changing our html file.
+ We also have after - which create an html element after, we also have prepend and append. The difference between prepend and append is that prepend will add the html element withing the specified html element, immediaely after the opening tag. It will be added before the content of the html element specified. while append is after the html content of the element specified.
+
+ Removing element is almost the same thing. Say we want to remove all element.
+
+ $("button").remove();
+ This will remove all the button element insdie our current webpage.
+
+ #### JQUERY ANIMATION
+ Just like when we add a click event listener to our document but instead of using .css we can use .hide to perform some animation.
+
+ $("button").click(function() {
+  $("h1").css("color", "purple");
+  });
+
+  Becoming
+  $("button").click(function() {
+  $("h1").hide();
+  });
+
+  This will hide the h1 when aby button is clicked.
+
+  To make it appear we can 
+$("h1").show();
+
+We cna instead of hiding it make a toggle
+
+$("button").click(function() {
+  $("h1").toggle();
+  });
+
+  Note the hide is so sudden which is not too good, so to make it have some cool behaviour we can use the fadeout
+
+  $(h1").fadeOut();
+  or $("h1")fadeIn();
+  This two also come with a fadeout or in option.
+
+  $("button").click(function() {
+  $("h1").fadeToggle();
+  });
+
+  We can also use slideToogle to use slide up and sown, this is vey good for a drop down.
+  
+  $("button").click(function() {
+  $("h1").slideToggle();
+  });
+
+  Instead of using all this pre built in method we can use something call .animate to define what we want to annimate to. We cna just include the css.
+
+  $("button").on("click", function() {
+    $("h1").animate({opacity: 0.5});
+  });
+
+  Note we can only animate to values that or properties that have a numeric value. This means we can't animate to color.
+  for other values we can just specify them directly but for percentage we will put it in a string. 
+
+  To include more than one of this, we can just chain the method together.
+
+  $("button").on("click", function() {
+    $("h1").slideUp.slideDown.animate({opacity: 0.5});
+  });
+
+  This will perform a slide downup and then down and then annimate. Not if all of the chaining are targetting the same thing, then it will do it one after the other.
+
+  This is surely cool.
+
+  Then if you can,t remember all this, it is very fine. Programmin is like an open book exam, no one tries to remember anything only that you understand some things or what is going on. So remember you have the documentation and the whole world wide web. You only need to know they exist and roughly what they are called and you are fine.
+
+  A proper search will give you exactly what you need immediately.
+
+  #### TIPS
+  For the human brain, connections are very important. It is good to learn something but it is more benefitial to mix different aspects of knowledge. This makes better connection in the brain. Let's say you learn A and hen B, if you can bring together the two in doing one thing or within the same context, it solidifies the knowledge learnt.

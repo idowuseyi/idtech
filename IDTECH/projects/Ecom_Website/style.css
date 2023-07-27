@@ -333,8 +333,21 @@ body {
   color: #fff;
 }
 
+#sm-banner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
-
+#sm-banner .banner-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-image: url(img/features/happy-sale.jpg);
+  min-width: 580px;
+  height: 50vh;
+}
 
 
 /* Shop Page */
