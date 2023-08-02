@@ -1973,3 +1973,190 @@ $("button").click(function() {
 
   #### TIPS
   For the human brain, connections are very important. It is good to learn something but it is more benefitial to mix different aspects of knowledge. This makes better connection in the brain. Let's say you learn A and hen B, if you can bring together the two in doing one thing or within the same context, it solidifies the knowledge learnt.
+
+  ## THE UNIX COMMAND LINE
+
+  Some persons have said that you can only call yourself a true developer if and only you can use the command line. The command line is very powerful because other than using the graphical user interface, with the command line you can issue instruction to the computer throug commands.
+
+### SETUP
+  You can install hyper from hyper.is either from windows or mac. On mac just download, unzip and moveto the appication folder. On windows go to hyper.is, download hyper for windows and install the exe file. Once done you wil see the hyper terminal.
+
+  Another thing to install for windows is the gitbash because it will allow us to use the bash command line. Go to git-sem.com, go to download and then download for windows oce downloaded double click on the exe file and follow the installation wizrd to install. Go with all the default option once done restart your system.
+
+  The next is to configure hyper, the link is available in the link. Once copied, go to hyper click on the top left button, select edit then preferences, this will open up the configuration file, delete everything in it and past the new copied configuration from the link, click on save and close it. Once done hyper will load and update its configuration close and restart hyper to ensure everything go through.
+
+  To confirm its working well, open hyper and type 
+  echo $SHELL
+  You should have /bin/bash as the result of the command. If true then you are good.
+
+  ### UNDERTANDING THE COMMAND LINE
+  The command line is very useful and also a good friend of any technology developer.
+
+  We will be using the hyper terminal because it allows access to the bash shell.
+
+  #### WHAT IS BASH SHELL
+  In order to know what the bash shell is, we need to know what the bash is. Think about an egg, the shell is the cover of the edible part of the egg. This egg shell can represent the shell while the inner edible of the egg is what we call the kernel. The kernel is the program that interfaces with the hardware. It is the core of your operating system. The shell in computing refers to the interactive or the interface for usersto interact with the kernel and in turn with the hardware of the computer.
+
+  #### TYPES OF SHELL
+  The first is the graphical user interface - GUI. This is the most common and easiest user interface available in almost all operating system. It is sometimes called the click, drag and drop interface.
+  The second is the command line interface - CLI. This is an interface that uses command typed on the command line to instruct the computer. It is always dreaded by many but it can be learnt just like our drag and drop interface. It is very simple and very useful.
+
+  To learn the CLI we will be using the Bash - Bourne Again Shell. The Bash is named after Mr Bourne who is famous for working on the UNIX. The bash shell is the command line interpreter for the unix operating systems. You will find a unix like system everywhere. Example is the linux and even the mac os 10. These are all different from the windows operating system which uses the DOS file system.
+
+  #### WHY USE THE COMMAND LINE AT ALL
+  The simple answer to this question all boils down to greater control. To become a better deveoper or in any technology, you will need to exert more control over the hardware which is what the shell gives you ability to do. Doing common day to day task is much more easier and faster using the command line.
+
+  Unlike on the GUI where to make a music folder one has to take different or multiple clicks, on the CLI making a music folder is just as simple as typing the command below on the command line.
+  mkdir Music
+  To make another folder say Music2 is just typing 
+  mkdir Music2
+  This would have take another long process on the GUI.
+  So it all about speed and control.
+
+  Another thing to note is that the GUI is that they tried to hide many things and any complicated stuff either useful or unuseful to the user. An example is the configuration files, GUI will always hide things like this from the common user. The idea is that unless you know how to deal with it, then you shouldn't even see it.
+  On the other hand the CLI give a lot of flexibilities.
+  For example files are easily hidden on the GUI while all files can be seen by using the command below on the CLI
+  ls -a
+  Also the command line make using git and version control very easy which is very useful and important for all developers.
+
+  We will be learning some command and using the CLI for all operations.
+
+  #### COMMAND LINE TECHNIQUE AND DIRECTORY NAVIGATION
+  The first step is to open the termial. Your configuration or colour and appearance might be a bit different. This happens depending on what you think is good, like the green text colour can be used because its good for the eyes especially in the night and also makes you look like a badass haker when it is used.
+
+  You can go to hackertyper.com to make you look like a hacker while in a major public  place. You can basically just bash the keys and it will display like a hacking session. You can use this to wow your friends.
+
+  #### SHELL COMMANDS
+
+  ls - It list all the file in the present directory you are in.
+  You can know the present directory you are by what shows by the left after the collon and before the $ sign or you can also use a command to see what directory you are in presently.
+  pwd - it display your present working directory - pwd
+
+  You can confirm this from your GUI.
+
+  You might see the name of the directory start with the ~ sign, this shows your root directory. This means the directory that is used as the base or starting or default directory for your operations.
+
+  If you want to go into another folder, how do you do that.
+
+  Say we have some folder/directory in your present directory, to go into any one you can use the command
+  cd directoryname - change directory
+
+  If my directory exist then I am now inside it, to go back to the previous directory by using 
+  cd ..
+
+  I can keep using cd direcotryname to navigate and keep entering one folder to another and also cd .. to back out from one foder to the other.
+
+  To type a folder name faster, you can always tap the tab button, this will complete the direcotry name or suggest those available.
+
+  we can go to the root directly by using
+  cd ~
+  We can type a full path of a directory if we know where it is.
+
+  cd Document/tutorial/web_development 
+  If I type this while in the root folder that has Document folder and all this folders exist in order, this command will take me directly into the web_development folder.
+
+  Dont forget to always use the tab button to complete your typin on the command line.
+
+  We can also re use a previous command by using the arrow up or down button on the keyboard. This takes you through your command history.
+  You can always confirm your present folder using ls to ensure you are in the right folder.
+
+  We can go up multiple level and back multiple level
+
+  if I am in wed_development folder
+
+  I can go back to my root folder by
+  cd ../../ 
+  This takes me back twice
+
+  With much power comes more responsibility. Some commands needs more carefulness while using them on the CLI.
+
+  Another thing is changing the position of the cursor, say you want to correct a typo somehwere at the back in your command, The CLI only allow you to type where the cursor is while we can use the arrow right and left to move the cursor, a quick trick is holding the command or alt button and clicking on the position you want the cursor to be for the edit.
+
+  Also control + A takes you to the beginning of the line while control + E takes you to the end of the line. Control + U clears the present command so you can write a new command.
+
+  #### CREATING, OPENING REMOVING AND FILE MANIPULATION
+  Say we want to make a new directory, 
+  wecna use
+  mkdir direcotoryname
+  Also say we want to create a file
+  touch Text2.txt
+
+  To open a file we can use
+  open filename or start filename
+  In the above command, dont forget the extension or just use the tab button to see suggestions or what is available.
+  You can also specify the application to use in opening the file. Say we want to open the file we create above with Atom
+
+  open -a Atom Text2.tx or start atom Text2.txt on windows
+
+  To delete files inside the present folder
+  rm filename
+  rm = remove
+
+  Say we want to remove all files in a folder
+  rm *
+  This removes everything in the current folder.
+
+  NOTE!
+
+  FILES HANDLING ON THE CLI MUST BE DONE WITH CARE AND ULTIMATE CAREFULNESS. THIS IS BECAUSE THERE IS NO RESTRICTIONS. THIS MEANS THAT ANYTHING CHANGED IS CHANGED AND ANYTHING REMOVED IS GONE. THE WHOLE OPERATING SYSTEM CAN BE REMOVED i.e DELETED ON THE CLI which is not permitted on the GUI.
+
+  BE WARNED!!!
+
+  Always check your present working directory before doing anything.
+
+  To remove a directory, we need to add the option -r
+  rm -r directoryname
+
+  Once done, the whole folder is gone.
+  The -f option means force
+
+  sudo means root user permision
+
+  all this options can be considered dangerous and to be used only if you know what you're doing.
+
+  The command below can be used to wipe the whole hard disk empty
+  sudo rm -rf --no-preserve-root/
+
+  ## TIP
+
+  It has been said that you have to cut on sleep to perform better but this is extremely dangerous.
+  Sleep helps your brain to function more and reboot and refresh and perform better. So in your learning journey, ensure you get a good sleep.
+  You might have an alarm before sleep that helps to remind you to quit everything and wind down and get ready for sleep. There is nothing or drug or medicine that helps you better than sleep. So try it and keep going.
+
+  ## BACKEND WEB DEVELOPMENT
+
+  Having looked at many technologies for front end wed design. This inludes; HTML, CSS, Bootstrap, Javascript, jQuery. It is time to learn the backend technologies too. The combination of this two makes you a full stack web developer.
+
+  ### FULL STACK DEVELOPMENT
+  Full Stack = Front-End + Back-End
+  A fullstack web developer interacts with both the front end and the back end. Having learn the technologies for the front end, it is time to learn the technologies for the backend, this includes nodejs. This helps us to interact with databases, have business logic on the server, etc.
+
+  ### WHAT IS THE BACKEND
+  Backend consists of the following:
+  A server: which save and serve your files - HTML, CSS and js.
+  A Database: which store your user data - login,password, etc
+  and Application: which perform specific task or operations for your users. It handles business logic and get things done as regarding the user.
+
+  Look at the eventbrite. It is a web application because it does not just display things but does things for the user like find events, register a user for events and many more.
+
+  When a user register, this data is stored on their database. With this user data saved on the database, if the user comes back later, it can get this data and use them to serve the user. For example it can retrieve this user ticket because it has been saved.
+
+  If web development is a restaurant, there is the beautiful front space where customer sit and attended to. At the same time, there is the kitchen where the cooking is done and then the larder or cupboard or shelf or store where the cooking material and resources is stored. This is the client side
+
+  The front space is the user interface, this is the UX/UX.It is the where the user interact with the restaurant. It is what the user see in the browser.
+  Then there is the kitchen which represent the server, this is where allour dishes get served from. When any order is made from the client, the order is sent to the server - the kitchen, the order is prepared and the fulfilment or the response is sent back to the client.
+  Now the Larder/cupboard/shelf/store is where all the ingredient is stored is the database. This is where all user data, event data, ticket data or everything that makes our app work is stored.
+
+  The point where the divide happens is between the client side (FrontEnd) and the server + the database (Backend).
+
+  It is not compulsory to have the separate, this will just means you bring all your ingredient before the user, prepare the order and serve it all in front of the user. The only thing is that doing this will expose your recipee and other can easily replicate it.
+  
+  In the same vein, this is where we have a separation of logic, you dont want the user to have access to your api key, and codes. At the same time,it will be time consuming to make the dish in front of the client, because you have to bring the utensils, ingredient and other tools one by one. For a website this translate to a long loading time. So if you have a lot of code that is run by the browser instead of it coming from the backend then it will mean a longer loading time for the browser.
+
+  The alternative just like in our kitchen we receive the order, we take the ingredient from the larder and prepare the dish in the kitchen then serve back to the client. Our server recives the the request from the client, get the necessary data from the database, the server interacts with the data, run some code on the server using the data from the database and then create the application which is then served to the client.This means we dont have to transport all the ingredient or code or tools for making the response. This increases speed and ease.
+
+  On the backend a lot of technologies are used. This incudes php,ruby, java, nodejs and more. Also each of thses technology has framework such as laravel, ruby on rails, spring, express which speed up development.
+  
+  These frameworks helps to reduces a lot of repetitive works a developer has to do. And just like we dont want to keep writing html boiler plate every single time, a lot of these frameworks make a developer work much easier by cutting on the ground work and saving a lot of time.
+
+  So we'll diving deep into one of this which is nodejs and express. And in doing this we dont need to learn a new programming language to use it because it runs on javascript.
