@@ -2160,3 +2160,355 @@ $("button").click(function() {
   These frameworks helps to reduces a lot of repetitive works a developer has to do. And just like we dont want to keep writing html boiler plate every single time, a lot of these frameworks make a developer work much easier by cutting on the ground work and saving a lot of time.
 
   So we'll diving deep into one of this which is nodejs and express. And in doing this we dont need to learn a new programming language to use it because it runs on javascript.
+
+
+## NODE JS
+WHAT IS NODE JS
+
+We now know why we nee a backend and which technology can we use, we can use java, php, ruby on rails, python or nodejs but we will be using Nodejs.
+
+WHY NODE JS
+This is because we already know some things in Javascript and node allow us to create a backend using javascript so we dont have to spend a lot of time learning a new language. We already know how to use javascript. Also we are not the only one using node, we have companies like wikipedia, ebay, uber, twitter now X, netflix, trello etc are joining in the usage. In the last few years node has gain a great popularity and we will soon see what it can do. It is also very fast.
+Furthermore, fomerly we hava always written javascript codes that get run by the browser. Up until now that javascript code has been kept and locked behind bars inside the browser. We have written codes that does things on the browser but has never gone beyond that. Like getting into the user system, network detup and others. Also your site becomes endangered and also dangerous to user if hackers can see your codes just inspecting the pages. Also if you will have to build a desktop app like atom, you will need to be able to have aacess to the user file system to load the code the user will edit. So writing code that access the file system or listens to the network request, you will need to write code that interact directly with the user computer without the browser and this is what nodejs allows us to do. Nodejs helps us to take our js out of the browser and put it on our browser and use it to give functionality and others. So as we use javascript to create functionality, we use nodejs to interact with the user computer. The atom file eidtor we use is written with nodejs. So node allow us to write full application that runs on our computer.
+
+WHY IS THIS IMPORTANT
+We cannot only write application that runs on our computer, we can use it to run javascript codes on another persons computer. That is a server. Just like google, once you search google in your browser, your browser send requests to google and this will be directed to its server, the server run javascript code to find the query and this will be sent back as responsed to the user through the browser. All this heavy lifting happens on the server rather than on the browser. This makes a browser a lot more secure and fast.
+
+### THE POWER OF THE COMMAND LINE AND HOW TO USE NODE
+Using the command line requires a little bit of immagination. On the command line we can know where we are by using the command
+pwd - This shows your present working directory.
+
+You can also manouvere to any directory using the command
+cd direname - change directory where dirname is the directory name you want to move into.
+
+We can use the command ls to list the content of the present directory
+
+We can create a new directory with the command mkdir
+
+mkdir dirname - make directory
+
+We can create a new file with touch filename
+touch index.js
+
+The command line gives a great power and with that the saying "with great power comes great responsibility"
+
+we can open the above file with our editor. Before now we can only run the file inside our browser console but now we can run it in our computer using node.
+node index.js
+
+### READ EVALUATION PRINT LOOP REPL
+
+Just like we are able to run command in bit within the chrome console, we can also write line of code and press enter to run it using node REPL. By installing node we also install node REPL and to access it we just use the command node
+
+We can just write console.log("Hello world"); This will display hello world.
+we can execute 2+3 or any other mathematical operation directly. We can also use tab to complete our command. If we tap it once it will complete what we are writing and if once doesn't work we can tap it twice to it all suggestions that follows with what we type.
+
+We can use the command .exit or use ctr + C twice. You can also clear the console by using the command clear. 
+
+
+### USING THE NATIVE NODE MODULE
+When we installed node it already comes with some native node modules bundled into it. This are reusable code written by node developer that are provided for our use once we installed node.
+
+The full details of this is provided in the node documentation site nodejs.org/api
+Here we can see all nodejs native module and how to use it.
+We can now use nodejs to interact with the computer directly. On of this is file system. It elps us to interact with the local file system and we can use it by requiring it.
+
+We can do this in our index.js file.
+
+#### DIFFERENCE BETWEEN VAR LET AND CONST
+Before now we have been using var. This is because we can vary the value we assign to it.
+var a = 3;
+var a = 5; //this can proceed without any error
+
+Const is just the opposite of var, once we assign a value to it we can't change that value.
+
+const a = 3;
+const a = 5; //this cannot proceed without any error
+
+It will tell us that we can't overide a because it is a constant.
+Const are important for variable that doesn't change value in our code. e.g pi which has a constant value of 3.14 dependending on the decimal places.
+
+Let is used to create a variable withing a specific scope. It means the variable can only take effect within a specified block of God. This variable won't be accessible outside that scope of code. An example is a variable for iteration.
+
+### CONTINUATION
+
+const fs = require("fs");
+This gives us access to the module fs - file system.
+Sometimes the linter can complain that we are not using ES6 but we can correct this by outting the below comment at the top of our code
+
+//jshint esversion:6
+
+Once we have require this module then we can use it. The documentation show us all this.
+
+lets say we want to copy file1 into a new file 2
+
+In the documentation we can see
+fs.copyFileSync(src, dest[, flag])
+
+where
+src = source filename to copy
+dest = the destination filename to copy into
+
+we can now have
+fs.copyfileSync(file1.txt, file2.txt)
+
+This code we check in the current folder for the file1.txt if exits, it will copy the content  and put it inside file2.txt. If file2.txt is not existing, it will be created and if existing it will overwrite its content.
+
+We can now run the code with the command
+node index.js
+
+Now we can run code and manipulate file on our computer using node.
+In the next lesson we will use node external module.
+
+### THE NPM PACKAGE MANAGER AND INSTALLING + USING EXTERNAL NODE MODULES
+
+Apart from native node modules that comes with node, we can also use external node modules built by anyone in our node project. This is managed by what we called NPM - Node Package Manager
+
+#### NODE PACKAGE MANAGER - (NPM)
+It is currently the largest package manager.
+WHY USE NPM
+Lets say you are building a lego house and you have already did a lot of work to put the house together. Let's say you want to have some tree in the house, intead of working strenously to create the tree, you can just go to npm to find a tree and use it in the house. This is exactly the same with code. The packages on NPM are bits of reusable code which you can go ahead and use through npm to save some work and time in your project.
+NPM already get bundled with node so it is available when you install node.
+
+In our console we can intialize npm in our new project.
+
+On the terminal and in our project directory we can set it up using the following.
+
+npm init
+
+We can follow the prompt and put in the required details.
+
+Once the whole prompt information is filled and we press enter at the end. The package.json file is generated wihich contains information about the project and any module we are uding in the project i.e npm packages.
+
+We can install npm packages
+Go to npmjs.com
+Here there are more than 650,000 packages which we can search out and use in our project.
+
+We will search and use superheroes. This module generate ramdom superhero name. To use it we have to install it. This can be done with the command npm install superheroes on the terminal and in our project directory.
+Here we must spell the package name correctly. We can ignore all warnings for now.
+We can look at the documentation to see how to use it.
+
+If we run this code
+var superheroes = require("superheroes");
+
+var mySuperheroName = superheroes.random();
+
+console.log(mySuperheroName);
+
+it will console.log a superhero name. Here we require the superhero name, then we assign it to a variable to create an object, then we use the method gotten by the module on the object and assign this to another variable. Then we console.log the variable.
+
+So once we have initiate npm in our project with npm init, install the modules we need, then use the module following the documentation. With this we can build different stuffs with ease.
+
+Let say we want our project to give us a superhero name and supervillain name.
+We can just checkout the supervillain module on npm site, install it and require and use it in our project.
+see our new code below
+
+var superheroes = require("superheroes");
+var supervillains = require("supervillains");
+
+var mySuperheroName = superheroes.random();
+
+console.log(mySuperheroName);
+
+var mySupervillaineName = supervillains.random();
+
+console.log(mySupervillaineName);
+
+console.log("Who will win " + mySuperheroName + " vs " + mySupervillaineName + "?");
+
+This is making our project more intersting.
+
+Once we install any package, it will be added into our package.json file.
+
+NOTE: In our project folder and the subsequent folders, it is possible to have several package.json file in our installed packages, this is because the packages we installed also depends on other packages. This means that those guys that built this modules we use also use some modules in their project. Most times this is how the development ecosystems operate, we can have projects over project depending on another and that one depending on another and another all over. All this can be found in the node modules folder in our project. All this depends are called dependencies for our project.
+
+
+## TIPS
+Most of the times we get required to do some big tasks that looks insurmountable. At this point we sometimes have doubts and some voices saying we can't get it done. But in this same moment, if we can just ignore this voices and take a step ahead to learn, do and put in our effort, it is this moment that we have great growth in us. So next time you doubt yourself, step up and keep going.
+
+## EXPRESS
+Express is a node framework. The same way we can add jQuery in our javascript to make things easy the same is express for node. Express allows or enable extra feaure in node which we dont need to code from scratch. It helps to provide ease and functionality and helps to structure your code especially for web app.
+
+NOTE: we have said nodejs helps to liberate javascript from the browser, it means node is broad because it is a low level technology that allows us to interact directly with the computer and its hardware. That means we can create desktop app with it. This means it is broad. Express is more specific.
+Imagine you have a pilip screwdriver and you can screw any screw you want anywhere, that is node. But lets say you do a lot of DIY and have a lot of screwing to do and you might need a motorized screwdriver - that is express. It was built to make you write less repetitive code when you developing for the web. Using express than using node is like saving your self ten times of work, effort and time in your web development.
+Note: we programmers hate repetition.
+If you go to npmjs.com uyou will see that the most dependent upon packages is express. Developers use it and are still using it. And we will be learning it in this module.
+
+We will go ahead and build a server using node and express to make our code run on the server.
+
+### CREATING A REAL SERVER USING NODE JS AND EXPRESS.
+Having talked about the backend and its cool technology. It's time to create our first server.
+
+For a challenge, go ahead and create a new project called my-express-server initialise it with server.js
+
+To do this we will
+
+create a new directory
+cd into the directory
+create the .js file
+sitll on our terminal and in that folder we create
+use the command
+npm init
+fill the required information
+then press enter
+
+Once we do this our package.json file will be created and this is the process we will go through anytime we are creating a new web development project.
+
+Open that project in your editor.
+if atom use atom . in the project folder.
+
+The next is to install express. The information on how to do this can be found in the documentation express.com sepcifically express.com/en.starter/installing
+
+Here we see the command
+npm install express --save
+
+the --save was added in other for express to be added to our package.json file but as from node version 5 this has been done automatically.
+
+so we can simply use the command
+npm install express
+
+Once installed we can now require express in our js file server.js
+
+const express = require("express");
+//we require express
+const app = express();
+//create a new object variable to hold express. app is used because it is the common used for express ecosystem.
+//app.listen(3000)
+//here we are telling express to listen on a specific port for any request sent to our server. Here we shoose 3000. This is the backbone of any express server.
+// If we go to our command line and our server.js file we don't see nay feedback or error but we will notice our cursor is hanging at the beginning of the next line. This is because it has started listening as we instructed in our code. This is just like oning your radio and tunning it to a certain station but let's say the station is not saying anything at that time. Everything will surely be quite. We can always stop the server with ctr + C.
+// If we wants to see when or hear something when our server run we can add a callback function that just console.log a message say "server running on port 3000".
+app.listen(3000, function () {
+console.log("server started on port 3000");
+});
+
+// if we go to this server address on our browser. say localhost:3000 This because our server is running locally
+
+//We will see an error cannot GET. This means when our browser makes a request, it doesn't get anything back from our server. So how do we write some code that give a response to our browser?
+
+### HANDLING REQUEST AND RESPONSES THE GET REGUESTS
+From our last stop, our server is listening and not giving any response so our browser making a reguest do not get any response from our server. This result in the error cannot GET.
+
+The localhost:3000 is the port our server is listening on and locahost:3000/ is the root of our page. It is like the root folder. Our homepage. It is the same equivalent in going to www.google.com/  in your browser. If we send this link, it will be directed to google server and google server on receiving this request will send a response back to the browser. This is done by sending some file including html, css and javascript file for the browser to render or display to you.
+
+For our own, our server is not sending back any response and we cna specifiy that in out server.js
+
+In our code we can add just above the app.listen
+
+app.get("/") // this specify what is to be done when a request happens on this route and we can trigger a callback function to do something.
+
+app.get("/", function(request, response) {
+console.log(request);// Here we console.log the request that was made.
+}) // This specify what to be done when a request is received. But we will still have an error because no data is giving to the browser but on the console i.e our terminal.
+
+We can tap into the response method to send back a response.
+The code above will now become
+app.get("/", function(request, response) {
+response.send("Hello world");
+}) //This will display Hello world on our browser. This means our server now handed a response to our browser to display on the route "/"
+
+The locahost:3000/ we type into our browser is a command for our browser to go into that location and make a request. Once the request is made the server is triggered and send back a response which is the Hello World displayed.
+
+We can also send html element or a whole html file as our response and we can have as many route as possible.
+app.get("/", function(request, response) {
+    response.send("<h1>Hello world</h1>");
+});
+
+NOTE: In the express world, the request and response is always shortened to req and res.
+
+app.get("/", function(req, res) {
+    response.send("<h1>Hello world</h1>");
+});
+
+To understand this codes more, we need an understanding of callback function which we have talked about before.
+
+By adding more route we can create a multipage website.
+
+### UNDERSTANDING AND WALKING WITH MULTIPLE ROUTES
+Let say we want to add a new route say contact, we can just add this codes before the app.listen line of code.
+
+app.get("/contact", function(req, res) {
+res.send("Contact me at: idowuseyi22@gmail.com");
+});
+
+This is all about envisaging or thinking ahead what the user might type into the browser. So we can respond to as many possible route as much as possible.
+
+For a challenge add a new route about and send some information about you. This should display your quick bio.
+
+If the user goes to any of the route we have specified, then there is a response waiting.
+
+NOTE:
+It should be obvious that it is a bit painful to stop and start our server. A way to go about this is using nodemon. If you go to nodemon.io we can use the command npm install -g nodemon to install it. Then we run our server.js with nodemon. This will constantly automatically restart our server anytime we make any changes in out server file. The -g will make it available anywhere regardless of where we install it in our file system.
+
+If we add a new route
+
+app.get("/hobbies", function(req, res) {
+    res.send("<ul><li>Food</li><li>Code</li><li>Helping people</li></ul>");
+});
+
+immediately we save our server file, nodemon will automatically restart our server to load the changes automatically.
+
+### Creating the calculator app
+
+Set up everything with the folder name calculator-app with calculator.js and npm init
+
+Then install express in the folder
+and require, create a new app and then have a route "/" that send "Hello World" and make the server listen at any port you choose. The most used is 3000 when people use when developing locally.
+
+Watch out for errors which might be due to typo's and others
+The error with specific line number and code position will be stated. This information can quickly be used to correct this error at any time.
+
+### RESPONDING TO REQUESTS WITH HTML FILES
+
+Before now we have explore how to work with html, express and node, we are going to put that together in creating our calculator app.
+
+Create a new file inside the calculator-app directory.
+In the body include a form with action = index.html ans method as post. Add an input with attributes type=text, name as nu1, placeholder as first number. Then add another input as num2 and placeholder as second number.
+
+the name attributes is what we will be using to call the data inputed into this form.
+
+Then add a button with type=submit, name as submit and labelled Calculate.
+
+Once the form is created. We will need to send the entire index.html. To so this we will do it differently. If we check the documentation expressjs.com we will see the method and usage for doing this.
+res.sendFile(path [, option][, fn]) // This transfer the file to the browser as a response.
+
+Before now we have been working with relative file path like just specifying "index.js". This works differently once we are working with a server. We can do the above because we know specifically where our file is located but in the future we would be working with external servers where our app is deployed to. On this computers we cannot know where our files are located. But we can do something by using a method.
+__dirname //This will show our current folder if console.logged.
+
+Now we can just do
+
+(__dirname + "/index.html") // This will find our present working directory and our file path completely.
+
+If this __dirname is mysterious to you create a new file called path.js, in the file console.log(__dirname) and run it. Then you can move this path.js file into different folders and run it to see how it works. It gets the present working folder it can be located at any time. So we can use that location and add anyfile name to find the file full path regardless of where it is located.
+
+### PROCESSING POST REQUESTS WITH BODY PARSER
+Can you imagine what happen when we press the calculate button on our calculator page.
+
+If run our calculator.js file with nodemon with our port listening on por 3000 and we loead it in the browser. Then lets open chrome developer tool and go to the network tab. We will test what happen when we click our calculate button.
+
+A lot of networking request package is listed and at the top we get on with a status 404 and everything is in red. and in the browser we have the error cannot POST /index.html.
+
+where does this comes from, if we look into our index.html, our form has a method and this method is post. It means we are sending the data somewhere and that is what is described by the action which is specified as index.html which is not what we want but instead our serverat the route "/". If we dont have an action specified it is fine and by default the form will send the data to the current page where its on which is an equivalent of "/". So let's put this there.
+
+This time when we load our page we are still getting the error but this time with a lot of information on the haader section when we click on the error. This including some data from the num1 and num2 from the name attributes of the input on our form.
+
+You might have come accross, this error some certain number of times and a lot of company pride themselves on how this page looks for their site.
+
+SO what does this codes means.
+
+HTTP return codes cheat sheet
+1** Hold on
+2** Here you go
+3** Go away - redirected
+4** You fucked up
+5** I fucked up
+
+You can go to wikipedia to see the full list of http return codes.
+
+The two most often is 200 - success and 400 - which means you're requesting the file that does not exist.
+
+The issue with our error is that ourserver does not have a way of processing any post request and its not allowing anybody to respond to any post request. Let's fix that.
+
+app.post("/", function(req, res) {
+res.send("Thanks for posting that request.")
+})
+
+Now if we go back to the broser and reload the page and input the parameters then click on calculate. Now on our locahost we have status code 200 which means success, everything is going great. The only problem is how do we get the input data we need. We can do this by installing an npm package called body parser.
