@@ -2600,3 +2600,39 @@ app.post("/bmicalculator", function(req, res){
   
   res.send("Your BMI is " + bmi + "kg/m2");
 });
+
+You are all a search away from the solution also.
+
+## TIP
+
+One of the way you can solidify your knowledge is to have a way to explain it out. It is easy to follow along and get things done, but how do you make another person understand this exact same thing. One of the things you can do is come out with your own analogy of any concept that you learn. Once you undersand, come up with your own analogy and explain it out to someone. The funny thing is, your explanantion might be what is the most applicable to others too and will make that person picture things better because you imprint it in their mind.
+
+
+## APPLICATION PROGRAMMING INTERFACES - (API)
+In your small dev journey, it is almost impossible you wouldn't have come accross this term somewhere somehow. It crop up so often. So what are API and what can we do with it. In this lesson we would be interacting with some API, weather and email collector and we would be building with them.
+
+Email collector API is very useful if you're building a landing page or a newsletter, preorder, etc. Before this we must understand what are API and what are they useful for.
+
+If you go to yahoo.com, on this page you would notice a section that display the weather parameters of your rcurrent location.
+
+If we want to create our own website and we want a module like this how do we go about this? Notice we wouldn't be able to set up a weather station, take measurement and then integrate this on our site. The problem is that we can't even set up a station in all location that exist.
+
+So where do we get the weather anyway? We will use waether system interface like weather API. Weather API have collected all this pieces of weather data, do the forecast and all complex stuff, so all we have to do is to use their API to tap into that weather data just like yahoo do it. The same too when you go to tinda and you see their share friends and shared interest section. Where are this data coming from, its coming from facebook using the facebook API. They use those data to populate that section.
+
+In over the internet we have tonnes of API that we can use for anything we want to do. In the UK we have police API, that provide data on crimes and other data and people have used it to build interesting stuff. One of this is murdermap. This paltform uses the police API to map out murder and classify based on different metrics especially for london supplied by the API. SOmeone can use this information to decide where to live and where to avoid.
+
+There are API's that provide prices, and several other stuffs and you can use this data to built anything you want.
+
+#### API DEFINED
+According to general accepted definition, An API is a set of commands, functions, protocols, and objects that programmers can use to create software or interact with an external system.
+
+What does this mean
+say you go to a restaurant they have menu but at the same time you can go into the kitchen where we have the ingredients and recipee and probably some surprised chefs. If you go in and start eating this raw ingredients, certainly the restaurant authority wont be happy about it. Though there are things they sell that they will allow you to buy but there are other things that are off limit. The same way for websites that take and have their own data be it facebook which has data on users or police API which has data on crimes. There are data they would allow you to access but there are others that they would never want you to see. It is none of your business. So how do these website tell you what data you can access and how you can access them. If we take the case of a restaurant they will do it in a menu may be cakes, cookies, cofee, etc. Then same way for sites. Like weather map, we can have temperature, weather condition, weather image, pressure etc. An API some people consider to be a contract between a data provider and a developer which says these are data the data provided provides, the one a developer can use and the ways, protocols and how to use those data and that the website that host this website would ot change any of this agreement without notifing you.
+
+Our definition now makes sense, set of data programmers can use to create or interact with an external system.
+
+We have seen the ones that allows you to interact with an external systems, But we haven't seen any that allow you create a software.
+
+Yes we have. Remember jQuery. It is something that gives you access to object and mehtods that allows you create software easily other than writitng vanilla javascript. LLok at tindal, facebook API is used to interact with an external system when you're on tindal.
+
+In this module we are going to focus on API that allows you to interact with an external system most importantly an external server. We are going to access some data from some website and we will do that through their API. We will read their documentation to see what we can do with them. We will make requests to their server and get responses through their API.
