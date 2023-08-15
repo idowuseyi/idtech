@@ -2635,4 +2635,45 @@ We have seen the ones that allows you to interact with an external systems, But 
 
 Yes we have. Remember jQuery. It is something that gives you access to object and mehtods that allows you create software easily other than writitng vanilla javascript. LLok at tindal, facebook API is used to interact with an external system when you're on tindal.
 
-In this module we are going to focus on API that allows you to interact with an external system most importantly an external server. We are going to access some data from some website and we will do that through their API. We will read their documentation to see what we can do with them. We will make requests to their server and get responses through their API.
+In this module we are going to focus on API that allows you to interact with an external system most importantly an external server. We are going to access some data from some website and we will do that through their API. We will read their documentation to see what we can do with them. We will make requests from our server to their server and get responses all through their API. Their documentatin will serve as a menu for what we can do with their data.
+
+### API ENDPOINTS, PATHS ANS PARAMETERS
+
+In the last lessons, we have learn about API all in the theory. In this episode we will be going practical. We will access and you API's from some website.
+
+When you thing about API you need to be thinking about things like Endpoints, Paths, Parameters and Authentication. These are the four thing we will cover and we will see what each of this do.
+
+#### ENDPOINTS
+Every API that interacts with an external systems will surely have an endpoints.
+
+Let's quickly look at kanyewest API at kanye.rest for random Kanye West quotes. This data is hosted on kanye west database and on of the endpoints is
+GET https://api.kanye.rest
+whenever you are using a different API they would probably have their own endpoints.and the details of this will be included in their documentation. Most of the time each use case or functionalities of an API will have an endpoint. If we copy the link above - endpoint and paste it in our browser our browser will make a request to the kanye.rest server and they will send back a response which is a quote by Kanye.
+
+Let's say we create a website and everyday you come to the website, you get a Kanye quote. We can probably do that using this API. Mostly websites that have API has more data than just a random quote.
+
+In addition to an endpoint, there is also API paths and parameters.
+
+#### PATHS AND PARAMETERS
+These are things that you can use to narrow down on a specific piece of data from an external server. To illustrate this we will use an API from a joke website. Through the use of paths and params we can narrow down on the kind of jokes we want.
+There is a link to the jokeAPI. This joke API is more complex than the Kanye West one because it has more option for you as the programmer. You can select the kind of joke you want based on category, flags to blacklist, response format, joke type, string. The first thing we need to do to use it is the starting point which is the endpoint. If you scroll down, you will see a bunch of endpoints. You will see one that says GET joke. If we jsut copy the url and paste it in our browser you will see you get an error - no matcing joke found, no category selected. So what is going on here, though we have the endpoint but there is something missing which is the category. If we try it out at the top, you will see we have any and it is set to category any and if you select programming it changes the link to /programming. So the difference here is that we need to select a specific path after the endpoint. If the endpoint is the main tree, the path is the branch.
+ So here we have seen a path specified here. The endpoint is the main API link and the category is the path e.g programming or dark or any or any other one.
+
+ Remember when we are learning node, when we are creating a new path we need to plan for it so that when a request is made to our server we need to be able to catch and filter through to get the specific parameter we want and want to use.
+
+ Sometimes we might want to get a piece of data that is specific say a programming joke that contains the word debugging but they wont probably have thought of this before hand so in order to allow the API to respond to things like this, we have parameters that can be attached to the end of the url after a question mark. It is sometimes a key value pair e.g /?contain=debuging. The key is the contain string and the querry is the debugging which is the value. It is waht is tried out. Other things are added to the link as we select some options in the category. The more we change the default selections, the more the parameters that are added to the link. Now notice if we have more than one querry, the first querry follows after the question mark, and the subsequent querries follows after the & symbol.
+
+ When you want to specify a parameter remember that you need this symbols to use them, it comes after a question mark, then the key then followed by an equal to sign, followed by search string any other parameter or key value pair which is an additional query will come after an & sign.
+
+ If we use this link in our browser, we will get a joke with the options we specified.
+
+ Now with the addition of a parameter we are able to get something specific and a precise thing that we want.
+
+ So we have seen an API in action, how to use an endpoint also how to use path and parameters.
+
+ So take some time and play with this API adding some path and parameter in your browser making some request and getting responses. Ensure you know what is going on when you type out those long url's in the browser.
+
+ In the next lesson we will talk about authentication and what will have in our responses. 
+
+ ### API AUTHENTICATION AND POSTMAN
+ In the last lesson we see how we can interact with an API using the jokeAPI. We see how we can work with endpoint, paths and parameters.
