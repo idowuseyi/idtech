@@ -2512,3 +2512,91 @@ res.send("Thanks for posting that request.")
 })
 
 Now if we go back to the broser and reload the page and input the parameters then click on calculate. Now on our locahost we have status code 200 which means success, everything is going great. The only problem is how do we get the input data we need. We can do this by installing an npm package called body parser.
+
+The first thing is to
+npm install body-parser
+
+This will allow us to parse the information we are getting from the post request.  So we need to parse the long data we are getting from our post request to have access to our variables we need for our calculation.
+
+Now we've install body-parser then require it in our project. Then we make our express to use it.
+
+app.use(bodyParser)
+Body parser has a few modes. we have
+
+.text - parsed as text
+.json - parsed as json()
+.urlencoded - which will allow us to have access to data's and variables from the html elements file.
+
+So to use data from html form we use body parser called bodyParser.urlencoded()
+and in it we will add the option extended: true
+
+bodyParser.urlencoded(extended: true)
+This will help us to have access to nexted objects. This must be added as required by bodyParser to use it.
+
+WHY DO WE NEED BODY PARSER
+Body parser helps us to tap into req.body to access the body data of an html file. We can console.log this to see what it contains.
+
+This will show a dictionary or an object with key and value containing the parameters inputted into the form with the submit button. Or it is basically the parsed form of the http request.
+ So we are able to parse our form data, using the req.body and then use the req.body.parameter to get any parameter depending on th input name specified in the name attribute of the input in our html file. 
+
+ so we can do, req.body.num1 to check the paramter. This means with body parser with ca tap into this form data as if they are the body parser property.
+
+ Note: The name of this parameters num1 comes from the name attributes of the input in our html form.
+
+Now that we have access to our input values, the next thing is to use them in our calculaion and log the result.
+
+ app.post("/", function(req, res){
+
+  var num1 = req.body.num1;
+  var num2 = req.body.num2;
+  var result = num1 + num2;
+  
+  res.send("The result of this calculation is " + result);
+});
+
+Note with this our result get presented as a concatenated string because the values are parsed as string by body parser. What we can do is to convert them to number.
+
+Note we can name our variable anything, it is a matter of changing the name attributes of our html input in the form.
+
+The body is all we got after we parse the form and num1 and num2 are our input values.
+
+One important thing to note here is that when a client inspect and try to see our codes, all they see is plain html file and all the calculation are done at the backend. The dynamic and logic parts are hidden in our server. Now we have a dynamic web application. Now we have a frontend and backend for our web app.
+
+For a challenge, add a page and server codes for a BMI calculator.
+
+This will have an html file and server file
+
+The html file is named bmiCalculator
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+</head>
+<body>
+    <h1>BMI Calculator</h1>
+    <form action="/bmicalculator" method="post">
+        <input type="text" name="weight" placeholder="Input your Weight (kg)">
+        <input type="text" name="height" placeholder="Input your Height (m)">
+        <button type="submit" name="submit">Calculate BMI</button>
+    </form>
+    
+</body>
+</html>
+
+The server code for this added to our former calculator.js in our server.
+
+app.get("/bmicalculator", function(req, res){
+  res.sendFile(__dirname + "/bmiCalculator.html");
+});
+
+app.post("/bmicalculator", function(req, res){
+
+  var weight = Number(req.body.weight);
+  var height = Number(req.body.height);
+  var bmi = (weight/(height ** 2)).toFixed(2);
+  
+  res.send("Your BMI is " + bmi + "kg/m2");
+});
