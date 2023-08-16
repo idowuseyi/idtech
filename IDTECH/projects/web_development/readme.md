@@ -2676,4 +2676,70 @@ There is a link to the jokeAPI. This joke API is more complex than the Kanye Wes
  In the next lesson we will talk about authentication and what will have in our responses. 
 
  ### API AUTHENTICATION AND POSTMAN
- In the last lesson we see how we can interact with an API using the jokeAPI. We see how we can work with endpoint, paths and parameters.
+ In the last lesson we see how we can interact with an API using the jokeAPI. We see how we can work with endpoint, paths and parameters to narrow down on the data that we want and we make this request using a formated url to get some pieces of data. The two websites we have interact with only has just small pieces of data.
+
+ We can access some API that is more monetizable. This is because this website have data that can serve millions of users and they might want people to pay to use it or limit the threshold of access to their data. In other to do this, they use authentication. So everytime you make a request to the website as a developer they have to track how often you use their website to get data and charge you or limit your access.
+ 
+ To properly see this concept of authentication we will use the OpenWeather API. If we look into their API pricing, they say it is ok to use their API as long as you dont make more than 60 request per minute. So every single time we use an API link to make a request, that is a single request and for OpenWeatehr API if you make more than 60 requests per minute then it will be limited until paid for. But for most developer to get started building this is more thatn enough but as you get more revenue through users and your requests increases then you have to start paying for the data also. But the way we will use authentication in any of the available category is quite the same. So lets work with an API wit an authentication like the openweathermap.org API.
+
+ The first thing is to signup if you have not. Then sign in to your account, then navigate to the API section then create a new API key if you have not. Once the key is created then copy it and you will be using it whenever you make a request to the API.
+
+ In the documentation, there are several ways you can get data from the website. Either by city ID, geographic or log and lat and others.
+
+ If we click on the example API call. You will see that you have the endpoint, and some parameters which we can see after the questio nmark. In the first parameter, we a key q with the value = London,uk then another one called appid = our API key we got when we signed up. So this is the structure of the sample of the API call with an temporary key.
+
+ Now in order to make an actual API call, we need to look at the endpoints and our personal appid. If we use this to make a request we will get a response which contains the data that are sent back to us.This is the actual data for the current weather in London. and if we cross checked we will that it is the current weather data of London. If we change the location to like Paris, we will get responses with the current data. One thing to note is the unit of there measurement. To get data in celcius and others units, we need to include another parameter as specified so we can get the data we wanted in a way we wanted.
+
+ Since we know the first parameter get added after the ? and subsequent parameters will be added after the & sign so to add another parameter, we will just add an & the parameter name or key and = the value which is the unit/metric. Now we have our temperature in celcius. Remember that the order of this parameter do not matter, we can have the parameters in any order as long as they are started with a ? and separated by an & 
+
+ Notice how it starts to get our API using the browser as we have more parameters and editing the url. SO very often we use a tool call postman to do this. Go to postman.com/download to download it.
+
+Once insalled, open it, on the interface, click on the small + button at the top to make a new reguest. Copy the api endpoint and paste in the GET space, add your parameters. as you add them it update your url. Once you send it you will get a result which is the response. You could see that the resulting data is structured other than what we have on our browser. What happened here is that the data we get back is in a json format.
+
+So what is a JSON or what is JSON
+
+### JSON Javascript Sobject Notation
+
+A JSON format stands for javascript Object Notation. The data we get back from the postman looks like how we will create a javascript object. When we open up a set of braces, we have our key and values and we can inject an object inside another object. Though it has a little difference from the one we have created before. The Javascript object we have created before has var, not string and the key value pair are not all string.
+
+The reson why we use a JSON format to pass around data on the internet is that not just that it can be readable by human but it can be easily collapse down to take a little space as possible. So if your javascript object is a wooden wardrope, when transporting it you can flatenned it up into a single line object as long as you maintained all the curly braces and at the later stage when we've received the file as json we can expand it to its original object.
+
+JSON id not the only format we can receive data from an API. Very frequently API's provides various format you can receive data from them. As we have JSON, we also have XML - extensible markup language, and HTML - Hypertext markup language. JSON is most favoured format because it is light weight and is very easy to turn back into a javascript object.
+
+If we want to turn our raw data into a pretty JSON format in our browser we can just install a chrome extension called JSON VIewer Awesome. It is free and add to chrome as extension. Once used if we refresh our last result on the browser we will have a well formated tree structure output or a chart or the riginal JSON output. Also the JSON viewer allows us to copy a specific value and some other function we want to get. We can collapse and open it up also. From here we can see at what level a data is existing in the object. We can then use this to get hold of any specific value in the browser.
+
+### PUTTING OUR APIs INTO PRACTICE
+
+Now that we have seen how to get data with API, we will then need to put into use on our site.
+
+This is how it will look:
+The client browser will make a request to our server which is a get request to our server, our server should return a response with some data, Now in other for our server to be able to give this response that involves another persons data, it will make a GET request to the other server via their API to get the data. We will then send back our response with those data we get from the other server to the client. All this is an high level overview.
+
+We want to display to the user the temperature of their location and a wether symbol for the weather condition there.
+
+Now create a new project in the terminal.
+
+All set up and the server running. But how do we make a request to an external server in node. Remember we are just a google away. On stack overflow we will see a response to use npm request package and all we'll do is just to require it. But as of 2020 this module has been deprecated. So we need more search in one of the top responses, we have a blog that explains 5 ways to make a request on node. The first here is the http standard library in Node. There are other 4 with the how to but it is best to use the native https node module.
+
+Let's search for it in our documentation. We founf it somewhere down with the how to's. Now all we need to do is to call it, then call the get method and then use the data anyway we want.
+
+Note: we dont need to install it because it is native node module.
+
+Let's get it running in our code.
+
+All we need is to set it pu, then test our api link in postman ensure its working and then copy it into our get method. Dont forget to add the https:// at the begining.
+Due to the lenght, we can just use a constant to hold this link. The we pass that variable url into the get method. In the next lesson we will see how to use the values from our api data.
+
+### HOW TO PARSE JSON
+
+In the last lesson we saw how to use the native https node library and its GET method to get data from API using a url and we logged the result.
+
+Note: we can log just the status code.
+
+You can always check the status code on the documentation. and learn more about them. 200 is success.
+
+Most times the error that is often obtained is 404 that is the server cannot find requested resource.
+
+This can easily be possible if we make an error with the paths like a typo instead of weather we put weatheer. We will see 404 meaning the server is saying it doesn't have the resource requested.
+
+Another common error is one with the authentication say an error or type in the app ID, with this we have a 401 error which means unathourized.
