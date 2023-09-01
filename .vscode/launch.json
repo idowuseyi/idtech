@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\IDTECH\\projects\\web_development\\WeatherProject\\app.js",
+            "env": {
+                "appid":"adc4edc6d983c9829d54172740171a2b"
+            },
+            "envFile": "${workspaceFolder}/.env",
+            "args": []
+        }
+    ]
+}

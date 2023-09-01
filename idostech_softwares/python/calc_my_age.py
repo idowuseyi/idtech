@@ -10,7 +10,7 @@ print(type(age))
 print(age)
 '''
 
-# Convert weight from poundsto kilograms
+# Convert weight from pounds to kilograms
 
 weight_pounds = input('Enter your weight in pounds ')
 weight_kg = int(weight_pounds) * 0.45359237

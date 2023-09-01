@@ -90,7 +90,7 @@ Body
     <!DOCTYPE html>
     <html lang="en">
       <head>
-        <meta charset="UTF-8">background-color: black;
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
@@ -116,6 +116,9 @@ Body
       }
 
       The background-color that we will see for both h3 will be brown. This is because the h3 tag select all the h3 elements in our HTML. So what is the way out.
+      Important point to note:
+      In styling application on html markup with CSS, If there are two styles on the same element or html tag, the last styling is what is applied. This is well broven by what we have above. We have two different styles on the h3 but the style further down the line of code is what is applied. This is one of the most important rules to have in mind why using CSS.
+      
       There are other CSS selectors we can use. This includes;
         a. HTML tagname
         b. class
@@ -210,7 +213,9 @@ selector1 selector2
 The first selector is a parent while the 2nd is a child.
 So in using this, we will go from outside in, selecting the parents till we get to the specific child.
 
-.container-fluid h1 {color: red}
+.container-fluid h1 {
+  color: red;
+  }
 
 Then we read the hierarchy from right to left. The one on the right is the child and the one on the left is the parent.
 
@@ -223,13 +228,13 @@ selector1.selector2 {
 selector1#selector2
 
 We will read this from left to right.
-What is the difference between the one with space and one without space.
+What is the difference between the one with space and one without space?
 Without the separator, we are targetting an element that have the classes we state but with the space it means we are following the hierarchy moving from the parent to child.
-It is good to remember this about selectors, they have hierarchy ID's are the most specific which means they take much priority and then classes and lastly htmltags.  
+It is good to remember this about selectors, they have hierarchy. ID's are the most specific which means they take much priority and then classes and lastly htmltags.  
 Also it is good to note that the last styling will always be applied.
-Also class  selector is superior to html tag while id is superior to class ans html tag. This are css rule.
+Also class  selector is superior to html tag while id is superior to class and html tag. This are css rule.
 
-Then also inline css is the strongest when it comes to where our styling is positioned.
+Then also inline css is the strongest when it comes to where our styling is positioned or applied from in our project.
 
   How to avoid to avoid conflicting styling in our web design: It is important to understand the ways and methods to avoid conflicting styling in our development. We can have style conflict when the style implemented by the browser is different from the one specify by the designer or the developer. This can be very frustrating at times.
     i. Understanding conflicting styling in web design

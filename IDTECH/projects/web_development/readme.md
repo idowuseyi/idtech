@@ -2743,3 +2743,101 @@ Most times the error that is often obtained is 404 that is the server cannot fin
 This can easily be possible if we make an error with the paths like a typo instead of weather we put weatheer. We will see 404 meaning the server is saying it doesn't have the resource requested.
 
 Another common error is one with the authentication say an error or type in the app ID, with this we have a 401 error which means unathourized.
+
+
+
+## TIP
+
+Remember the time that you have to complete a code challenge or code a solution and it feels like you didn't learn anything.
+
+You feels like this because the actual learning comes from practice. When you learn something try to use it to do something rather thatn just learning passively.
+
+The Dunning-Kruge Effect:
+where when you first learn something you feels like you know so much but as you gain more knowledge you realise there is a lot more you dont know and you fell into the pit of dispair which is also called imposter syndrome. Even though you have spent a tonne of hours learning something you still feels like an imposter, that people will still find out that you dont know anything. The most important fact is you are always in between this two conditions or switching between the two at different intervals. The most important thing is you are going to get there if you can just keep going. So keep going.
+
+
+## GIT, GITHUB AND VERSION CONTROL
+Git and GitHub
+Here we will learn about how git and github works.
+CLonning, fork, pull, push, make pull request, etc.
+
+### VERSION CONTROL in its simplest form
+Say you create a file with code and put it on a version control and gave it a version 1. Then you add more code and save it as version 2, Then let's say you now mess up the code and you feel like burning the whole code. This is always possible but what if you can just role back to the last save point. We can do that using git. You can either compare the present with the previous version or just role back to any of the previous version you want. You can go back to any version or save point as long as you know the version you want.
+
+### VERSION CONTROL USING GIT (commandline)
+The first thing is open your terminal, and navigate to the desktop.
+cd into your desktop, create a new directory call story, then cd into it.
+Now create some textfile, touch chapter1.txt Then open it and make some sensible input inside it.
+
+Then on the command line and inside the story folder initiate a git repository using the command
+git init
+
+run the command ls -a to see the new files and folder added to the story folder.
+
+### Explaining the git terminologies
+In our order to start tracking our file we need to add our file to where it can be tracked the staging area. This is where you can select the files you want to commit. To see files inside your staging area, use the command git status. It will show you unstracked files in red. To add it to the staging area and to start tracking it, we need to use the command git add filename i.e git add chapter1.txt
+
+If you run git status again it will show you this file in green. Now its in the staging area and we can now commit it.
+Use the command
+git commit -m "commit message" 
+The commit message is very iportant, it is to tell us what changes were made between the last version and the present. For our first commit we can use something very simple like "initial commit" or just say "complete chapter one"
+It is always good to put our commit message in the present tense.
+
+We can use the git log to see the details of the commit. It shows the author, date/time and an hash which is a unique identity of the commit. It will also show the commit message.
+
+Let's create two more chapters. Chapter2.txt and chapter3.txt
+Then add some content within them.
+
+If you use git status you will see that this files are still in red meaning that they are untracked. They are just only present in our working directory and not yet in the staging area.
+
+Let's add the two files
+Now adding them one by one, it we have a large number of files can be tedious. This is why we can use a signle command to add all the file in the pwd
+git add .
+If you use git status then you will see that these two files are now in the staging area.
+So go ahead and commit the two file. We can check out our commits by using git log
+we will see that we now have two commits with different hash keys, time and different commit message.
+
+Head here means this is where we are currently at presently.
+
+So in a nutshell 
+we have our files in the present working directory, then using git add we move the file(s) to a staging area then we can then push them to our local repository. We might wonder why all this steps or process. Why not just push our files to the repository. It is because there can be times we dont want to push all our files to the repository. The staging area is where we check if everything is okay and intact before using git commit to push it to the local repository. This means if we messed up anything we can still use git checkout to move back or revert back to the last version or position in our local repository.
+
+Let's say we have been working on our files and say we messed up with chapter 3. Now since we have version control we can use to go back to a good point in our file.
+If we run git status, we will see we have a file which has not been commited or added to the staging area. Before we do that we can use a git command to check the difference between our last save point in our chapter3 file and the present.
+git diff filename i.e git diff chapter3.txt
+We can see the part that has been deleted  and the ones added. Seeinf the difference you might just want to copy some things over or probably you dont ever want the present file again. So you will need to go back to the previous file.
+You can do this by using the command git checkout filename
+git checkout chapter3.txt
+Immediately we hit enter our file will be returned back to the last state when we last commit it.
+So we have talked about using git locally. In the next lesson we will talk about Github and creating remote repository.
+
+### GITHUB AND REMOTE REPOSITORY
+We have seen how to use git on our own system for version control but here we will talk about how to handle version control using a server i.e somebody else's system. For this we will be using Github.
+
+Create an account on github.com if you have not done so and sign in.
+Then we will create a new repository in this browser based github. Click on create new repository. We can give it a name of the local repository we created earlier i.e story the add a description.
+
+By default, every git repository is public meaning that people can see whatever you commit to that repository. You can make it private but this requires a subscription. If you are doing something which is a secret or what you dont want people to see then this is needed. But setting it as public allows people to see your codes and also allow you to see other people's code. This is the benefit of open source. You can help contribute to open source.
+
+We will leave the README.md to set it up later. Then click on create repository. It will show how we can setup this remote repository. Depending on the device you are using, we have two option, set up on desktop or use HTTPS/SSH.
+
+For us since we have an existing locl repository we can just use the push method pushing our code from the command line.
+
+We will go into our working directory, i.e story
+Then we can check the status of our commit with git status.
+
+The command we will use is 
+git remote add origin https://github.com/idowuseyi/story.git
+git branch -M main
+git push -u origin main
+
+git remote is to tell your local git that you want to add remote server, origin - is just what you want to name it and by convention origin is used, it can also be anything. But it's good to keep with the industry standard, then after that we paste our link of our remote origin on github. Now we have add our remote origin, then we can now push to the remote origin
+with
+git remote add origin https://github.com/idowuseyi/story.git 
+git push -u origin master
+
+We use master because that's what our HEAD is set to.
+The last line of code push your code to the remote origin master branch. The origin is what our remote branch is named.The master branch is the default branch or the main branch of all our commit.
+Once we run the line of code above, some works are done in the background and our code is pushed to the remote origin. It will upload our code on our local repository to the remote github servers. If we refresh our browser still on the github tab, we will see that all our files are now hosted on github and its complete with all commits. If you click on isights, graphs and you select network, you can see our master branch which only has two save point or commit and you can move them around to see the commits. Now as we work we can see the progress of our file in our repository. Now we can see all the codes or our documents. Many people write a lot with github because it is good at saving and tracking our files or changes made in our files and we can see the details of each savepoint in case we want to move back in time.
+
+A guick run over, Working directory -> Staging area -> Local Repository -> Remote repository.

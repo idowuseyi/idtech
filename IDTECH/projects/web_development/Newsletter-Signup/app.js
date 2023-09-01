@@ -62,7 +62,6 @@ app.post("/", function(req, res){
 // }
 
 // run();
-
 const data = {
     members: [
         {
@@ -84,7 +83,7 @@ const url = "https://us21.api.mailchimp.com/3.0/lists/314117";
 
 const options = {
     method: "POST",
-    auth: "idowuseyi1:c32865e4bc9c6f266b48dcedffd1f6cf-us21"
+    auth: "idowuseyi1:c32865e4bc9c6f266b48dcedffd1f-us21"
 }
 
 const request = https.request(url, options, function(response){
@@ -95,7 +94,6 @@ const request = https.request(url, options, function(response){
 
 request.write(jsonData);
 request.end();
-
 
 });
 

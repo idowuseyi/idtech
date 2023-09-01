@@ -1,4 +1,60 @@
+h3 {
+  background-color: black;
+}
+
+h3 {
+  background-color: green;
+}
+
 body {
+  background-color: #8f8f8f
+}
+#section {
+  font-family: sans-serif;
+}
+
+.header1 {
+  font-size: 3.5rem;
+  line-height: 1.5;
+  font-weight: 900;
+  color: #fff;
+}
+
+h3 {
+  font-size: 2.5rem;
+  }
+
+.blue {
+  color: blue;
+}
+
+.brown {
+  color: brown
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* body {
   background-color: #8f8f8f
 }
 #section {
@@ -22,4 +78,4 @@ h3 {
 
 .brown {
   color: brown
-}
+} */
