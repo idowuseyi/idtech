@@ -1,0 +1,28 @@
+Title: Version Control Like A Pro Using Git and GitHub
+
+Purpose: To provide a comprehensive guide for all developers and software engineers to understand version control and how to use Git and GitHub properly at all levels of development cycle.
+
+Scope: The guide will cover the following topics:
+  What is Version Control (Version Control in its simplest form)
+  Why version Control
+  Version Control Using Git
+  Explaining the Git terminologies
+  GitHub and Remote Repositories
+  .gitignore file; Purpose and Easiest way to set it up
+  Branching and merging
+  Tips on how to contribute to open source projects
+
+  Target Audience: Beginner and intermediate Developers or Software Engineers.
+
+  Technical Information:
+    The guide will be written in clear and concise language
+    The guide will include examples that readers can practice with or follow along
+    The guide will be accessible to target audience which are Developers and software engineers
+    The guide will be up to date with latest terms and practices in using Git and GitHub for version control 
+
+Word Count: 1000 minimum words
+
+Timeline: 2 week
+
+conclusion: This write up will equip all reader - developers and software engineers with adequate knowledge on handling version control using Git and GitHub.
+

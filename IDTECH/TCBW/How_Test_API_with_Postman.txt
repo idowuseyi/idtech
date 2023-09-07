@@ -1,0 +1,26 @@
+Title: How to 
+
+Purpose: To provide a comprehensive guide for frontend software engineers and developers to understand different CSS selctors, selector combination and how to avoid conflicting styling.
+
+Scope: The guide will cover the following topics:
+  What is CSS
+  What are CSS selectors
+  What are the uses of different CSS selectors
+  Examples of different CSS selectors and their uniquesness.
+  Combination of different CSS selectors with examples
+  How to avoid to avoid conflicting styling in our web design.
+
+  Target Audience: Frontend or fullstack Software engineers and developers who are making effort to master CSS and best practices in CSS styling.
+
+  Technical Requirement:
+    The guide mustbe written in clear and concise language
+    The guide must include examples that readers can practice with
+    The guide must be accessible to target audience which are frontend or fullstack engineers and developers who are want to master CSS and its best practices
+    The guide should be up to date with latest terms and practices in CSS styling and its techniques
+
+Word COunt: 1000 minimum words
+
+Timeline: 2 week
+
+conclusion: This write up will equip all reader - frontend or fullstack software engineer and developers with adequate knowledge on different CSS selector and best practices in CSS styling.
+

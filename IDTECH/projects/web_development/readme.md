@@ -2892,3 +2892,211 @@ You can do all this inside git itself.
 Create a new repository, say story2 and initialize it with a README. A readme is a text file that contains all information about what your repository is all about. This file can be formated heavily to make it really presentable. It is always found as the first thing below the files list in any repo. It can also contain information about how to use your file or code or project or any other useful information for people cecking out your project. Now back to the readme file, you can make some edits if you wish, just click on the readme file and click on the small pencil icon.
 
 Now click on the repo name, click on create a new file, let's name it chapter1.txt Just put any text in it, make a commit and commit it. Create a new branch call experiment branch. This create a new branch copying over everything you have in the master branch. Now in this experimental branch, make some changes in the chapter1 file and then commit it. Note always check where you are commiting to in other to know exactly where you are commiting to. Go back to the master, you will notice a yellow coloured message or notification. It says you can compare the changes and pull them to the master branch. It's basically saying you have got changes and would you like to pull them to the main/master branch. In our master branch create a new file called chapter2.txt put in any reasonable paragraph. commit and save. Go to insight, graphs and network to see what the projects look like. Let's merge the changes in our gold-story to our master branch. Always ensure you are in the branch that you want to do the pulling, then click on new pull reguest. This will open a page to compare. It may load the branches involved but if you have more branch you need to select your main/master branch then the branch you want to compare it to. If you scroll down on this page, you will see details on the changes between the two branch, how the gold-story is different from our main branch. If its an addition, it will show a + sign and what is added in green and if its deletion, a - sign and what is deleted or removed. If you are ok with the changes then clikc on create pull request, merge, confirm merge and everything will be merged. You can add some information in the space provided. If all goes well, you will see merged and a successful message. (It might look easier on the terminal but this is not so complex too). If you go back to look at our graph, you will see that the gold-story has been merged. You can go back and practice more both using the terminal using git and github on the browser.
+
+### FORKING AND PULL REGUESTS
+
+In the last lesson we look at how to branch anc merge because this is how we contribute to other projects and work in teams. We've seen and familiarize with the working directory, staging area, local repository and remote repository.
+
+We will be taking a step further. Say we now only have local repo and the remote repository. Say i own a local repo and I've pushed it to the remote repository. Now say I have a twin brother that wants to work on the code also, he might want to have the code in his own remote repository. This process is called forking. It is different from cloning. It is copying over the codebase or the entire repository to the his own remote repository. So that process of copying over a remote repository to one's personal remote repository on github is called forking. This person now own it and is now able to do anything with it. Say you own a project, it will be hard to grant everyone read and write access orpermission to make changes in the project except for the specific people in your team. This is why it would be good for anyone to fork a repo by this they now own it and can do anything they like with it. If the person wants to push their satisfactory changes to you, then they can make a pull request. Once a repos is forked, the person that forked it now have the repo on their personal account, they can then clone it and make changes with full permissions. They can commit and push those changes. Now if they want the owner to incorporate those changes, then they can make a pull request. This is like a suggestion saying I've been working on some changes, you can look at it and accept it into the main project.
+
+The reason why it is call a pull request and not a push request is because the owner of the repo, is the one with the full write access to accept the changes into the repo. He/she can pull the changes over. If the after the review the changes pass and are okay to be on the main repo, then the owner of the repo will accept the pull request and can then merge, the repo with the main repo.
+
+Let's go practical.
+
+Let's go back to the story repository. This is the original repository with commit and all othe activity. We will need to log out and log in with another account to go on here. So let's say we log in to another account. On this new accoint, let's search for the story repo once it is found, we can go ahead and fork it. SO it will make a copy of the that github repo and put it in your github account. say before the repo link is idowu/story once forked it will be newaccountname/story. It put the repositroy on your account name, including all the files and previous commits that was made.
+
+On github in the browser there, we can make changes to the files. Some improvement were suggested, committed to the master branch. We can view what it looks like on the graph. Now it has the previous graphs and now with a new one, with commit made by this new account. Let's say we open an icongnito window and logged in to the main account, the new changes would not reflect on the graph on this main account. But will be shown as a graph going up by another member who have forked your repository. This is a great way to collaborate. What you can do is say we go back to the other account we use to fork the repo, what we can do is to make a pull request by clicking on new pull request. It will present the changes and others, then clikc on create pull request, then tell the original author what you hav found and why your changes are worthy to be merge to the original repository. Once done click on create a pull request.
+
+In the original repository those changes whill not show up, this is because the other account does not have write access to the original repository. The access it has is the same with the general public and not the one of the trussted inner circle so any changes can only be a suggestion. If we go back to the origninal account and click on pull requests, we will see a new pull request. It will show the details and if you click on it, you can see the changes his commit message and review the changes, You can give a review to the account that make the pull request and approve the changes. Once that is done, you can then click on merge pull request and then give a commit message and then confirm the merge. If we then look at the graphs now we can now see that the last commit was the one during the merge and it came from a forked branch including the user details which is then merged.
+
+Some people use github for version control for there projects but it also a way to learn to contribute to open source project and learn how to walk in a team which is a really an essential skill while working in a startup.
+If we open any useful open source and click on the contributions, you will see that there are many other users who have contributed to project. They have look up the code, done things and contribute to make it better. If you check the pull request section, you will many pull request that have been made and many that have been closed. Some can just be an edit of the readme and others can be actual coding or refactoring or improvement or a new feature entirely.
+
+So you can go in on github and find cool projects, especially those that you have been using and take a look and see what other things you can change in it, you can build ontop of it, make an improvement and most importantly if you improving someone's work for your use, it is good to fork, improve, fix bugs, create new feature and make a pull request.
+
+## TIP
+
+SPACED REPETITION IDEA
+This is all about human learn. Such that if you learn something only once, you will surely forget but if you learn something and you come back to it in a week or month to review it, you own it.
+Let's say you learn about if else statement, if you dont use it at all you will never be able to use it when you need it. It is important that when you learn something, repeat it as much as possible. Many great teacher will do this in their lessons but you can also do this yourself. If you feel that there is too much repetition by an instructor, you can make them speed up say increase the play speed or something. On the other way round you can set intervals personally to your own taste to come back to concepts you have learnt over time and let your memoery grab it and turn it to a skill.
+Remember when you cram for exams. You write the exam and pass but you forget completely. It's all gone. So reiew the topics you have learnt, review it and use it. Build something no matter how small with it. The most important thing is you doing the work and writing the program yourself.
+
+
+## PARTIALS Making A ToDoList
+
+
+res.send is the last command that should be used to send data to the browser.
+res.write is like writing in a messanger. You write line by line and send. But res.send is like writing an email. You write all and then send.
+
+In other to not keep writing a bulk of res.write we can just send an html file instead.
+Let's say we want different html content for each day, do we create different html and send different ones for each day to present our output. No
+
+This is why we are programmers. As a programmer the more skilled we get the more we hate repetition. Our skill is inversely proportional to our tolerance for repetition. So how do we do this easily. This is why we use templating. We will use a template to serve different part of the html.
+
+### CREATING YOUR FIRST EJS TEMPLATES
+We already know the reason why we need a template i.e when we want to serve pages with the same content.
+
+So say the for the weekend we send a weekend file and for the weekday we can just send the workday file. This will work if we only have two if's but what about the if it is each day of the week or we are serving a blog page? Are we going to keep sending different file for each page?
+
+This is what we'll be handling here. This is why we need EJS
+
+EJS Embedded Javascript Templating
+As usual the best place to start when using  a new technology is there webpage.
+Go to ejs.co
+
+You will see the documentation on how to use.
+If you scroll down you will see using ejs with express.
+There is also a github page that explains how to use it with express.
+github.com/mde/ejs/wiki/Using-EJS-with-Express
+
+There are many tool that can help us do this but ejs is easier.
+
+We need to install it. We just need to tell our app to use ejs engine and this should be just below our app.express.
+
+With ejs the res uses a new method called res.render. The view engine we set up there uses the res.render
+We also need to have set our views folder. This where the template engine looks for the file it uses to render. We can name the file list.ejs
+Inside this file we are only writing html. Anything valid for html is valid in the list.ejs file.
+
+Let's say the below is what we have in our ejs file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+</head>
+<body>
+    <h1>It's a weekend</h1>
+</body>
+</html>
+
+The idea is to change what we have in the h1 to say present day we are. So today is wednesday, it should say It is wednesday and if I load it tomorrow it should say It is Thursday.
+In our app.js file we need to take the result of our logic and place it in the h1 to give us the current say. In the documentation, we can see they are passing over a variable. This is done by using a marker and this is achieved with <%= varName %> -- This is a marker that tells the ejs to replace whatever is in the marker with the value of the specified variable.
+
+We can create a variable day that holds the weekend or the weekday and send it over to the ejs.
+We can name the variable in the marker anything we want. Then in our app.js we are to use res.render
+res.render("list", {key}) // when we write this, express we look into the folder called view and find the file called list with the extension ejs. If the folder is not present then the code will not work. The we will pass in a javascript object having a key value pairres.render("list") // when we write this, express we look into the folder called view and find the file called list with the extension ejs. If the folder is not present then the code will not work. The we will pass in a javascript object having a key value pair.
+The key here must match with what we have in our ejs file (It is good to just copy it over). This is saying render a file called list and with key kindOfDay and value of our current variable which is day.
+We just need to put our res.render in the if and the else block but wait, it might just be better we let our if logic run completely first then we use the res.render after it. This will make the value of our day to have been set before it is rendered on the page. This means we can do all our logic before passing the result to be render on the page.
+Sometimes in using ejs many people use the same key and value for the parameter inside the marker in the ejs and the variable name in the server logic.
+
+It's good to start a different name to know what is going on.
+Challenge, try and return the name of the current day. We can use an if statement or switch case but when the condition is more than five you should use switch instead of if. 
+
+### RUNNING CODE INSIDE THE EJS TEMPLATE
+If already seen how to variable in our html using the ejs marker. Here we will consider how to run code in our ejs template.
+
+Let's say we want a different output of h1 when it is weekday or weekend. Say we want to check what the day is and then apply different colour to our h1
+
+If we are to do this in plain js
+
+if (kindOfDay === 'Saturday' || kindOfDay === 'Sunday') {
+  <h1 style="color: purple"><%= kindOfDay %> ToDo List</h1>
+} else {
+  <h1 style="color: Blue"><%= kindOfDay %> ToDo List</h1>
+}
+The above might not be totally possible in the ejs file. What we can do is this, if we check the documentation, there is a tag that allow us to use a control flow in the template. According to the ejs documentation the tag to use is the scriplet tag. Because our javascript code is not html therefore we have to use a tag that correspond to it and this is the scriplet tag. <% %> This scriplet tag work on a line by line basis. Using it makes our code to become
+
+<% if (kindOfDay === 'Saturday' || kindOfDay === 'Sunday') { %>
+  <h1 style="color: purple"><%= kindOfDay %> ToDo List</h1>
+<% } else { %>
+  <h1 style="color: Blue"><%= kindOfDay %> ToDo List</h1>
+<% } %>
+
+So the scriplet tag allow us to run some javascript code depending on value from our logic variable on the server that we passed in.
+In most cases, it is good to keep our logic inside the server and only have some code in our template to make variable changes.
+
+ejs is still a content file, so we only use it for content.
+
+### PASSING DATA FROM YOUR WEBPAGE TO YOUR SERVER
+We have seen how to use variable from our server logic in our template and also use js to change what is been rendered using the ejs scriplet tag.
+
+Here we will be refactoring our logic. Instead of using switch or any other long logic we can just use the javascript inbuilt time object.
+
+Having done the above, we can go ahead to add some list to our to do.
+For a challenge create a form in the ejs file to take an input to be added to our to do list.
+
+Once this is done. The next is to add the code to handle the post request once the add button is clicked. Once done.
+We have been able to take data from the user, Now the next challenge is to find a way to send back the data to our page. We can do that in our ejs template.
+
+We might think that we can pass it using res.send or res.render in our post request. If we do that, we will have an error. It will say what we are passing is not defined. This is because in our home route, when the server get into our get block of code, doesn't see us rendering this new data so it doesn't have a value to use in the ejs file.
+So what we will do is add this item we want to render to the list in our get and then in our post we will use res.redirect("/") . What this will do that when the post request is triggered, the new value is from our form is saved in the variable name and then redirect to the home route and then trigger the home route in our app.get thereby rendering all the items in our res.render
+Still we have an error, which says our added item is not defined. This is because the variable was created later on in the code in the post route. We are trying to use it before it exist. This error is related to something called scope in programming. What we can do is setting our variable at the top of our program. We can create it and set it to an empty string. var newTodo = "";
+
+With the above we are able to add the input to the list but there is a problem, the new added replaces the one previous one, How do we resolve that. This is because our item only allow us to store only one pieces of data.
+To resolve this, we need to store our items in a collection. We can use an array. Then anytime a new item is added we push it to the array.
+
+We now have a new problem anytime we add a new item it only render it next to the previous one using a comma. But what we want is a new li for each of the item. We can do this by replacing the li with a for loop with the help of the ejs.
+
+We can improve our code by puting all our items in the array and let the loop write them out.
+
+In summary, when our server is started, it goes into our app.get route, we render two object and then follow the process step by step.
+
+Here we are able to populate our website with dynamic contents.
+
+### SCOPE IN PROGRAMMING
+This is an important concept in all programming language but used differently in dfferent languages.
+
+Let say we create a function called a
+function  {
+  var x = 2;
+  console.log(x);
+}
+if we run the above, there wont be any problem. Having the variable inside the function is like having an orange tree in your fenced compound. You can go ahead to pick the orange. This is how it is if you have the orange in your compound. Let's say 
+
+function  {
+  var x = 2;
+  console.log(x);
+}
+console.log(x); // this will not work
+
+If we run the above, it will not work. This is like your neighbour trying to pick and orange from outside in your tall fenced compound. There is a wall that blocks him from picking the orange in your garden. This is where scope comes in.
+If we declare a variable withing a function, the variable is local to that function say function a, the variable is only accessible withing that function a and not outside it. You can do anything you want with it only withing the function and not ouside.
+
+function  {
+  var x = 2;
+  console.log(x);
+}
+
+function b {
+  console.log(x);
+}
+
+Say you have two function a and b, you create a variable inside function a and you try to use it inside function b, it will not work either. It is like your neighbour standing within his backyard and trying to pick oranges within your compound. 
+
+This variables that are only accessible withing a specific scope are called local variable. They areonly accessible within a local i.e the block of code where they are declared.
+
+Let's see another scenerio
+
+var x = 2;
+
+function a {
+  console.log(x);
+}
+
+console.log(x);
+
+Here we have a variable x, declared outside the function. This is like an orange tree planted outside and not in any compound. In this case not only will the variable be available in the function but it will also be available outside the function. or anywhere in the program. For this orange tree, not only people in the house can pick from it but everyone in that community. This is waht is called a global variable.
+
+There is a guick peculiarity about javascript variable when it comes to scope.
+
+if (true) {
+  var x = 2;
+  console.log(x);
+}
+
+console.log(x);
+
+Here unlike function the wall here is like a soft wall, people can still penetrate. This is how a variable in many place other than a function is in javascript. SO the var x can be accessed.
+
+OTHER TYPE OF VARIABLE IN JAVASCRIPT.
+We have seen and use different types of variable in Javascript. Let's look at them
+
+function {
+  var x = 2;
+  let y = 3;
+  const z = 4;
+}
+
+The one that is very different is the variable declare with const. This variable can be used aywhere but can never be changed anywhere in the program.
+The var and let can vary in value and depend on where it is being declared. If where any of the three is declared is inside a function then it can only be available within teh function. They have local scope. But if they were created outside i.e directly in the program then they are global and can be use anywhere. If it is inside and if or else or for or while or anything that hava a pair of curly braces then if it is var, it is globally available, For let and const they are local variable they are only usable withing the block. It  very important to avoid using the word var anywhere within our program and instead stick with const for constants and let for variables.
