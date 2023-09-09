@@ -1,54 +1,51 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-//let ejs = require('ejs');
+const date = require(__dirname + "/date.js");
 
+//console.log(date());
 const app = express();
 
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("public"));
 
-var items = ["Buy food", "Cook food", "Eat food"];
+const items = ["Buy food", "Cook food", "Eat food"];
+const workItems = [];
 
 app.get("/", function(req, res){
-    
-    var today = new Date();
-    // var currentDay = today.getDay();
-    // const weekday = ['Sunday', 'Tuesday', 'wednesday', 'Thursday', 'Friday', 'Saturday'];
-    // var currentDayName = weekday[currentDay];
-    // var day = "";
-    //console.log(currentDayName);
-    var options = {
-        weekday: 'long',
-        day: 'numeric',
-        month: 'long'
-    };
 
-    var day = today.toLocaleDateString("en-US", options);
-
-    // if (currentDay === 6 || currentDay === 0) {
-    //     day = currentDayName;
-    //     //res.write("<h1>Yea it's the weekend</h1>");
-    // } else {
-    //     // res.write("<p>It is not the weekend.</p>");
-    //     // res.write("<h1>Boo! I have to work!</h1>");
-    //     // res.send();
-    //     day = currentDayName;
-    //     //res.sendFile(__dirname + "/index.html");
-    // }
+    let day = date.getDay();
     
-    res.render("list", {
-        kindOfDay: day,
-        newListItems: items
-    });
+    res.render("list", {listTitle: day, newListItems: items});
 });
 
 app.post("/", function(req, res){
-    var item = req.body.newItem;
-    items.push(item);
+    let item = req.body.newItem;
+    
+    if (req.body.list === "work") {
+        workItems.push(item);
+        res.redirect("/work");
+    } else {
+        items.push(item);
+        res.redirect("/");
+    }
 
-    res.redirect("/");
 });
+
+app.get("/work", function(req, res){
+    res.render("list", {listTitle: "Work List", newListItems: workItems});
+  });
+
+  app.post("/work", function(req, res){
+    let items = req.body.newItem;
+  
+    items.push(item);
+    console.log(req.body);
+  
+    app.redirect("/");
+  });
+
 
 
 app.listen(3000, function(){
