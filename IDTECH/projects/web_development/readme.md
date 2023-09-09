@@ -3100,3 +3100,167 @@ function {
 
 The one that is very different is the variable declare with const. This variable can be used aywhere but can never be changed anywhere in the program.
 The var and let can vary in value and depend on where it is being declared. If where any of the three is declared is inside a function then it can only be available within teh function. They have local scope. But if they were created outside i.e directly in the program then they are global and can be use anywhere. If it is inside and if or else or for or while or anything that hava a pair of curly braces then if it is var, it is globally available, For let and const they are local variable they are only usable withing the block. It  very important to avoid using the word var anywhere within our program and instead stick with const for constants and let for variables.
+
+### ADDING PRE-MADE CSS STYLESHEETS TO YOUR WEBSITE
+We are able to make our app functional like adding a todo on the go. Now we now want to add a pre-made css. Once we add this css, and reloading the server, you will see that nothing happens unlike before that it will be loaded instantly in our html file. Even in our console we will see an error that says refused to apply style from styles.css. The reason is because our style.css lives in a folder which lives in a folder in our root. Express does not primarily serve up the folders in your root folder. In fact, it only serves up the main access point which we define in our access point which is the app.js. and the views folder and ignore everything else. So we can no longer go into the folder css because we are no longer operating a static site. Even though the file exist at the specify path in the href link we cant just use it in a server based website. Formerly when we are working on a static website you can just copy the file path and put it in the browser and it will show you all the files that are there. When we are there we can go into the file and manipulate the file or the path to give us any of the files. Unfortunately, we can't just attach localhost:3000/ to the beginning of the file path and hope to find the file at the location.
+In order to serve our css, we have to explicitly tell express to serve up the specific files and we need to tell it the location of our files and tell it to use it. In the future we might want serve other files that are not css. For example some javascript which we want to run on the browser, images, sound or other assets or other things. Normally developers will create a new folder called public and inside this folder, you can have your css, js, images folder and tell express to serve up this public folder as a static resource. 
+To do this, we can go just below where we have our bodyParser and tell express to use the public folder
+app.use(express.static("public"));
+Once we save our changes and reload our browser, we will see that our css has been applied. (If you don't see any changes try and check if you have done the needful and use correct path in your linking)
+
+Although we have added the css, not all the styling has been applied this is because the various classes involved has not been used. So we have to change our ejs file to use the divs and selectors in the css.
+
+In using a pre-made css many things might look new, the best option is to check them up in the documentation at w3schools.com or mdn sites. We might not have ogne through or use all this selector before because it will take a lot more of time doing that. And that's also because that is not the way developers work, your learn, understand and when you have any problem in using or working out a feature you ask in the diverse developer channels available like stackoverflow. ChatGPT and other AI is also available this days.
+
+### UNDERSTANDING TEMPLATING VS LAYOUTS
+So far we have been using ejs to create template that let's us create lot's of pages that are similar to each other. Like a list with different titles. Like in our todo app, anyday we load the page we have a new title at the top of the page. Say we add route to our link and we want our title or heading to also be like that we can do that with ejs.
+
+In our server ejs file we can just pass in listTitle and also change it in our server too.
+
+Let's add another route say work route so that we can provide work to do list.
+app.get("/work", function(req, res){
+  res.render("list", {listTitle: "Work List", newListItems: wor});
+});
+
+In our post route we will have the below
+app.post("/work", function(req, res){
+  let items = req.body.newItem;
+
+  items.push(item);
+  console.log(req.body);
+
+  app.redirect("/");
+});
+
+Having done this, we have localhost:3000/work route accessible. But there is a little bit problem, if we try to add an item, the previous items in the list of the / route is added and the new item appended.
+
+We can change that by getting some information back from our post request. of the / route. 
+
+If we console.log where our new item is being pushed to, and what it contains we will see that there is a key button and this is coming from our ejs file submit button in our form. What we can do is assign a value to it and then change it dynamically
+
+Then in our server we can set a condition that checks where the request is coming from cchecking it dynamic value we have set. Once we confirm we can then direct the where the new added item is pushed to and then redirect.
+
+app.post("/", function(req, res){
+    let item = req.body.newItem;
+    
+    if (req.body.list === "work") {
+        workItems.push(item);
+        res.redirect("/work");
+    } else {
+        items.push(item);
+        res.redirect("/");
+    }
+    
+}); // The new post request in our / route
+
+By the above we have set some logic in our post of the / route that checks where the item is coming from whether it is from the work list or from our workitem.
+This allow us to use our template for as many template we want to create. 
+
+Another problem arises when we want to create pages that is totally different from this one we already have. Say we want to add an about page or contact me page, This page will not have the same content as the other ones. But we still want it to have the same style and we dont want to rewrite all the ejs file parts. It is very possible to create a new html file and get it rendered but this seems not the best. What if we have many pages we want to make and having many of the same content like footer and others. There is a better way to do it.
+
+ejs allows to create layouts or partials. You can look into the section called layout in the ejs documentation. It was stated there that EJS does not specifically support blocks, but layouts can be implemented by including headers and footers.
+
+This is very common in many sites, there background colour, headers, footers and others. Let's see how to do this. Now in our view folder we will create a new file called header.ejs and footer.ejs This two new files are going to be added to all the other files we create. So instead of having all the parts of the header that will show in all the pages, we will put it in the header.ejs file and also all the footer that will show in all the pages we will put in the footer.ejs.
+
+We can easily add the two files on all of our webpages specifically the way they specify it in the documentation.
+
+### UNDERSTANDING NODE MODULE EXPORTS HOW TO PASS FUNCTIONS AND DATA BETWEEN FILES
+
+Before now we have been using require to use all the modules in our code. But how does it acutally work. If we go into the file pannel and check out ejs, its possible we find some varibales or items we already know about. But we also see a lot of export. We can understand this by creating our own module. We can also take our own code and packaged it in a module. The first thing we can refactor in our code and package in a module is the date logic. The code that get the date in our server. Let's remove this and put it in a new file say date.js
+
+How do we get this logi back into our server or how do we use this logic? Let's say we wrap it in a function function getDate and it return day
+
+function getDate(){
+    let today = new Date();
+    // var currentDay = today.getDay();
+    // const weekday = ['Sunday', 'Tuesday', 'wednesday', 'Thursday', 'Friday', 'Saturday'];
+    // var currentDayName = weekday[currentDay];
+    // var day = "";
+    //console.log(currentDayName);
+    let options = {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long'
+    };
+
+    let day = today.toLocaleDateString("en-US", options);
+
+    // if (currentDay === 6 || currentDay === 0) {
+    //     day = currentDayName;
+    //     //res.write("<h1>Yea it's the weekend</h1>");
+    // } else {
+    //     // res.write("<p>It is not the weekend.</p>");
+    //     // res.write("<h1>Boo! I have to work!</h1>");
+    //     // res.send();
+    //     day = currentDayName;
+    //     //res.sendFile(__dirname + "/index.html");
+    // }
+    return day;
+}
+
+How do we get this function back into our get route. How could we make it available else where. This is where Node comes in. If we check the node latest version docs, then the modules documentation. The modulw object is a reference that gives you the object representing the current module. That means that inside this module date.js, we access to this thing called module.
+
+We can go ahead and log the module, and if we want to use it, we can require it. In doing this since it's not installed with npm then we have to access it with its full path using __dirname
+
+const date = require(__dirname + "/date.js");
+
+if we then console.log(module); in our date.js, it logged the details of our module. Most of the details here are information particular to this function or module we have created. like its id, path, filename, loaded, children, etc. Export seems to be a javascript object and for us it is empty. It means our function is exporting nothing. If we look at the documentation, we can see module.export. It is also a javascript object that we can use to make our module available elsewhere. 
+If we remove the console.log and we have this instead in our date.js
+module.exports = "Hello World";
+Then in our server we can console.log it to see what its emmiting.
+We will see Hello World on the console. This was because we are only exporting a single string from the function. Now if that we have access into the date.js module, what if we want to get access into a function instead? What if we want it to access the function instead, we can just set our exports to be egual to the function.
+module.exports = getDate;
+
+If we log date, it will just tell us that it is a function.
+const date = require(__dirname + "/date.js");
+
+console.log(date);
+
+We do not run the function from the export because we want the running of the function to be determined at where it is being required.
+
+so in our our code to make the function run, we will use the variable whhere we require the function as a function call.
+const date = require(__dirname + "/date.js");
+
+console.log(date());
+
+The above gives us the output of the code from the return statement.
+
+So by binding the function to our export module, we are now to able to require it anywhere using its path anywhere we like. We don't have to run it but we call it where it needs to be used. We can just set it equal to day which is rendered in our res.render on our / get route.
+
+Finally we use it like this where it needs to be used
+let day = date();
+
+Now our server is now using the date module we write in it logic. This our module is now totally reusable.
+
+But if we want our module to do more. Say we want it to return more parameters. Like return the date, day, and other values separate.
+We can do this by checking the documentation, remember our module is an object this means it can take more data. So instead of binding the whole export from our function to the entire function we can split it by using
+module.exports.getDay = getDay
+we will write its function and down in this same file we can have another function
+module.exports.getDay = getDay;
+with its function and return too.
+
+Now if we console.log(module.export);
+
+Our module now have two functions tied to it, getDate and getDay. 
+
+Now in our server we can specify which function to use in our module using the . notation.
+
+Instead of let day = date();
+we now have options
+let day = date.getDate(); //to get the Date or
+let day = date.getDay(); // to get just the weekday name.
+
+If we want with our new module we can use the date from it using the getDate or just the day of the week using the getDay function in our module. We can add more to it. If we run our server, This works fine as before only that we now have more options in our hands.
+
+This is how we create a module and make it reusable.
+
+How can we make our code shorter. We can remove the returning variable and return the logic directly.
+
+Looking at the different ways we can describe a function in javascript. There have been six of them which you can read about in this blog. We've been using the simplest form all the way. One of them is we can set our function to a variable and them use the variable anywhere we want. This is using our function as an annonymous function and binding it to the module.exports. If we look into the ducumentation further under module, we can use the shortcut exports instead of module.exports.
+All this makes our code shorter and succint.
+We can also change all the variables declared with let to const since they are not changing in the program.
+In javascript we can make array a constant, this might seems surprising but it is peculiar to javascript. We can push an item into it but we can not reasign the array with a new item. Array is one of those thing that do not stay constant. Another one is an object, we can declare it as a constant and we can change the value of any of the keys but not change the entire object. It is important to remember this in Javascript. If you make an item a const say array or an object its still possible to vary what we have inside it you can't just re assign it. SO we cna change all our lets to const.
+
+## TIP
+
+Using public judgement in your favour. If you set a goal and it is only known by you, then you can easily give up on it. But what if you make it public, you will want to avoid any judgement for not achieving the goal. So one of the ways you can use public judgement in your favour is to make goals public. Just go ahead and make those your aspiration public. Do that on facebook, twitter, linkedin and all other social medias. You can say you want to do this and you will come in per day. The funny thing is you will have people cheering you up all along the way. this is because they know that it's hard and you must be going through a lot sticking to it and making it happen.
