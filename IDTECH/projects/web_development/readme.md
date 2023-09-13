@@ -2828,6 +2828,9 @@ Then we can check the status of our commit with git status.
 
 The command we will use is 
 git remote add origin https://github.com/idowuseyi/story.git
+
+git remote add origin https://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@github.com/idowuseyi/todolist-app-v1.git
+
 git branch -M main
 git push -u origin main
 
@@ -2975,7 +2978,7 @@ In our app.js file we need to take the result of our logic and place it in the h
 
 We can create a variable day that holds the weekend or the weekday and send it over to the ejs.
 We can name the variable in the marker anything we want. Then in our app.js we are to use res.render
-res.render("list", {key}) // when we write this, express we look into the folder called view and find the file called list with the extension ejs. If the folder is not present then the code will not work. The we will pass in a javascript object having a key value pairres.render("list") // when we write this, express we look into the folder called view and find the file called list with the extension ejs. If the folder is not present then the code will not work. The we will pass in a javascript object having a key value pair.
+res.render("list", {key}) // when we write this, express we look into the folder called view and find the file called list with the extension ejs. If the folder is not present then the code will not work. The we will pass in a javascript object having a key value pair res.render("list") // when we write this, express we look into the folder called view and find the file called list with the extension ejs. If the folder is not present then the code will not work. The we will pass in a javascript object having a key value pair.
 The key here must match with what we have in our ejs file (It is good to just copy it over). This is saying render a file called list and with key kindOfDay and value of our current variable which is day.
 We just need to put our res.render in the if and the else block but wait, it might just be better we let our if logic run completely first then we use the res.render after it. This will make the value of our day to have been set before it is rendered on the page. This means we can do all our logic before passing the result to be render on the page.
 Sometimes in using ejs many people use the same key and value for the parameter inside the marker in the ejs and the variable name in the server logic.
@@ -3264,3 +3267,21 @@ In javascript we can make array a constant, this might seems surprising but it i
 ## TIP
 
 Using public judgement in your favour. If you set a goal and it is only known by you, then you can easily give up on it. But what if you make it public, you will want to avoid any judgement for not achieving the goal. So one of the ways you can use public judgement in your favour is to make goals public. Just go ahead and make those your aspiration public. Do that on facebook, twitter, linkedin and all other social medias. You can say you want to do this and you will come in per day. The funny thing is you will have people cheering you up all along the way. this is because they know that it's hard and you must be going through a lot sticking to it and making it happen.
+
+
+### EXPRESS ROUTING PARAMETERS
+Blog posts are usually long and having them all clustering together on the home page is somewhat not too good. For amny blog you can click on the blog title and it will take you to the full page where the blog can be fully read.
+
+In many site we will always see url/something/something for their different topics. We can do this by creating them as route and we render a custom page for each of them. Creating route for many paths can be painful that's why express have what we call request params.
+
+Carefully read the documentation at express.com/en/guide/routing.html
+
+You can play with it at katakoda.com
+
+app.get("/news/:topic", function(req, res){
+  console.log(req.params.topic)
+})
+
+hyphen sepatation of worlds in a url is called cabab case.
+
+Node uses lodash to make ease in working with javascript.

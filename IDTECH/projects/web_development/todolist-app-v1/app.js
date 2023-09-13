@@ -22,7 +22,7 @@ app.get("/", function(req, res){
 
 app.post("/", function(req, res){
     let item = req.body.newItem;
-    console.log(req.body);
+    
     if (req.body.list === "Work") {
         workItems.push(item);
         res.redirect("/work");
@@ -40,3 +40,6 @@ app.get("/work", function(req, res){
 app.listen(3000, function(){
     console.log("Server started and running on port 3000...")
 });
+
+
+
