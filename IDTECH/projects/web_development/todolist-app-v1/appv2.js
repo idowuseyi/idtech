@@ -1,9 +1,14 @@
+//jshint esversion:6
 
 const express = require("express");
-require("dotenv").config();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
+//const date = require(__dirname + "/date.js");
+
+
+
+
 
 const app = express();
 
@@ -11,16 +16,22 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
-const URI = process.env.connectionString;
 
-mongoose.connect(URI);
+// const items = ["Buy Food", "Cook Food", "Eat Food"];
+// const workItems = [];
 
+//connect mmongoose db
+mongoose.connect("mongodb+srv://idowuseyi22:Bibleone08136899991@cluster0.dltdngx.mongodb.net/todolistDB");
+
+// create a schema
 const itemsSchema = {
   name: String
 };
 
+// create a new model
 const Item = mongoose.model("Item", itemsSchema);
 
+// create new item
 item1 = new Item({
   name: "Welcome to your todo list!."
 });
@@ -35,12 +46,18 @@ item3 = new Item({
 
 const defaultItems = [item1, item2, item3];
 
+// create another schema
 const listSchema = {
   name: String,
   items: [itemsSchema]
 };
 
+// create a model from the new schema
 const List = mongoose.model("List", listSchema);
+
+//main().catch(err => console.log(err));
+
+//async function main() {
 
 app.get("/", function(req, res) {
 
@@ -56,7 +73,9 @@ app.get("/", function(req, res) {
   } else {
     res.render("list", {listTitle: "Today", newListItems: foundItems});
   }
+//  console.log(foundItems);
   }
+
 });
 
 app.get("/:customListName", function(req, res){
@@ -64,11 +83,12 @@ app.get("/:customListName", function(req, res){
 
   async function main() {
   const customListName = _.capitalize(req.params.customListName);
-
+  //console.log(newlistTitle);
   const foundList = await List.findOne({ name: customListName});
 
   if (foundList){
-
+    //console.log("ALready exist");
+    // show existing lcd ist
     res.render("list", {listTitle: foundList.name, newListItems: foundList.items});
   } else {
     console.log("This list doesn't exist but is now created! :) ...");
@@ -81,8 +101,16 @@ app.get("/:customListName", function(req, res){
     list.save();
     res.redirect("/" + customListName);
   }
-}
-});
+
+
+  // if (customListName === ){
+  //   console.log("List already exist");
+  // } else {
+  //   
+  // }
+
+  //
+}});
 
 
 app.post("/", function(req, res){
@@ -124,9 +152,11 @@ app.post("/delete", function(req, res){
     res.redirect("/");
     }
   } else {
-
+    //const query = { name: listName };
+    // console.log("will delete something");
+    //const delList = List.findOneAndDelete({ name: listName });
     const delList = await List.find({ name: listName })
-
+    //checkedRoute = await List.findByIdAndRemove(checkedItemId);
     if (delList) {
     let  pracList = delList[0].items
       pracList.forEach(element => {
@@ -140,6 +170,7 @@ app.post("/delete", function(req, res){
   });
   const update_id = (delList[0]._id);
   await List.findOneAndUpdate({ _id: update_id }, { items: pracList } );
+      // await delList[0].items.findByIdAndRemove(checkedItemId);
 
       console.log("Successfully delete checked item.");
       res.redirect("/" + listName);
@@ -149,6 +180,10 @@ app.post("/delete", function(req, res){
 });
 
 
+// app.get("/work", function(req,res){
+//   res.render("list", {listTitle: "Work List", newListItems: workItems});
+// });
+
 app.get("/about", function(req, res){
   res.render("about");
 });
@@ -156,3 +191,4 @@ app.get("/about", function(req, res){
 app.listen(3000, function() {
   console.log("Server started on port 3000");
 });
+//};

@@ -1,0 +1,42 @@
+Title: Web Design Principles of all Times You Must know
+
+Introduction:
+Imaging if all website or projects you build or are involved with, all have a drastic thousands more of usage and click rate. How proud would you be. Although in this our present day, web project's user interfaces, layout and user Experienceis no longer the frontend designer headache. It is totally now left to the magical and all knowing UI/UX designers. But if I may ask, is this the best way to go? Should a frontend designer not have a take on UI/UX? Why should I care to know about design as a frontend developer?. Can I know about about design too? Let's say yes. Come let's take a quick journey together with a promise to read to the end. The most important thing about creating a great website is the look, which is the design. When it comes to web design the idea that you only have three seconds to make an impression applies. Just like an interview or a first date. It only take the user few minute to make some conclusions about the site. No matter the components, hooks, state management and any functionality, the design comes top. Things like colors, fonts, typeface, images, etc counts a tonne. It is has been discovered over time, that merely improving design is one great and cheapest way to make your product more expensive. So being good at design is highly essential. In this article, you will learn about the core rudiments of design, the wisdom of the ages and a foundation on which great websites design stand on. 
+
+Table of Content
+What are Design Principles
+Why the need for a Design Principle
+Different Design Principles to know
+1. Colour theory
+a. Colour Combination
+i. Analogous colours
+ii. Complementary colour
+iii. Triadic or quadric pallet
+b. Modern solutions for color choices
+2. Typography
+a. Important font family to be familiar with; Serif
+b. Emotions behind some fonts
+i. Serif
+ii. Sans-serif
+iii. Script
+iv. Display
+v. Modern
+c. Criteria to determine the readability of a font type
+i. Open shapes
+ii. Ample intercharacter spacing
+iii. Unabigous forms
+iv. Varying propoerties
+d. How many fonts to use in a design
+3. User interface Design
+a. How to establish hierarchy`
+i. Using colours
+ii. The layout
+iii. Alignment
+iv. White Space
+v. Audience
+b. What to keep in mind
+4. User Experience Design
+
+Applying what you learnt
+Conclusion
+Now that you have a good hold on design principles, find some times to take another look at your previous projects and note any area for improvement. List out specific aspects that would have been improved upon and suggest what the improvement could have been. Create or sketch out a model by which you will guarantee great designs using what you have just learnt. Finally ensure to share your contributions, comments and your questions. See you in the next article.

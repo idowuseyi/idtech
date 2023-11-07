@@ -3,7 +3,7 @@ Brief documentation along the journey of web development
 ## HTML
 
 The anatomy of the HTML tag
-HTML is a markup language just like all other markup eg Extensive Markup Language(XML), General Markup Language (GML). Just like marking down a manuscript, HTML tags are like markup for our browser as the publisher, telling the browser how display our text or content.
+HTML is a markup language just like all other markup eg Extensive Markup Language(XML), General Markup Language (GML). Just like marking down a manuscript, HTML tags are like markup for our browser as the publisher, telling the browser how to display our text or content.
 
 - Opening and closing tag <h1> Hello <h1>
 - Self closing tags <br>, <hr>
@@ -507,7 +507,7 @@ The way to keep an habit going is to put it next to an already ongoing habit. Yo
 
 ## WEB DESIGN
 
-The most important thing about creating a great website is the look, the design. When it comes to web design the idea that you only have three seconds to make an impression applies. Just like an interview or first date. It only take the user few minute to make some conclusions about the site.
+The most important thing about creating a great website is the look, the design. When it comes to web design the idea that you only have three seconds to make an impression applies. Just like an interview or a first date. It only take the user few minute to make some conclusions about the site.
 
 colors, fonts, typeface, images, etc counts a tonne.
 
@@ -515,7 +515,7 @@ Improving design is one great and cheapest way to make your product more expensi
 
 ### WEB DESIGN PRINCIPLES
 
-a. Colour Theory
+a. Colour Theory.
 b. Typography
 c. User Interface Design
 d. User Experience Design
@@ -575,7 +575,7 @@ The exageration between the thickest and thinnest part of the letters can tellho
 
 So each subtypes say something specific.
 
-The same way different colour speak different moods ans emotion, different fonts also speak different moods and emotion.
+The same way different colour speak different moods and emotion, different fonts also speak different moods and emotion.
 
 #### EMOTION BEHIND FONTS
 a. Serif
@@ -601,7 +601,7 @@ c. Unabigous forms
 d. Varying proportions
 
 #### How Many Fonts To Use
-A design that uses too many fonts willsurely be cluesttered. It is a good design characteristics to stick with two fonts in your design.
+A design that uses too many fonts will surely be cluesttered. It is a good design characteristics to stick with two fonts in your design.
 
 Find fonts that are similar or that communicates similar moods. Also choose fornts that comes from the same era.
 
@@ -3285,3 +3285,1456 @@ app.get("/news/:topic", function(req, res){
 hyphen sepatation of worlds in a url is called cabab case.
 
 Node uses lodash to make ease in working with javascript.
+Its a utility library that makes it easy to work with javascript within node. You can check their documentation at lodash.com
+
+For example its _.lowercase('--FOo-bAr--') gives us a foo bar removing all the dashes and also converting it into lowercase.
+
+
+## DATABASES
+Before, anytime we rerun our server, the previous data is lost since we use an array to store the data. The reason being that the array is emptied when declared at the begining of our program and when this line of code is executed when our app is restarted then it emptied the array.
+
+We will need a way to handle this. It is not just our site that is generating data. If you check intrnetlivestats.com, you will see records of data being generated or transfered in seconds. All this data needs to be stored somewhere. This is why we need databases.
+
+Now that we know we need a database, we now need to choose one that will work for us well. There are lot of options even the ones that works with nodejs. Casandra, MongoDB, CouchBD, Redis, Riak, HBase, Couchbase, OrientDB, Aerospike, Neo4j, Hyperable, ElasticSearch, Accumulo, VoltDB, Scalaris, RethinkDB and many more.
+
+Choosing might be a prety difficult thing. The reason for this is that depending on the type of data you need to store and te structure of that data, you might favour one of this DB over another. Regardless of the one you choose, whether they are SQL based or No SQL based.
+
+SQL - Structured Query Language
+Very old school, businesses have been using it for a long time.
+NoSQL - Not only Structured Query Language
+They can be any format so far they are not SQL.
+These are the two type of databases that we have.
+If you check google we will find many example of databases. The few example of SQL that we will use here for SQL databases is MySQL and PostgreSQL while good example of NoSQL is MongoDB and redis. We will see how to work with the two. You might have heard about them but which one do you use for what and why and when to use and when.
+
+Let's see the differences between SQL and NoSQL
+The first thing to note about them is there structure. Say you're making a lot of sales and you are shipping a lot and you need to keep the details of the customers. Now if you are use to excel, a SQL database will serve you well. You will put the customer data into tables such as MySQL or PostgreSQL. You might find out that SQL databases are not so flexible. Let's say you have one anoying customer, and didn't want mail sent to his address. Saying deliver the product but send all other communication to my email address. Now since you don't have a field for email in your table then it would be hard to fix this details in. No email column and not email entry in your table. What if there is another customer that doesn't want to give you any information. Say there address or email, then there is a gap in your table and that doesn't sit very well with your databases.
+
+For SQL, what will be done is to square up this database, creating all the columns for any it of data available. The missing information will be filled with null. and this null can be very dangerous. If you are trying to send out a marketing mail to your list, the null mail will be included.
+
+If you are working with NoSQL database like MongoDB, all this data will be representd in Json objects. So you will have key/value pair and if we have an extra data it will be added at the end wich will not affect the other data. This data only need to be arranged in the same way.
+
+Consider a pc guy SQL with a mac guy NoSQL. The old guy is old and reliable. also very structured, follow rule, specify structure before hand and any rule and stick to it. For MongoDB it is flexible, easy to adapt. This is easily adaptable to startups that does not have fixed data. Say this data or product today and another tomorow i.e no fixed data yet. NoSQL database can be flexible, flashy and nice. The problem about this type of guys is relationships. The rarely have a way to relate data. That is why you might often heard them compare SQL and NoSQL as Relational and Non-Relational databases. SQL databases are good about establishing relationship among data in the database.
+
+In our former storage we have our data in our a table i.e SQL. But say we have multiple records and related data. What we will do is we can group related data in a table. Say we have customers table, products table, orders table, etc. And in your databases you can relate all this databases using a customer ID. and you can relate the products table with the orders table using the product ID.
+
+At the same time, since the tables has an ID that join them to one another, we can join them using this ID's. We can know which order, which product and which customer bought it. If we use a NoSQL like MongoDB, You have to think of how to organise the data. In this case we might have a document, where we have the order ID, customer has its details and values and the product that has its owm embedded object in order to represent the order object. This might led to repetition of some data. We might also have our data in different document, say we have one for customer, one for order and one for product. We can link this data by using refrences. In the order document, the customer references the person document with person_id: person_01 and in the order document the order references the product document with the id products: product_01. This is how you might implement relationship in a NoSQL database like MongoDB. The only down side to a data like this is that it might not be very structured like SQL DB.
+If you want to use any database, You must know what you want to do clearly. If it is tabulated data like customer inventory and things that have relationship with one another, ypu might want to use an SQL DB. On the other hand, if you have a website where you have a one to many relationship. Say IG, a person with a lot of data or post array containing different objects. This can be done using Mongo DB. 
+SCALABILITY
+NoSQL, despite lacking relationship like SQL, it can be over SQL due to its scalability. This is a strong point of NoSQL databases.
+If you have work with a large excel spread sheet with a lot of data, if more and more is added to it, it gets slower and later crashes saying 'Excel cannot complete the task with available resources. Choose less data or close other applications.'
+It says you need more powerful computer. You will need large and large of server. Scalling had to be done vertically if we add more data. Managing a lot of data with SQL is like scalling vertically. It's like adding a new floor to a building per time till you have a skyscrapper that eventually becomes unstable and collapse. This scalling is also very expensive. This is the advantage of NoSQL,  Mongo DB has an advantage where data is arranged in small chunks, each record and each data is a json object. In this case instead of buying large and large amount of system, it allows for a distributed system. Your data base can distributed between lot and lot of system. This is like having a building and bilding plenty of them all along. You have the system and have the information scored accross them.
+
+So if we have to compare the most popular SQL DB with the most popular NoSQL i.e
+MySQL and MongoDB
+More Mature || Shiny and New
+Table structure || Document structure
+Requires a Schema || More flexible to Changes
+Great with Relationships || Not Great with Complex Realtionships
+Scales Vertically || Horizontally Scalable
+
+
+### SQL CREATING A SQL DB
+We have seen the pros and cons of the main sides of the DB we have. Here we will be having hands-on on a SQL based DB. A great resources to help is w3school.com/SQL
+It is a good guide to familairize with this language.
+
+With every single type of DB the main thing we will be doing is Create, Read, Update and Destroy. In database lingo it is known as CRUD.
+Let's try out with a SQL based DB
+To create, say a new table we can look at the documentation.
+
+#### CREATING A TABLE
+CREATE TABLE table_name {
+  column1 datatype,
+  column2 datatype,
+  column3 datatype,
+  ....
+}
+
+The last thing while creating a table is to set the primary key or specify a column that will perform that function. Let's see an example of our product table
+
+CREATE TABLE products {
+  id INT NOT NULL,
+  name STRING,
+  price MONEY,
+  PRIMARY KEY (id)
+}
+
+Then we will also remember to set our id to not null. The id is a special key that we can use to assess each role in a table. If it is null then it will be difficult accessing any role without an id. 
+
+We can check for type error and correct.
+
+Now our table has been created but has no data. We need to add data to it. Say we want ot add a new product of id 1, name pen, and price 1.20
+Looking at the documentation, this will be done with INSERT.
+
+There are tow way.
+
+INSERT INTO products
+VALUES {1, "Pen", 1.20}
+
+The above is a single line statement. Don't forget that our data input follows what we specified as their data types too. Now we have a role in our table.
+
+If you want to skip a field in the record say in a role. Say we have a product call pencil but we dont know its price yet. We can specify the columns we have data for.
+
+INSERT INTO products (id, name)
+VALUES {2, "Pencil"}
+
+Our price field will be nil here. But if we try to ignore the primary key, then the new role will not be added.
+
+#### SQL COMMANDS READ, SELECT AND WHERE
+
+In the last lesson we learn about creating and updating i.e inserting data into our table.
+
+But now how do you read data from your tables. We use the SQL keyword SELECT to read data from our tables.
+
+To show all data in a table
+
+SELECT * FROM 'table_name'
+* means select everyting. If you want one column or two we can say
+
+SELECT name, price FROM 'products';
+
+What if we only want a particular row?
+This is we need to search our database using the WHERE KEYWORD. See the syntax below
+
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+The where is a condition like WHERE Country='Nigeria'; or WHERE CustomerID=1;
+
+SELECT * FROM 'products' WHERE id=1;
+
+The above gives a single row where the id = 1
+
+If we check the documentation, we can also see a lot of fancy operators with distinctive functions.
+All this can be used with the where statement.
+
+#### UPDATING SINGLE VALUES AND ADDING COLUMNS IN SQL
+We have seen how to Create, insert, Read data in our SQL DB. Here we will be looking at the U in our CRUD which is updating specific data in our DB
+
+In our product table, we will see our pencil price is set to null. If we want to update the price of the pencil then we can use the update statement.
+
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+This statement needs to be completely used in order not to make it global or setting a value for an entire column. So it is important to include the WHERE condition.
+
+UPDATE products
+SET price = 0.80
+WHERE id=2;
+
+The above is going to find the particular record and set it to the specified value.
+
+What if we want to change the table instead of a particular record say we want to keep track of the stock of our product. We can ALTER the table. It is used to add, delete, or modify columns in an existing table.
+
+ALTER TABLE table_name
+ADD column_name datatype;
+
+e.g ALTER TABLE Customers
+ADD Email varchar(255);
+
+In our case
+
+ALTER TABLE products
+ADD stock INT;
+
+With this we now have a new column but the all the value in the column will be set to Null.
+
+For a challenge lets set the first two value in our stock table to 32 and 12 respectively.
+
+UPDATE products
+SET stock = 32
+WHERE id=1;
+
+UPDATE products
+SET stock = 12
+WHERE id=2;
+
+Now our stock table values are now updated. But we can see how painful it is to update values in a table especially when we dont account for it from the onset.
+
+#### COMMANDS DELETE
+We have look at the other 3 letters in CRUD, we are only left with the D i.e DELETE
+
+To delete a record we can simply write
+
+DELETE FROM table_name
+WHERE conditon;
+
+Say we want to delect the record of pencil
+
+We can say 
+
+DELETE FROM products
+WHERE name = "Pencil"
+
+or for better sake we can use id
+
+DELETE FROM products
+WHERE id = 2;
+
+Be careful not to run the DELETE statement without the WHERE statement because it will delete everything in your product table. Always check your statement before running it.
+
+Now we have seen how the CRUD is done on SQL.
+
+#### UNDERSTANDING SQL RELATIONSHIPS, FOREIGN KEYS AND INNER JOINS
+Now that we have seen how CRUD is done in SQL, the next thing is RELATIONSHIPS. 
+
+Back in our table lets add the deleted pencil record back
+
+INSERT INTO products
+VALUES (2, "Pencil", 0.80, 12)
+
+This add our pencil row back.
+
+Let's create a new table orders with an INT id and NOT NULL, order_number INT, customer_id INT - This will be the foreing key for our orders table. We will include the product_id INT, We can set PRIMARY KEY (id), We can also specify a foreing key.
+
+The foreign key is going to be the key that is going to link our table together.
+Say we have a persons table and orders table. The persons table the personID is the primary key.
+
+Now in the orders table, the OrderID is the primary key on the table but in addition the personID id used as the foreign key. So in our orders table we can use the foreign key to get the person details of any order from the persons table using the added foreign key PersonID included as foreign key in the orders table. This is how you establish relationship withing tables.
+
+CREATE TABLE orders (
+id INT NOT NULL,
+order_number INT,
+customer_id INT,
+product_id INT,
+PRIMARY KEY (id),
+FOREIGN KEY (customer_id) REFERENCES customers(id)
+FOREIGN KEY (product_id) REFERENCES product(id)
+)
+
+If the concept of primary and foreign key are foreign to you, you can checkout more on w3schools.com to read out more on how you establish relationship using SQL using the keys.
+
+By including this foreign keys, we can now create a bigger table using all the relationship among our tables.
+
+INSERT INTO orders
+VALUES (1, 4362, 2, 1)
+
+JOIN
+This is used to join our tables together. There are many types of join but we will be looking at just few here.
+We will be using the inner join to create a new record
+
+SELECT column_name(s)
+FROM table1
+INNER JOIN table2 ON table1.column_name = table2.column_name;
+
+In our case;
+SELECT orders.order_number, customers.first_name, customers.last_name, customers.address
+FROM orders
+INNER JOIN customers ON orders.customer_id = customers.id
+
+This create a new table from different table. We have searched through all our tables and create a table which is more useful for us using the relationships. With this we can know who a particular order is being sent to.
+
+The above join the order with the customer. For a challenge, Join the order with the product
+SELECT orders.order_number, products.name, products.price, products.stock
+FROM orders
+INNER JOIN products ON orders.product_id = products.id
+
+This are a bit of SQL magic using relationship. This is so powerful and very good in searching and visualizing your data.
+
+## TIP
+Sometimes if you are working from or out of utmost convenience, it might make things very difficult. You might found yourself pushing the task away or not really figuring it out the way you are supposed to do. This is why, in order to make things easier, you can found a location or an environment that push you to the limit or that put you in utmost productivity. Doing this might also come in many form which may be a study buddy, local library, commit helper, timeline, etc. The most important thing is keep going.
+
+## MONGO DB
+
+### INSTALLING MongoDB
+Go to MongoDB.com, click on get MongoDB. This gives you three options, cloud, servers or Tools. We will go with server and select the current release version. This will detect your machine. Click on the file, extract and install. The next thing is to carefully setup MongoDB on your machine. You can follow specific guides on that...
+You can 
+
+mongod starts the mongodb server on a localhost
+This do not allow any input, so we open a new terminal
+run 
+mongo  This starts the mongo shell.
+Once the mongo shell is up, if at anytime you dont know what to do, you can always type help as a cry for help.
+
+You can use any of the commands it loads out for you.
+
+
+
+show dbs -- list all the dbs
+
+help -- show commands
+
+Create
+use dbname -- create a db
+
+db show the current db
+
+collections in mongoDB is similar to tables in the SQL world
+
+You can follow the documentation and examples available to us online.
+
+The only issue is to avoid syntax error.
+
+Inserting rows
+db.products.insertOne({_id: 1, name: "Pen", price: 1.20})
+
+
+Reading
+db.products.find() -- returns the entire table
+
+db.products.find({price: {$gt: 1}}) --with condition specified
+
+db.products.find({_id: 1}, {name: 1})
+
+db.products.find({_id: 1}, {name: 1, _id: 0})
+
+the first {} specify the condition while the second {} state the projections. We use this to specify field to be returned. 1 means true and 0 means false.
+
+Update
+
+We can also update data in our MongoDB database.
+Let's update some record in our product table.
+
+db.products.updateOne({_id: 1}, {$set: {stock: 32}})
+first {} is the field to update and the second {} is the what to set it to. The first parameter is which record to update and the second parameter is what to update it to.
+
+
+Delete
+
+Deleting data from collection.
+We have two methods, that is deleteOne and deleteMany
+
+db.products.deleteMany({_id: 2})
+
+
+RELATIONSHIPS WITH MONGODB
+There are two ways. The first is the most preferred but the general use case will depend on your project achitecture and how it is structured.
+
+If we want our product to have a new product. May be rubber
+
+db.products.insert({_id: 3, name: "Rubber", price: 1.30, stock: 43, reviews: [{authorName: "Walmark", rating: 5, review: "Best rubber ever!" }, {authorName: "Bally", rating: 5, review: "Awesome rubber!" }]})
+
+Say our rubber has review we can embed another document within it. This will help us associate this data. We can always update this data.
+With the above we are able to establish a relationship between the single product and review by embedding another documents within the product.
+
+This style of relationship is very suitable when we have one to many relationship. A single product may have many review and at the same time a single or customer might create multiple reviews.
+
+The second way might be to have all the product as a document and then have another document which state which is the order document and contains an array of all the product ordered.
+
+
+### MONGO WITH NODEJS
+We have look at how to use MongoDB on the command line. Here we want to create app that uses databases using NodeJs.
+
+When we are creating a NodeJs app that needed to use MongoDB, there are usually two options. The first is to use MongoDB native driver and the second is to use an ORM (Object-Document-Mapper) called mongoose. The most popular way however is using mongoose. The reason is because it gives room for ease and cut down on the amount of codes needed to so manage data in our database.
+
+#### Using The Native MongoDB Driver
+Head over to MongoDB documentation @ docs.mongoDB.com
+Go to drivers tab and select the language of your application. For us it is NodeJs. Then latest documentation and then guick start.
+We can follow the code to use the DB.
+
+Let's use a new project to demonstrate. Let's say a fruit project.
+
+assert has to do with comfirming. It is to test.
+
+The documentation might have changed greatly by the time you are using this document. The best thing therefore is to stay with the present documetntation to know what to do. or for your usecase.
+
+The code is so wordy and long all the time we want to perform any CRUD operation using the native MongoDB library. This is why we have something simpler called Mongoose.
+
+## MONGOOSE
+
+You have seen how difficult it is to work with native mongoDB. This is why we need something to make the whole thing easier. What does this for us is mongoose. What took just 2 or 3 line of MongoDB shell, took multiples of 10's of codes in our app to do due to validation and others. This is another reason why Mongoose is essential.
+
+Mongoose will allow your app to use the language of javascript object to speak to our MongoDB database which speak the language of documents and databases. The objectives of this framework is to things easier and writing logic and data operation with the database very easy. In few line of code we can do everything we have done before.
+
+Just like in manipulating the DOM with vanillaJs when we have to write a lot of codes and was saved by jQuery. Same is Mongoose for MongoDB.
+
+Once you connect to the MongoDB server.
+
+We are going to cut down on our code by using mongoose.
+
+Looking at the documentation we connect mongoose, then create a schema.
+
+## DEEP WORK
+
+Its a book. Talks about how you get into a deep flow and how you produce deep work.
+
+People think when you just sit you are learning but that's not. But engaging your brain and using, practicing and applying what you have learnt so far. It's about making work to be work and nothing else so also taking play to be play. When at work, be work focused like 95% and when out of work dont think work at all. When you work, work 100% and when at play, play 100%. So dont just waste your time but engage and not deceive yourself.
+
+
+## TIP
+Sometimes it oftens happened that when you are working on something or learning, you have a feeling that the more you learn the less you know and the more you need to learn. Just like when climbing a mountain, the more you climb the fathar the top becomes but here is the way out. What you need to do at this point is to focus and look at every little steps you take. Just like taking a step at a time. You will see that you will find your step at the top. Though you might have a big goal but dont focus on the goal if you do so, it will only make you look like an ant. Focus on one step at a time, 1 hour coding a day or solving on little challenge and the more you do this, it is certain you'll get there. So truly you have a big goal but focus on one step at a time and as the law of physics implies you will surely get there.
+
+
+## DEPLOYING OUR APP
+Before now we have hosted the code on our local system, the same is also our MongoDB database. We have been using the localhost and a port 3000 and 27017 for mongoDB. Their ports are different because for our server we are using http rule while for MongoDB we are using mongodb rule.
+http://localhost:3000  and mongodb://127.0.0.1:27017 respectively
+But all is hosted on the same laptop i.e our local machine. Unfortunately we are the only one who can access it, which defeat the purpose of it being a website.
+From previous lessons we know we can use a server hosted on the internet and accessible anywhere across the internet which can host our node server. This will mean using a server address like https://yourapp.herokuapp.cpm and anyone can access our app anywhere on the internet. This will do for an app without a database but our todolist app has a database. It needs to add and delete data from our database. If this is our system then it cannot work.
+Their is a difference between a workstation and a server. So we need a database that will be online always. This means we need a database server that will be available at all time. So we need a server capabale of hosting MongoDB databases. The one fits in this is the very MongoDB server called MpngpDB Atlas. This will allow us to have a web based address and allow our app to serve data whenever it is needed. SO our nodeJs app will be able to make the right query from the MongoDB Atlas cloud server and be able to delete, update and get data anytime. So anyone can use our applink from say heroku and through the app backend access data through MongoDB database.
+SO we will put our app on the internet so that anyone can access it.
+
+### HOW TO SET UP MONGODB ATLAS
+
+
+## TIP - DISCIPLINE
+Most of the time a lot of people mistake motivation for discipline. There are day that you truly were excited to work on the project and there are days that you are just like did I need to do this at all. Motivation is you wanting to do something because you want to get something or get to a place or achieve some goals. This are time you might have to look at your goals. In the days that you dont feel like it, you get to have some discipline. It boils down to the discipline to still sit down, do the work and make some effort. The one thing about discipline is that it birth more dicipline and the more disciplined you get the easier it gets. The more you do it, the more easier it becomes. So keep going and you will get there.
+
+## TIPS GO BEYOND YOUR LIMITATION
+
+Getting into a new environment can be a bit difficult. But you still had the willingness to choose. You can choose your response. Sometimes you might want to blame it on someone or something that's easy. But if this thing is something you cannot change then it might be a waste of time.
+Instead of playing te blame game or complaining about things that you cannot change. Why not do make up your mind to do something extra to change what can be changed. You can wake up ealier, do extra work, study more and the more you do this the better things get better for you. Have you ever being to the gym before, if you found out, the people that are the strongest are not the people who are strongest at the beginning or people that feels they are strongest but people that consist, those that do something daily to get stronger. This is who you want to be. So you are the master, you are the one in charge, it doesn't matter what you are now, how weak you are but just focus on things you can change. This is what will make a huge difference on the long run. Keep going, keep taking the steps, keep doing something daily, the world is your oyster. Keep learnig and keep growing.
+
+
+## BUILDING YOUR A RESTFUL API
+
+Before now we have worked on creating a server and doing crud operations. We have also use API's but now we will be building a RESTful API.
+
+What is RESTful API and what does it mean that an API is RESTful?
+The REST does not mean relaxation but stands for REpresentational State Transfer.
+
+To understand this we will look at the achitecture, the one that includes the client and the server in which the entire internet is built on. If we use the restaurant analogy, the client will be someone that came to eat and the server will be the server and the restaurant. The client will make an order and the server will check and see if its what he can fulfil then go ahead and fulfil that request. If the client's order is not on the restaurant's menu then the client will receive and error, a classic Error 404 which is resource doesn't exist. When this request is being made it is made through HTTP.
+
+We see this anytime we write the code
+app.get(function(req, res))
+This is the language you use to make the request. It's like the language you use in making your order and the server uses to understand your request and give you back the correct response. What you need to is that HTTP is not the only language the server can speak. Another language that you might have heard of is
+the FTP request. If you use the wrong language, you might get back the wrong response. This means you must use the right language to get the right response. For example if you use french language to make an order in a Yoruba restaurant, it is certain that you might get back a wrong response. So the request must be in the right language.
+
+At this point you might say, what about other things like HTTPs request? The s here stands for HTTP secure request. This means an HTTP request that is secured and cannot be tapped into or hijacked while it travels across the internet. We might use cryptography and other security to secure it. Imagine you and the waiter speak a specific language that is only known by just the two of you. This means even while you are speaking openly and at the top of your voice no one is still able to decode what you are saying.
+
+Let's say the client has made a request and it is what the server can serve, then the server should respond with a response. In the restaurant this might be a pizza but on the internet this might be a resource such as images or secific data.
+
+You have in our code app.get(function(req, res))
+the res - result is what we get back from the server.
+
+In getting back the result, the server might do some few things run some computation, run some codes to get the resource you need. Say doing some calculation or going into the server to get a resource.
+
+We know the client must communicate with the server but at the sme time there is only a certain number of things that the server can do. In a restaurant the menu says what the restaurant can serve. The same way a server will have an API that says what it can serve.
+
+So building an API is like building a menu of things our server can respond to when the client make a request.
+
+### So what does it mean that our API is RESTful
+REST is an architectural style, just like different building has different architectural styles such as the Barogue, Gothic and Neoclassical. These are architectural style for designing a building the same way REST is an architectural style for designing an API and it's not the only one. The one before REST became dominant is SOAP and we also have GraphQL or FALCOA but the gold standard presently is SOAP. REST can with a man named Roy Fielding as an outcome of his PHD in the University of California. He researched and came with this rule for designing API called REST. He came up with the idea that all websites across the web would use the same structure for building their API's. Such that say all building wre built using the same styles then no one will ever miss his/her way in using the resource in the building. The same goes for API, such that if every API was built using the same common guiding principles then it would be so easy for everybody to work together and be able to use any resource quickly and easily.
+
+### HOW DO WE MAKE AN API RESTFUL
+There are truly lots of rules that an API has to follow to be RESTful. Just like you have at work or in school, there are many rules. But the two most pronounced one are Use HTTP Request Verbs and also to use a specific Pattern of Routes/Endpoint URLs. This two are probably the most important parts of making your API RESTful. We will look at each in details.
+
+#### The HTTP request verbs
+As we have seen before. First is GET, then POST, PUT and PATCH. Patch was added in 2010. It is a little twist on how we update data. The last is DELETE. We will look at them in details. These are the five HTTP verbs that you should be using in order to make API RESTful. You might realise that they have a lot of similarities with what we covered recently when we look into CRUD. So we will look at the HTTP request verbs and our database CRUD operation and we will see them in practice. 
+
+#### GET --- READ
+Get is analogous to READ. We have see this code many times 
+app.get(function(req, res){
+
+})
+We use this when we want our server to send some resource. We use our call back to pass some request and expect a response back. And if the resource involves getting something through our database then it migth involve searching through our database and returning the data as the result.
+
+#### POST ----- CREATE
+POST corresponds to CREATE in our crude function.
+
+whenever we create a form in our CRUD function we use app.post(function(req, res){
+
+})
+when the data is posted we create and entry in our database and save that data for a later time. In this case the request will contain the data and the response will simply be success or maybe an error code if there is a  problem.
+
+#### PUT PATCH ---- UPDATE
+PUT and  PATCH corresponds to UPDATE in our cru operations. We migth have app.put or app.patch
+app.patch(function(res, req){
+
+})
+and this two things both go into our database and update some piece of data.
+
+##### WHAT IS THE DIFFERENCE BETWEEN PUT AND PATCH
+Say you see a beautiful bike on Jumia, and you loved it and as a boss you are, you clicked on buy. Now all went successful but on the day of delievery, you check and put the bile together and the entire front wheel was messed up. You then make a complain and the issue can be resolved but in two forms,
+The first option is to replace the entire bike, This is equivalent to PUT where you update the data by sending an rntire entry to replace the previous one. Here though the front wheel is what is bad but we just go ahead and replace the entire bicycle.
+The Second option is to send you the broken front tyre since that was the only thing that was broken and the entire bike was still fine. At least you will save some energy, resources and some carbon emission in lifting this heavy load. This is exactly equivalent of PATCH. When you send a patch request to a server you only send the piece of data that need to be updated instead of sending an entire entry that will replace the previous one. Here you are just updating the data.
+
+##### DELETE ----- DELETE
+This is removing or destroying a piece of data in our database.
+app.delete(function(req, res){
+
+});
+
+
+#### USE SPECIFIC PATTERN OF ROUTES/ENDPOINT URLs
+Now that we understand HTTP Request Verbs the next is Use Specific Pattern of Routess/Endpoint URLs in order to make your API RESTful.
+Same way when you go to Safari there are diffent routes you use to reach certain endpoints say /elephantsmor /camels or hippos etc In our server we can specify certain url in order to reach certain endpoints/resources
+e.g www.google.com/elephants for the elephants or /camels for camels or /hippos for the hippos.
+
+We have use routes before in our server but in order for our API to be RESTful we have to use specific patter of endpoints and routes.
+For example if our API is the wikipedia and in our database we have a bucnch of articles. Now the route for /articles applies to all the articles. Any operation you do with this route should apply to all the articles. HTTP Verb GET should fetch all articles, POST should create and add a new article to all the article and DELETE should delete all the articles.
+The ssame way we specific routes for specific articles, say /articles/jack-bauer. If the client makes a request to this post. A GET should fetch this jack-bauer article. A PUT or PATCH should update this article and DELETE should delete this Jack Bauer article. We will see how all this work in the hands on sessions following.
+
+
+## BUILDING A WIKIPEDIA LIKE API
+Now that we know what a RESTful API entails and the conditions to make an API RESTful, then let's build one.
+
+The first thing we need to do is to create the data in our database. We will be using MongoDB database and also a graphical user interface that works well with MongoDB called Robo 3T. They used to be called Robo Mongo so if you go to robomongo.org you will be able to download Robo 3T for your specific OS.
+Once downloaded you will see an interface to connect to  through the localhost. Remember to start your mongo db on the terminal before the collection.
+
+Once connected you can do anything on this GUI.
+Create a new database
+create a collection. The rule for MongoDB here says to make it plural and all lowercase. So an article collection will be articles. You can know this naming convetion by looking at the documentation. Robo3T in the background is always running MOngoDB command to carry out processes and querries and also do it concurrently with all your operation. All you need is some click, drag and input and it does the coding thereby making the operation easier.
+Once our documents were added, we can then use it in buildingour API or fo other operations involving the data in our database.
+
+
+FOR A CHALLENGE SET UP A SERVER
+Create a new directory called WikiAPI
+Create a new file called app.js
+Initialise NPM and install body-parser, mongoose, ejs and express
+Inside app.js add server code (write/Copy)
+Setup MongoDB:
+DB name is wikiDB
+collection name is articles
+DOcument has 2 fields: title and content
+
+
+### GET ALL ARTICLES
+Remember our RESTful rule the one of our HTTP verbs.
+
+so we will go step by step to make each of them work for our API
+
+The first is GET for all our articles /articles
+
+we will use express
+app.get(route, function(re,res){
+
+})
+
+and behind the scenes in terms of our database we will be READing data. We will be using modelName.find({condition}) to get the right result.
+ We will not put any condition, this will give us all data.
+By the time this is properly set up accessing the url/articles will show all the documents in the articles collection i.e all out artiles.
+
+Now we have tacled fetching all articles through the /articles route.
+
+### POST a New Article
+
+What if the client make a POST request to our articles route. This should add a new article to our article collection in our DB.
+
+This is tricky because the client is going to send data essentially to our server and presently we don't have a front-end so this data will be sent straight or sent directly to our server. How do we handle this without building a frontend. How do we tidy things up through our API and our server such that the client can be able to work with our server and db. The client can be a lot of things, it can be a browser trying to load up a web page in which case it will make a GET request to ur server via our API and our server will send back the right files html, css and javascript file to be able to render that page in the browser. Also the browser can also be making a GET request to our server looking for a particular resource and we have seen that this can be gotten as we did through the /article route through our API. We are able to do this through the GET request but how tdo we do this through the POST request. To get this done we can use a tool called Postman.
+
+This will enable us to send data and test our API without building any frontend at all.
+
+We need to install postman. Head over to getpostman.com then click on download. Choose your platform and install. You will get a welcome page.
+
+to use express to address post request in our server we use
+app.post(route, function(req, res){
+
+})
+so we will do this in our server and in the article route. This post request will go to our /article collection.
+
+We can tap into req.body.title and req.body.content to get this fields from the client.
+
+### DELETE All Articles
+still on /articles
+Here the client will send delete HTTP request to delete all the article. We haven't done this before with express but it is ptretty similar to GET and  POST.
+
+app.delete(route, function(req, res){
+
+})
+
+The above handles the delete request. With the momgoose model delete code.
+
+model.deleteMany({condition});
+
+### CHAINED ROUTE HANDLERS USING EXPRESS
+There is something that express allow us to do if we are using the same route e.g get post and delete on same /articles route.
+If we look into express documentation at express.com/en/guide/routing
+We can see that we have another method call app.route, this helps us use the same route for several operations. This is very essential in helping us reduce redundancy and writing a maintainable code.
+We will call the app.route and then use app.get, .post etc under it. 
+
+Chained method is not strange to us because we used it while working with jQuery.
+
+The only thing is that it is easy to messed up.
+
+
+### GET A SPECIFIC ARTICLE
+After we have conclude for our main route /articles, we can noiw go ahead to write our code to make our API handle for specific routes e.g /articles/jack-bauer or /articles/article-name or any other one. Our code must be able to handle whatever single article or article name.
+
+For this we can have another chained route method. Using the "/article/:articleTitle"
+
+we can get :articleTitle to get user input article title then perform a READ operation from our database.
+
+Here we can just use the find on method since we expect a specific result.
+
+First of all we must be able to handle the get method of that specific route.
+
+NOTE:
+In querying using a specific article title, the way the browser represent spaces to query is %20. This is what represent the space character
+
+### PUT REQUEST ON SPECIFIC ARTICLE
+By this the client can make a put requeswt on a specific article.
+We can use the app.put(route, function(req, res){
+
+})
+we will just change the put method. We will need to update and just use the update method available to us in mongoose.
+
+mpdel.update( {condition}, {updates} )
+Note: Always check out the documentation for the use case.
+From the recent documentation the replaceOne method is the recommended option to replace an entire document.
+
+In postman, we will be using the making a PUT request to the /article/articletitle we want to update with also the document field we will need. This includes the new article title and content to be used to replace the former.
+
+const res = await Article.replaceOne({title: req.params.articleTitle}, {title: req.body.title, content: req.body.content});
+
+This will search all of the article collection to find the specific article to update, if there is a match it will then replace the title and content of that specific article with the new title and content sent in the request. If the article is found then the whole document is completely replaced even when the fields supplied is not complete.
+
+Note: Always consult the documentation for the use case.
+
+### PATCH A SPECIFIC ARTICLE
+
+Unlike in the PUT once the document is found, the whole document is replaced even if the fields supplied is incomplete. We can attend to this using PATCH. Such that if the document is found and not all the fields are supplied, then we can just update only the fields that are supplied in the document.
+
+const upArticle = await Article.updateOne({title: req.params.articleTitle}, {$set: req.body});
+The above does it.
+
+### DELETE a specific Article
+This is the last in our RESTful API, what this will do it to delete specific article once found in our database. This is to just use our delete method on the chained route. 
+function(req, res){
+
+}
+with the mongoose method model.deleteOne({ condition })
+const del = await Article.deleteOne({ title:req.params.articleTitle }); // returns deletedCount
+
+
+
+##
+A lot of students just like me might be taking the course to get a job. Most times we worry about your certificates but dont bother about that. A lot of interviewer only care about what you can do and not certificate. Though some company have some blanket rule to see some certification before getting in but many dont care. So show them what you can do. Have a portfolio. Check the job listing for the role you are intending for and based on the requirements and the expertise they are looking for and build something using those skills. Then find a way to help other developers answering questions on those skills. Another really important thing for recruiters is knowing that you work well with other people. Including the seniors and juniors. And someone who will perform well will be one who can work with both well. So start building up your stack or stack overflow reputation or start doing some code reviews with some senior developers. With these not only will you be capable by your skills but also be capable to work well with others. And most importantly to keep going.
+
+
+
+## AUTHENTICATION AND SECURITY
+
+### INTROUDUCTION
+Most times people see this as ultimately complex but it is not. In this module we will be discussion and building authentication from scratch. This will help us see what it involves and entails.
+
+#### WHY AUTHENTICATE?
+As we create our website for our users to use, a lot of data are being generated. This data may include names, messages, recipes including sensitive data. Now in other to associate specific user with specific data, user need to create an account for each user using a username and password and we would essentially create kind of like an ID for them to uniquely identify them on the database and save their data with their ID. This means anytime they come on the website they can easily use their username and password to login and access those private information eg. messages and information.
+One of the reason you might want to use authentication is to restrict access to certain areas of the website depending on the status of the user. Say you are on linkedIn, once a user pay, their account needs to be updated to have access to paid content or services.
+Also you might want to restric access; this can be done in a number of ways. Signing on on a website can look easy but the difficulty is ow secure will the site be. We are going to tackle this problem of authentication by going through the different levels of security. We will go from basic to OAuth, social loggin including things like sessions and cookies and hashing and encrypting passwords. And it is going to be more.
+It is important to learn to build security from the way up but you can also use third party library like passport.
+
+We will create a like of whisper app, where people can share their secret anonymously. The site will have an homepage with register or login button once they have successful been authenticated it takes them to secrets page.
+
+### GETTING SET UP
+Once you have gotten the starting file. Init npm. install the right packages and ensure the server is properly setup. / route render home.ejs, /login renders /login.ejs and /register render register.ejs.
+
+Start the server and check to see if everything is running fine.
+
+### REGISTER USERS WITH USERNAME AND PASSWORD
+The next thing is to allow users register and log in. We will be keeping their data in MongoDB. Once a user is properly registered and logged in, they can now have access to our secrets page.
+This is the level 1 of our security. This is the lowest level of security. We create an account for our user, store them and when they come back we can check once they come back whether they are registered or not and then let them pass.
+
+We will set up a Database of Users and we will do that using mongoose and MongoDB.
+
+Install mongoose and require it, then connect mongoose to our userDB. Don't forget to start mongod on the terminal.
+
+If everything is well set up, if we start our server with nodemon - nodemon app.js then there should be no error.
+
+Then we set up a new user DB. We need to create a schema with the email and password fields. Then use our schema to create a new user. Once a new user is created it should be added to our userDB and this is at the point when a user goes into the register page and input their details follow by a submit.
+We will crete a new user with the app.post at the register route grabbing the information the user entered on the page. The data can be identified using their names, one is username and the other is the password.
+In the app.post /register we create a new user and then save the details in our userDB. If there is no error, we will then render the secrets page else we send an error message to the user.
+
+Its time to test. Remember to not use a long email or password so that it will be easy to input anytime.
+Once the form is filled and submitted and we load the localhost:3000/register, once we input the email and password and click on the submit button, if there is no error then the secrets page is being rendered. If we go into our studio 3T, we will find a new DB called userDB and inside it we can find our newly created user documents.
+Presently user can register but cant log in so we have to handle that.
+
+To handle this we will, say a user load the /login page and enter their details, inside our post /login route we will grap the user details i.e email and password using the req.body. Once this details is captured we will scan through our database if these details are present.
+
+First we check using findOne with the email, then save the return into a varible. We will then run another if condition tapping into the foundUser object if the password matches the one entered by the user. If the password matches then this user is real and can then have access by rendering the secrets page for the user.
+
+NOTE:
+There is a serious problem because the password of the user is stored in plain text. If there are many users and all of there password is saved in plain text then any of my employee can look through my database and know what everybody password is. This means any employee can found any user login and use it to login. This is pretty bad. At the same time if an hacker decides to hack into my server and locate my DB, this will be a big loot for them. Funny enough, many people will reuse their password across multiple channel, websites and internet places. The hacker can always use this information to login as you on multiple channels.
+WARNING:
+Dont reuse password, always have a way of generating password specific to different channels.
+Also if you are going to make a website never store users login details especially the password in plain text such as we do here.
+THIS IS LEVEL ONE, LET US LEVEL UP!
+
+### LEVEL 2 - DATABASE ENCRYPTION
+
+Having seen what level one authentication looks like, its time to step further which is database encryption.
+
+This involves encryption 
+
+#### WHAT IS ENCRYPTION
+This is scrambling something so that people can't tell what the original was unless they were in on the secret and they knew how to unscramble it. This is the same same thing when you and your friend are sending each others messages using some agreed codes which you both knew how to decode. On a bigger scale if you ever watched the Imitation Game or read about the Enigma machine, that is basically a form of encryption. And the Enigma machine if you dont know is just simply a machine that was used during the World War 2 when the German will send each other messages they would use the machine to encrypt those messages so that when the messages were intercepted and you knew the decoding Key was or what settings were for the machine, then you wouldn't be able to tell what it is they are trying to communicate to each other.
+
+If you were interested, its really good to watch two videos that were done by Numberphile on Youtube and you can alwyas found the link. It explains the Enigma machine and it talks about the flaw in the Enigma machine that led Alan Turing and other people at Bletchley to be able to crack the code and create what was very much a specialised computer to be able to decode those messages and helped the Allies win the war. And if you ever visit London be sure to go and check out Bletchley Park and they have a computer museum next to it as well which is super fascinating.
+
+Back to the ciphers and encryption. One of the earliest ways of encrypting messages that we know about is the Caesar Cipher. He was one of the generals on the Roman Empire and what he did is he would send messages to his generals and he would encrypt it so if his messanger go murdered along the way, then his messages would be kept secret. This is one of the encryption we know about and it's very simple.
+Say we have the alphabet ABCEFG, all the Caeser Cipher does is a letter substitution cipher and the the key of the cipher is the number of letter you will shift by. So if you knew what the shift pattern was then you could really quickly decipher the message.
+
+SO if we are to encrypt the word Hello, there's really a neat tool online that can help us do that. It is called cryptii.com you On the site you can choose the type of cipher or encryption you want to use and then you can specify a shift
+say shift of three. So if my word is hello then it becomes shifted into "khoor" and an unknown person and a non cryptographer it can be difficult to see at a glance what this is trying to say.
+
+In modern days this is very simple and it is very easy to crack. But there are other forms of encryption which are a little bit more complicated and it involves a lot more maths to make it more time consuming for somebody to crack.
+
+But essentially, all encryption works exactly the same way. You have a way of scrambling your message and it requires a key to be able to unscramble that message.
+
+So lets go ahead and use encryption and the npm package we will use is the mongoose-encryption. If you look at the documentation it is a simple encryption package that works well with mongoose so it is good for us. It uses an encryption algorithm called AES which is a ralatively modern encryption algorithm and far more secure than something like the Caeser Cipher which is very very easy to break.
+
+Now before we get started find a time to read the documentation. It can encrypt and it can authenticate. We are only going to use it most basic funtionality which is encryption and we're going to leave the authentication for other lesson where we discuss things such as hashing algorithms.
+
+SO to begin let's install the package into our project.
+In using the encryption, we will require it, then follow the documentation to recreate our schmema then add the encryption as a plugin which will be using the string secret.
+const userSchema = new mongoose.Schema ({
+    email: String,
+    password: String
+});
+
+const secret = "Thisisourbigsecret.";
+userSchema.plugin(encrypt, { secret: secret });
+
+This is all done before we create a new model from our schema.
+
+Now our schema now have an encryption power enable. This will encrypt all the data in our database. You may or may not like that kind of behaviour. In our case since anytime the user login we have to search through the database for the user's matching email, then we might have to leave our the email field from the encryption. The option to change is to only encrypt some certain field. See the below
+
+userSchema.plugin(encrypt, { secret: secret, encryptedFields: ['password'] });
+
+The above will only encrypt the specified fields. We can also add other fields we want encyted in the above.
+
+So now that we've added our encryption package to our userSchema, we've defined the secret that we're going to use to encrypt and include the field to be encrypted we're good to go. We dont need anything special to do again. This is because the way this mongoose-encryption work is to encrypt when we call save and decrpt anytime we call find methods.
+
+In our case when we use the save method, the mongoose-encryption we encrypt our password field and anytime we called the find method it will decrypt the password field.
+
+So let's save and run then go ahead and register a new user.
+
+While we are learning, it is good you update yours as well. gwerty the first 6 letters on the keyboard is one of the top five most used password all over the world, along with the actual word password and 123456. If you have any password as this, kindly find a time to change it.
+
+Once we click on register the new user is saved in our database, let's see what is save in there.
+
+{
+    "_id" : ObjectId("652f3aa91bf840ad713ea45c"),
+    "email" : "a@b.com",
+    "_ct" : BinData(0, "YTiloOrEcSwyPYAP5NEfocpnHPV9bZ06.. 25 more bytes"),
+    "_ac" : BinData(0, "YYQUUXEMeyo4tNUdvLr3bym0gEnSTeu5.. 22 more bytes"),
+    "__v" : NumberInt(0)
+}
+
+The above is what is saved for the user unlike the former shown below when we have no encryption.
+
+{
+    "_id" : ObjectId("652e97ddd2046d4832d6e38d"),
+    "email" : "1@2.com",
+    "password" : "123",
+    "__v" : NumberInt(0)
+}
+
+We can see a huge difference all along. this means if anyone hack in they wont be able to get the details imediately.
+
+Let's see how decrypt work, let's go ahead and login. If we log the what is found we can see everything in plain text on the console. This means if somebody will hack in they can as well use your secret string to decrypt all the encrypted details. This means we have to save this somewhere hidden. The simplest way is what is called environmental variables.
+
+### USING ENVIRONMENTAL VARIABLES
+
+If we are commiting our codes probably in our github repository. This means all our codes including the ones in our app.js would be visible and crawlable by google and visible to anyone. This including our secret like our APIkey and other keys. if anyone have access to that then they can easily decrypt all the encrypted fields in our server.
+
+There was a case of a dev who pushed AWS keys on Github then bad things happened. Same way too, an AWS API key leaked and an the server was used to a very heavy bill within a short time. This is a great warning to keep all your keys, API and any secret keys off the internet where people can search and steal it out.
+
+So how do we do that. For our app to work we will need this secret key expecially when working in teams. How developers solve this conundrum is through using something called environment variables. An environment variables are basically a very very simple file that we're to keep certain sensitive varibles such as encryption keys and API keys.
+Here we will learn how to do this using a popular npm package called dotenv.
+Once installed, you can check the documentation on how to use it.
+we need to use it with by putin this at the top of our code in our app.js
+require("dotenv").config();
+The next thing is to create the .env file in the root folder. It is important to note that .env is not an extension like you would see in .mp3 or .png. It is a special system file just like .git folder It is a hidden file. It is only seen when the hidden file is hown. Now that we have the file, the way to go is inside the file include NAME=VALUE of any secret. There shouln't be any space between the name and the value or quotation mark. The name should also all be CAPITALIZE. So let's go ahead and cut out our secret and format it to follow the requirement.
+
+You dont need space, comma to seprate files or lines as in our codes. They are plain text files to render anytime.
+
+We can always tap into our .env file anywhere in our code once we have require it at the beginning.
+
+Now that we have access to our secret then we can fix our code.
+The new problem we now have is that if we go ahead and commit the changes the .env file is also pushed which defeat the whole secret things. What we can do it include the .env file inside the .gitignore file
+It is always a good practice to include a .gitignore file at the start of your project. You can grap a .gitignore file from github. Just searched for gitignore on github or in any search. github has a collection of .gitignore files that can be used as a template for different language, technology and tools. If we copy the template of the nodejs, the .env file is also included in the gitignore file.
+Once the .gitignore file is included and properly setup, no one can see the secret keys even if you pushed your files to github. This keeps us and our encryption saved.
+Note: git is a version control system and it keeps track of all the changes and save then along the line, this means if we checkout the previous version of our code, it will surely brings it out and in this previous version we have our secret key in plain text within our code which gives our secret key away to anyone. This means it is highly important to include the .env file and the gitignore file at the very start of your project. This keeps all our secrets in the .env and the .env files in our .gitignore thereby keeping our secrets away from the internet.
+Next we will be dealing with hashing.
+
+### LEVEL 3 - HASHING PASSWORDS
+Before now we have talked about encryption where a password is matched with a key and a cipher method e.g AES is used to generate a ciphertext which makes it difficult for anybody to immediately guess what our user password is.
+
+password + key ----Cipher Method---> CipherText
+
+if we have the key and know the cipher method, we can as well change the direction to and the arrangement to encrypt our CipherText
+
+password <-----Cipher Method---- key + CipherText
+This means we can walk our way back if we have every part of the puzzle. Note, since our key is constant and our password we tried to encrypt and our CipherText, it is important note that the most greatest variable is the Cipher Method used. The Caeser Cipher can be compared very weak because once you know the shift key for the alphabet, anyone can easily crack the password. This can even be done without a key.
+
+When you bad cipher method, bad things happens. You can read or checkout this story of the what traspired around the 1500 between the Mary Queen of scotland and Queen Elizabeth the first of England, the two combined locations now called the UK. How one later got beheaded due to use of weak encryption method in their tussle for power.
+This is what you dont want happen to you or your users at any time. So weak encryption can end up putting user passwords at risk and your company might end up metaphorically decapitated such as the case of TalkTalk or Equifax where they get hacked and loose everything.
+You can read more on encryption from this book called The Code Book by Simon Singh, it contain those stroies we mentioned and more.
+
+The problem we have earlier or the flaw in our authentication method is that we need an encryption key to encrypt and decrypt our password. Now it is possible that if anyone tried enough to hack into your database then it's not that difficult for them to also be able to get your encryption key whereever you saved it.
+How so we now solve this problem? This is where hashing comes into play. Whereas before we need an encryption key, hashing takes away the encryption key.
+password ------Hash Function-----> Hash
+
+Some might ask that if we dont have an encryption key how we do turn the password into a hash or versa. The idea is that when a user enter a password, we use something called a Hash function to turn that password to a hash and store that hash in our db. Now the problem is that Hash functions are mathematical equation designed to be almost impossible to go backwards. It is almost impossible to turn a hash into a password.
+But how is this possible? How is it possible that you can turn a password into a hash very easily but makes it impossible to turn it back into a password.
+Here is a question for you, what are the factors of 377 other than 1 and 377? Now its not a prime number because there are other two numbers that you can divide it by, so what are the numbers, this means you will start dividing it by different numbers say 2, 3, 4, etc without finding the factors. In this you're really consuming every bit of resources you have including your time which is your life. This is tedious already. But let say you found it which is 13 and 29 which are the only factors of 377. Consider the time spent to finding this factors and the time it will take to multiply 13 and 29. The time takes for the two are extremely large apart. This is a very simplified version of a Hash function. So going forward multiplying 13 by 29 is easy while going backward finding the factors of their product 377 is very time consuming. This is an example of how the hash function works, just add a bit of complexity and you will end up with a real hash function. Very fast to go forward but somewhat impossible to go backward. Impossible in this case means if it takes milliseconds to make a hash then it is taking like two years for the hacker to decrypt the passowrd. This means it will be pointless for any hacker to do this considering the level of available resources including his time. 
+So on how website, when the user register, we ask them for a password, then we hash it and then store it in our database. Now when the user try to log in, we again hash the password to produce a hash and compare it with the hash we have saved, if the hashes matched then that login password is the same as the registration password. In this case their time we stored their password in plain text at all, neither any information about the password. The only person who know their passowrd is the user themselves.
+
+Previously we saw in the use of the Enigma machine that as long as I know the settings that I can decode it by setting it to the same encryptio key. With this we retriever the original text. If we try hashing the same text and we try to decode it, we will get an error saying the hash method is not defined. This is the interesting security about the hash function.
+
+Let's go ahead and implement it in our code.
+First we need to install md5 package and then require it, then use it.
+When the user input the password we use the hash function to turn it passoword into an irreversible hash.
+password: md5(req.body.password)
+Let's run our code
+Using hashing the below is what our password has become
+ {
+    _id: ObjectId("65310eacf18cef7e95524ef8"),
+    email: 'user@hash.com',
+    password: 'e10adc3949ba59abbe56e057f20f883e',
+    __v: 0
+  }
+The email is still same because we only hash the password.
+
+The important thing to remember is that if you run hashing on the same string it will always be the same thing. If our password is 12345 and we store the hash in our db, if we console log the hash of md5("123456") it will be exact same thing making it very dangerous.
+e10adc3949ba59abbe56e057f20f883e 
+
+This makes it subseptible to hacking using rainbow table and complex algorithms.
+
+Now to log user in we have to hash the password they entered and compare that with the hash in our db. We successfully login because our hashes matched. Now when someone try to hack into our db, then they only have the hash which makes it a bit difficult.
+
+At the same time, hashing has it own problem because many hackers have found a way to solve this puzzle. We will explore this the more.
+
+### HACKING 101
+Now that we have learnt about all this level of security and keeping users data, we are already at the levelof security many websites are.
+
+Since most of us are quick to get a job, we can head over to a site called plaintextoffenders.com. This is a website that shows emails that come from various companies where the users are requested to reset their password and they are sending the user a plain text version of their password. At this point we know that for them to even be able to get the user's password in plain text it means they are doing some horible things with securing the passwords. Either it is encrypted and they are using somewhat of some encryption key or they are just storing the whole thing in plain text somewhere. SInce you already know more than the people who run those sites on this sites we visited then you can just email them and let them know that you are a web developer and you know about authentication and securing users data. And then that their website seems it needs some help, would they mind you helping them. You can try this out. If we are not keen on getting a job, you can just check them out and be sure to delete your account.
+This is the reason why a lof of companies websites get hacked because they dont continue beyond this point. This is why it is good to learn about how websites are hacked.
+
+#### HACKING PASSWORDS 101
+Here we will talk about how a password might be hacked. On a side not, hackers are not supposed to be hated but pitied because they are passing through a lot of stress. Now as a website owner the word YOU'VE BEEN HACKED! will be the last thing you want to see on your website. Funny enough this has happened to many big companies like Adobe Creative Cloud in 2013, linkedIn in 2012 and there is a lot of password that get leaked and many people are still selling this data and using it to hack into the paypals of password reusers accounts and other similar payment portals.
+If you dont learn anything in this lesson learn this, take some time and go to this website haveibeenpwned.com, put in your email and if any of your password shows up then change it immediately.
+
+But why is it that all of this company are getting hacked and leaking their users password. Are they not encrypting and hashing their users passwords? Yes they do. Now consider you are an hacker and you have managed to get into the linkedIn user database. Though they didn't store their users passwords in text, you can't access their data right away. But looking at the data closely, you will see that like 3 of the hashes are completely identical. Now remenber that the same string will always give the same hash and that's a core part of the hash function that we rely on in order to validate our users as well. So that means an hacker would look at this table and realize that Sunday, Wilson and Susan all have the same password. What they can do is begin to construct what we called an hash table, they will take most of the commonly used passwords and use the same hash function to hash them and put this in a table. Now this are the most commonly used passwords, 123456, qwerty, password, 111111. Generate this hash in a table and compare there hash with that of the user. If it matches then you have discovered their password. So you search by their hash value, once matched then you have landed on a password and find that many of them has the same password qwerty. What if they dont use a common password, probably their date of birth or their pet name, let's see how we will make an hash table if we were an hacker. First we take the dictionary and make their hash, this is where dictionary attack comes from. That would only be about 150,000 tables, then all numbers from a telephone book about 5,000,000 then all combinations of characters up to 6 places 19,770,609,664 and then you add everything together and you have like 19.8 billion combination which admitedly sounds large. So how many time would it take my computer to alculate those hashes. Well, let's go shopping, so we go buy the latest GPU and graphic cards which are very suitable not only for bitcoin mining but also generating hashes. Now with the lates GPU's you can calculate about 20,000,000,000 MD% Hashes/Seconds. That means with all hash tables of 19.775,759,664 it will only take one of these GPUs 0.9 seconds which is nothing. It's not a lot of time to invest in order to hash so many people's password. Worst enough, a lot of hash tables have been build already from previous hacks such as the adobe one, or the linkedin one or talktalk or equifax. So we know what are the common passwords people use. Every year many companies like splash data will compile what are the most common passwords say the top 25. This is where those hash tables came from. To go a step further, there are pre built hash tables that people have already created for the top 10,000 passwords. And MD5 is very easy to calculate, this is why it is easy to find MD5 hash tables and you can use Google as a basic hash table. You can paste in the hash you found from the hacked database and you found the right password. If at this point you are extremely scared and you're wondering well what exactly can you do about this. COnsider that in our user table, there is an hash that is extremely hard to find and it didn't match up to any any of the hash tables we've built. What if we put that into google to search on a larger scale and see if it matches any of the hashes in the hash tables already generated. This is because this use Wilson when creating his password have many combination of Letters upercase, lowercase, numbers, symbols but most importantly a long password. When you think about hashing as a mathematical formula, this means that as the length of your password increases, the computation time that it takes to crack it increases exponentially. So it doesn't matter if a company or website you're involved with was cracked. As long as you have a strong password they wouldn't be able to work it out from an hash table. As an example there is a website called password checker, you put in your password and it'll tell you not only the strenght but how long it would take various machines to crack it. So let's say that I create a 6-character password composed of a random set of characters right? For this even for a standard desktop it will only take just 3 seconds to successfully complete a brute force attack to crack that password Now if we add 6 characters to this, now it will take like 31 years for a standard desktop PC to crack the password and even a fast GPU takes two years to crack that password. So even though, you're encouraged to add upper, lower case letters, numbers and all, it is still not the most important. So the most important thing about creating a strong password that is almost uncrackable is just to increase the length and number of characters. And also to prevent yourself from being a victim of a dictionary attack just make sure you dont use anything from a dictionary or any booking anywhere. SO in the next lesson we will address this vulnerability and learn how to combact hackers who might want to hack our website data using a dictionary attack or hash taable.
+
+Bonus if you want to trick your friend as an hacker, you can checkout the website called hackertyper.net you just smash any random key and it puts something that looks like real codes on the interface.
+Warning: Don't try this on an airplane or nay government building unless you want to actually get investigated.
+
+### LEVEL 4 - SALTING AND HASHING PASSWORD WITH BCRYPT
+Now that we know what the vulnerabilites were for our last level of security, it is time to step up and learn about a way that we can prevent these types of dictionary attacks or hash table cracks. In order to do that we need to know about salting. We alredy know what hashing is so what is salting? For a hash we take a password through a hash function and then store the hash. And as we saw earlier password that are generated by humans are extremely insecure. They tend to be very short or look up in the dictionary and get hacked. Now salting takes the hashing a little bit further, such that in addition to the password we randomly generate a little bit of random characters and it to the password before it is hashed. The random characters is combined with the user password and then pushed through the hash function. So the resulting is created from both the password and the random unique salt. This random characters added increases the number of characters and we make our user database a lot more secure. Consider the previous problem we saw in the last lesson about hacking where 3 users have the same hash, now if we added a little bit of salting this randomly generated characters will ultimately make their password hash distinctly different.
+The salt is different each time, it is not what the user has to remember it is stored in the database with the hash. So for the login once the user supplied the password the salt is added back hashed and compared to the stored hash. Note we dont store the user password but the salt and the hash.
+Now consider our previous statistics, You can imagine about 20 billion MD5 hass table in a seconds. Even if we added a salt and we made it harder to generate a hash table, with some of the latest GPU's you can still generate some hash table really quickly. Where do we go to handle this. Well we can still use something other than MD5. There is another hashing algorithms that is the standard algorithm. It is called bcrypt. It is regarded as standard because it is slow. It times at 17,000 bcrypt hashes/second with latest GPUs. This is one of the industry standard hashing algorithms that developers use to keep users passwords safe because while you can calculate 20 billion MD5 hashes in a second for bcrypt even the best GPUs are timed at 17,000 bcrypt hashes per seconds which makes it very harder for a hacker to generate its hash table. For a salted hash table, instead of taking something like 3 seconds if it was hashed with MD5, if it was bcrypt it will take like 8 months which is not worth it. They would probably go and search out a company that has less security enabled. And to make our passwords even more secure when bcrypt it has a concept called salt rounds. How many rounds you're going to salt your password with. The more rounds you do the more stronger your salting and the more secure your password.
+
+So what a re salt rounds
+Let's say your user password is qwerty and you generated a ransom set of characters as the salt. Now we add it to the password and pass through the hash function and we have our hash. This is one round of salting. Let's say we want two rounds of salting, then we will take the hash that was generated in round 1 and we add the same salt from before. And now we run it through bcrypt the hash function again and we end up with a different hash. And the number of times you do this is the number of salt rounds.
+
+The reason wy you do this is genious because computers get faster over time., Remember according to moore's law which says that every the number of transistors in a computer chip almost doubles and the cost of that faster computer halves. So every year you get faster computers with less money. This is where salt rounds comes in. When you're hashing your passwords using bcrypt, you can set the number of rounds to salt your password. That means maybe in 2019 you salted 10 rounds but in 2023 you can increase it to 20. Now for each increase the number of time taken to hash your password doubles. This means you dont have to change anything or your code other than a single number to keep up with times.
+So we store the user email, the salt and then the hashing at the end of our the salting rounds. So when it comes to checking their password when they login, we take the password they entered combine with it with the salt and run it through the ssame number of salting rounds and then compare that with the one in the database to see if they match and if they have entered the right password.
+
+Let's apply this, implement bcrypt and salting rounds into our website's authentication.
+The package we will be using is bcrypt and it's available on npm. bcrypt is sentsitive of the node version you are working with. Here I have v18.17.1
+bcrypt is compatible with only node stable version. The documentation shows the supported node versions. To change your version you can always use nvm. Go to their github repository and follow the installation guide. Your version should be back to the right one.
+
+Now in case you face any issues while installing the package, How do you fix this? On any page of any package, there is always a link to the code repo and when the github page of the package, you can explore the issues section and see how others are able to fix the same issues you are having.
+if you would be installing a lower version you can use 
+npm i bcrypt@3.0.2
+
+You might not have a warning or error at all, but if you do, you can know how to go about it.
+
+So let's swap md5 with bcrypt
+require bcrypt and setting a specific number of saltRounds.
+
+Look at the documentation to see your best use case.
+
+SInce we remove the md5 package then comment put or remove any code using the package.
+
+We use the auto generate salt code of bcrypt.
+If we run our code and check the hash saved in our DB, we will findout that it is mostly very long. If you copy this and paste it in google or any hash or rainbow table, it will bring out no result. This is very good.
+What if the user wants to login, we will be hashing the password they input with bcrypt then compare this with what we have in our DB. Check the documentation to see how to do this.
+Once all is done right, we are able to log in with our user details. Now we have a good level of security but we can still level up more.
+
+
+### LEVEL 5 - COOKIES AND SESSIONS
+Other than the yummy cookies you have in mind, the cookies we are talking about here has everything to do with web development.
+Remember when you go shopping online say at amazon, you searched for an item and then you add it to the basket and then, you completely go to another url from that same browser tab. This is a real crime against any ecommerce website because you are just a click away to paying for the product. What will amazon do, immediately you added that item to cart, amazon has created a cookie and stored that cookie on your browser. How do we find this cookie? In your chrome browser, go to settings, then search for cookies, You will see it under content settings, if you click on the cookies. You will see there's this option to see all cookies and site data. And now you will see that Amazon do not just add one cookie, just by that single act of adding a Nitendo switch to an Amazon basket, Amazon has told our browser to save a lot of information about ourselves. Now if you click on the amazon.co.uk, you can see there's the session-token, the session-id, this cookies does not necessarily contains any information saying this user want to buy a nitendo switch but what they do contain is an ID number. And this ID number will be used to fetch all of those things that you added to your cart during this browsing session on Amazon. This is why even if you close down your browser and later you decided to load that or any Amazon page again it loads back everything you have added to your basket. SO they haven't forgotten this. However, if go into those cookies for amazon and you delete those cookies and site data and we remove all of this, we have forced it to forget whatever we have done before. Now on the internet, cookies are widely used to save thsese browsing sessions and it goes beyond just saving your last session on your browser. Now when Amazon adds those cookies to my browser, it also means that when I go and visit another website say Facebook, faebook will also know who I am and what I tried to buy on Amazon and even remind me of this. It is creepy but this how ad retargeting works. Say a user comes to your website and try to buy something and then they decided to abadon it, then you save this data. It means when they go to any website or come back to your website you remind them about that thing they wanted to buy. And this is all done through cookies and sessions. So if we review this from a web development point of view, it means that say on day 1 when I go into chrome i typed in Amazon.com, my browser will make a get request to Amazon server requesting for their home page, Amazon server will then respond to that request and send over the HTML, CSS and Javascript files that are for my browser to render the Amazon website. And then let's say that we decided to add a computer to our cart, that is equivalent to making a post request to Amazon server saying that I would like to buy a computer and at this moment in time that Amazon server will create a cookie that says "This user wanted to buy a computer." And when it responds to the request that cookies get sent along and the browser is requested to save it. So that means that if I now get distracted and I decide to go onto Facebook or whatever it may be, if I come back tomorrow that cookie is still saved on my browser. So the next time that I make a get request to Amazon server, that cookies get sent along with my get to allow the server to be able to identify who I am and see if I had any previous sessions on Amazon. And it is the equivalent of cracking open that fortune cookie revealing what are the previous things I had wanted to buy and in this case it was a computer. And they could then respond with the HTML, CSS, Javascript and also render my cart so that the computer is already added in the cart. So there are lot of types of cookies but the one we will be looking at are the ones that are used to establish and maintain a session.
+A session is a period of time when a browser interacts with a server. Usually your session starts when you log into a website. This is when your cookie get created and inside this fortune cookie you have some information that says this user is looged in and has been successfully aunthenticated. This means as you continue to browse the website, you wouldn't be asked to log in again why you tried to access a page that requires authentication because they can always check against that active cookie that you have on your browser and it maintains your authentication for this browsing session until the point when you logged out which is when this session ends and the cookie that's related to the session get destroyed.
+
+We will be implement cookies and session on our website using passport. Now if you are good on Node.js and authentication it's impossible to not mention passport and it's something that's very very flexible and allows you to authenticate your users with either a local strategy like what we're doing right now which is username and password or use a whole bunch of other services such as Google, Facebook, LinkedIn, Twitter, etc. And it makes it a lot easy for you to plug in these different ways of authentication into your website.
+
+So let's get started learning about Passport and learning about how we can implement cookies and sessions. 
+
+
+### USING PASSPORT.JS TO ADD COOKIES AND SESSIONS
+Let's get started to put into practice what we have just learnt. We need to install the following packages: npm i passport passport-local passport-local-mongoose express-session
+Note: express-session is not express-sessions
+
+People are allowed to come up with the names of their packages without any restrictions. That's why it's easy to mistakenly get a package installation wrong. So beware. But if you are installing package, ensure you get the right one, you can do this by typing in the name of the package, from the ratings on the package you can know the popularity score, quality score and also maintenance score. This can help you pin point the right packages even admist the plenty. 
+Once installed. We remove all bcrypt and hashing and empty out all the code withing the app.post login and the reister route.
+
+We will authentication using the packages that we just installed. The first package we have to configure is express session. It is important to follow the steps in order and where you put the codes. It is really important and easy to mess up.
+
+Let require express session and the others except for passport-local because it just one of the dependencies that would be needed by passport-local-mongoose so we dont need to require it.
+The next thing to do is to actually set up our session and anytime we refer to it we will use the word session. We've install, require it, then the next is to use it. You should pay attention to following the documentation. We will place the use code just above the mongoose connection and just below all the other app.uses. It's important you do it that way. The secret is what we keep in our environmental variable. Once we have initialize our session, the next thing to do is to use passport. The first thing is to initialize it. The initialize methid come bundled with passport. This set up passport so we can use it for authentication. The next thing is to tell our app to use passport to also set up our session. You can check out passport documentation under the configure section. After we have set up session and passport, the last thing to do is to set up our last package passport-local-mongoose. We've installed it and in order to use it we need to add it to mongoose schema as a plugin. Remember the schema needs to be mongoose schema and not just an ordinary javascript object. SO we tap into our userSchema and add a plugin to it and this is passportLocalMongoose. This is what we will use to hash and salt our passwords and to save our users in our MonogDB database. It's going to do some heavy lifting for us. So let's go ahead and use it. Now to configure the very last thing which is passport, we will need to follow exactly what the documentation tell us to do which is to create a strategy which is going to be the local strategy to authenticate users using their username and password and also to serialise and deserialise our user. Now the serialise and deserialise is only neccessary when we're using sessions. What it does is that when we tell it to serialize our user it basically creates that fortune cookie and stuffs the message namely our users identifications into the cookie. And then when we deserialise it basically allows passport to crumble the cookie and discover who the user is and all of their identification. If we are using passport alone we're going to be writing a lot of code but passport-mongoose does that for us. All we need to do is just add a three lines of code right below where we create our new mongoose module and now we're ready to run our app. Let's fo over and run our app with nodemon. Probably you come accross a deprecation warning in the console, copy it and paste it into google or any AI interface. Most of the time, people would have faced the issue, so it would have been raise as an issue on the package repo. Once you check it our, someone would have provided a solution. So when using any third party library it is important that all sorts of things happpen but just remember you are not alone because other people have faced the issue and someone would have solved it. If you are having any issues always review where in the code was it and if you're not having any typo.
+Quick one there, dont forget the order of setup here. It should follow in order as it should. If you dont have session, you can't serialise or deserialise, also if there is no passport initialization, then there can't be a strategy. This is why the order is important.
+The next thing now is set up the register and the login post route and we're going to be using passport local mongoose package to do this, We can see the example in the documentation.
+The most important thing is to clearly follow the documentation and in there, there is always a bad way and difficult way or a good and easy way. Just pay attention.
+We use passport-local-mongoose to store our user, if error, we logged it then no error, we use passport to authenticate the user then redirect them to the /secret route. This is why we should have our secret route setup. In our secret page we will check if the user is authenticated and render the secrets page, and if not redirect them to the login page. This will force them to login first before they can view the page. Let's get ahead and register a new user. If the user gets to the secret page then everything was successful, if not the err is displayed on the console. We can check our new user on Studio 3T, we can see a new document containing the email, with the salt and the hash. This is what passport mongoose local does.
+
+{
+    "_id" : ObjectId("653460815f3b6385fa731036"),
+    "username" : "user@passportlocalmongoose.com",
+    "salt" : "1844099f6b0c496a6e5e8aa0016c913c69b809416e5029fa4866c083cc8ac844",
+    "hash" : "40254ea5b73285b1dce35d698883441489d57b83ee9a2679b0460d080f662d1d607f67eef131aa7b7cc3b18d477e71c25189be22f63b1766458e48d23f73e0cf6f062f37bb9dffdd9f7c84940d39ebd4b5d0f9341d7c182b0d04ba74e81497b2728e54c0e8ff5f0430d70f7cceb960f6e0594445729c02ec46cd9cbc25cd196dbc58b2701ed6430cb023058250d823b2d273e5e9b413f49b9d0192212c183687c137f469aaa7ec3d455b2a24a6efea619c797d268219a9e24986b3e73337c9383f084107de7b2a0e9a5e94a6625b466c3852610df4ef9b60cb937f85bd36a69b297f0195f3d8f8bdaa5f99d48f93ae87894a0bf5eb51bb8747e55fa5494568852071aafbab63610eea7832985f00fdd6529085b0a7fc3f9b8d14e2e839fa7d838d2b35c4b5c2a406c61c117abfbc9ae15b6c842a95538a7ac2a3bda9e957569f71654142afad818ece95b54a71ce83a74518a02b2b5eb6ee52a3821c501b867dc51c9c19f4fdfa7350e572b72bfc9b783b55d4d0bde0939ef19a9061b0f422025eaaa66bdcd995809ceb70bbec7518628fbca3c13307d844f4903a6c3f8614767fd4e4ba497198ba28835a5e8379fa14815a7ca3e5076dfbc34f8f7c21b4fe1948d5b7b2b020510dda518224a8d9c87302c7d17ce09aa68f78366cc1af57dec797355343c5e7e16d160de782292e20b1ffebd4e91f315912e2b9bf180a4383ee",
+    "__v" : NumberInt(0)
+}
+
+You can see this is a step up level security. Passport mongoose local did this automatically. In addition, in case the user get distracted to another page, once they load the secrets page then the secrets page loads immediately without then needing to login to access the secrets page because they are already authenticated. Thanks to the cookies that got the session ID saved. And we can even see it if we go into our chrome settings, search for cookies, select Third party cookies, then see all data and permissions. Then scroll down to localhost and you can see the saved cookie. It is created by the session and is set to expire once the browser is closed. If the broser is closed and the same user tried to access the secrets page again, they are redirected to the login page instead because they are no longer authenticated, same way we specified in our server.
+So let's handle our login route. In our login route, we grab the username and password through the req.body. Then since we have create our user, then we can use passport to log in this user and authenticate them. We will use the passport login method. You can check this on passport documentation page. So either they are registered or login, once they are authenticated, we create ask passport to create some cookies that holds some information about the user and this tells our server about the user, namely that they are authorized to view any of the pages that require authentication. If we tried to login then it went sucessful.
+Lastly let's add our logout route. This is where we deauthenticate our user. we can see the how to do this in the documentation. Once they are logged out we then redirect them to the home page or the root route. If they tried to see the secret page then they are forced to log in. And if they are logged in and authenticated, probably they tried to go to any other site and they later come back to view the secret page then it is rendered because they are still authenticated according to the cookie created.
+
+Note, whenever we save our app, and using nodemon, the server is restarted which delete all the cookies. This means no session is saved. If the user tried to access the secret page, they are redirected to the login page because the cookies holding the session info has been deleted once the server restarted. The content of the session are meaningful to the server.
+The next level of our security is OAuth. That is Open Authorisation. 
+
+
+### LEVEL 6 - OAuth 2.0 & HOW TO IMPLEMENT SIGN IN WITH GOOGLE
+
+FIRST OF ALL IT IS GREATLY EXCITING TO BE LEARNING THE LIKES OF THE ALMOST THE LAST LEVEL OF AUTHorisation SO CONGRATULATIONS.
+
+Here we are talking about third Party OAuth.
+
+#### WHAT IS THIRD PARTY OAUTH - Open Authorisation
+It is simply a open standard for token authorisation. What does this means? You have heard of facebook right? Let's say we are building a new social network that is going to be the new facebook, say we called it bracebook. And bracebook is an awesome social media for people who have braces. Now when you are a new user who's signing up for bracebook you probably won't have any friends in the beginning and nobody likes a social network where you have no social connections and nobody wants to feel like they have no friends. So what can we as the developer of bracebook to make users joining of our social network a little bit easier. 
+
+Well we can ask the user for permission to access their Facebook account and see which friends they have on facebook and are already users of bracebook. So now once a user sign up they'll already see that three of their friends are already on bracebook and ready to get started in a new life of socializing with their be braced friends.
+How will this work exactly? Well on our login page we can ask the user to sign in either manually where they don't get the benefits of instantly connecting with their friends who have braces or we can get them to login with Facebook. And in this case what will happen is we would make a GET request to Facebook asking then for this user's friends on facebook and facebook would return with a POST request with that list of that users and emails. So this migth be a really simplified version of that. Name & Email. This is astraight up table of this particular user's friends on Facebook and all of their emails. This gets passed over to our server where we can comapre it with against our database of users and and see if we have enough of users having any matching email addresses. There can be many or few or none. Let's say we have three match we can automatically add them as a friend onto bracebook. It is also a similar scenenario if you are adding friends on linkedIn, if you think it is too stressful to type many details, you have the option of using your Gmail, LinkedIn will search through your Gmail contacts, see if they are on linkedIn and then add those found as connection. By using OAuth we are able to acess pieces of information on these third party websites such as their friends email or contacts on Gmail. In our case we're talking about authentiatio and leveling up the security of our authentication. Another really big benefits involves delegating the task of managing passwords securely to these companies like facebook and google. Though each day a new company get hacked, this company are kinds of low tech companies, companies who are not facebook, google, amazon who have great engineers and are able to implement all of these levels of security for the authentication on their website. And they have thought about hashing and salting passwords or other data they're storing. But there's more. There are things such as not only salting the passwords but also peppering the passwords. Some comapanies also encrypt the entire database containing the hashed passwords and have a wide array of complex mathematical solutions to keep their user passwords under lock and key. Now as a web developer, we could implement all of those things that I just spoke about and address all the of the edge cases but it will take us a lot of time and a lot of development hours. So why not simply delegate this task to a large comapny like facebook and google, so anytime we log in our user we simply ask them to login on facebook and facebook will then authenticate them using the own authentication method. Once that is done, facebook will sends us back a message saying "This user is authenticatd. They are real facebook user, they have their real username and password, so go ahead and authenticate them as well." And that will make our life a lot easier and lot less liability. This is the way you see a lot of website having a lot of third party login; facebook, twitter, google, github. But in other for us to be able to do all this we need to learn about OAuth that is the glue that binds all of this together and makes it actually tick.
+Now what exactly is special about OAuth, because their are a lot other Open standards that does something similar to this? But OAuth is quite special in three ways.
+1. Granular Access Levels
+This means that when your user logs in with Facebook, you can request specific things from their facebook account. You can say for your website you only need their profile and email address. But say you were tindal and you wanted to know who their friends are so that you can rightly match them up with friends then you might want to know also their list of friends.
+So this is what granularity means. The app developer ca determine what kind of data do they need from the user's facebook account and request those accordingly.
+2. Read/Read + Write Access
+ It allow for read only or read and write access. In the case of facebook, you can ask them to just retrieve their information say name, email, friends or ask for write acess. Say if you want to post on the person's account then you need to ask for read and write acess.
+ 3. Revoke Access
+ This means the organisation used to authenticate should give access for the user to go into their account and revoke acces. In the case of facebook, it means the user should be able to go into their facebook account and revoke the access they granted to your website.
+
+#### HOW IT WORKS IN REALITY
+ 1. SET UP YOUR APP
+ The first thing to do is to tell this platfrom about your application because they dont know you. So we have to setup our app in their developer console and in return we get what's called an app id or a client Id. We here are the client which will then use the ID to auhtenticate our user. Once that is set up the nesxt step is when the user try to log on to your app.
+ 2. Redirect to Authenticate
+ So we when the user hit up our app bracebook and they want to authenticate, we give them an option to log in with facebook. 
+ 
+ 3. User Logs In
+ When they choose facebook we take them to the actual facebook account so that they are seein a familiar interface, a trusworthy interface and they'll log int to facebook using their facebook credential. And with that OAuth what we'll ask the user is what is their login credential for facebook. OAuth makes this a lot easier because it gets them to log in on the website that they actually trust and they've been using.
+4. User Grants Permissions
+Here they review the permissions that our website is asking for. So say we want their profile and email and we ask for permission to get this information, they will review it and grant this permission.
+5. Receive Authourisation code
+Now they've grant this permission and they are authorised, our site will receive an authorization code and this allows us to check to make sure that the user has actually successfully signed on to facebook. They had the right username and password. So we are now able to authenticate them and log them on to our website. If we want to go a step further,
+6. Exchange AuthCode for Access Token
+We can also exchange our authentication code for an access token and we receive token we will save it in our db. This is the token that we can use if we want to request for pieces of information subsequently. This token is vald for a lot longer than the authentication token.
+So the auth is like a ticked, A ticket that you are going to use once to enter the cinema. But the access token is kind of more like a year pass and it comes with benefits like backstage access where you get to request pieces of data from facebook including their friend list or that unsername or their password or anything that gave you permission to access. So the OAuth code is what we need to authenticate user that they successfully managed to log in through through facebook and the access toke is what we'll use to access pieces of information that are stored on that are stored on these third parties website for example their email or their friends list.
+
+Let's go ahead and actually put it into practice and in our case we will be implementing it with google OAuth and passport. We will be adding log in with google to our website.
+First is to go to passportjs.org to find the strategy that we need. And if we check well, we can see passport-google-oauth20. It is important to choose the right one and the latest implementation. So we've gotten our strategy. NPM package passport-google-oauth20. In other to use it we need to install it, The next thing os to create a project on google console.
+
+click on create a new project,
+once created clikc on it
+click on credentials
+then setup oauth consent screen
+input the app name, the developer mail and other compulsory details.
+Then select the data scope you want. You might need to add certain google API libraries and google has a lot that might be useful for some specific purposes.
+You can ensure to add your custom domain name, privacy policy page and other details later.
+Clicl save and continue to create credential. The one we will choose is OAuth client ID. At the en of this setup we should have our client ID and client secret. Then we save those in our .env file in our project.
+Now we can continue setting up our project.
+
+
+## REACT
+
+JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES
+its a frontend framework. Faster and easy to build user interfaces. Very useful to build repetitive user interfaces. It helps to break doen a very complex UI into components. The whole app can be break down into tree with different branches to the last item. It also break the app down into a beautiful strucutre. With Bootstrap we use a long code to create just a navbar this makes it hard to know wht's going on but with react we have different component. Like we are creating our own custom HTML elements defining the styling and defining the functionality of each of them. Then we can slot them in thereby keeping the code for our web app incredibly clean and reusable and modular. This are all greate things for keeping it clean and reusable programming.
+Our app is now a burger where we can make all the pieces separatelly and chnage or use any as we want. You can customize the component depending on what you need.
+This is achieved partly through mixing of different types of files. Before we had always keep our HTML, CSS and Javascript separately but what react does is actually combining small amount of this files into a single component so each component have it's pwn styling and its own functionality that it controls and you can create several of these components so each perform different functions and have different appearance.
+For example, this is what enables the twitter website to be able to load some update without the whole website refreshing. Updates or posts or comments can update itself without affecting the whole website. This is one of the greatest thing about the React framework.
+
+Now the really awesome thing that it does is it's ability to re-render these changes really efficiently and does this by comapring this changes. This is what we might called diffing. So whenever a change happens, say a new piece of data comes in or the user does something, then it's going to compare the new version of the new DOM tree to be render with the already showing one and it will do this kind of spot-the-difference thing where it spots that oh, the only thing that's changed is that this input has gone from empty to checked. So this is the only component that I'm going to re-render. And this obviously is more efficient and will make your web app seem more interactive and much faster.
+Though React is not the only frontend framework out there. So why React? In today's calender, google, stackoverflow, React is one of the most popular web framework and it is used at many company like Airbnb, Uber, facebook, Netflix, Instagram, medium, pinterest, Twitter, reddit and others. There are many frontend and full stack role with React as the requirement.
+So let's go ahead, build and explore this important framework.
+In this module we would be making few projects like registration screen, real time clock app, dictionary for emoji's and a beautiful To-Do list. Also a big project called keeper which is clone of google keep. It function such that whenever you have any idea, you can just make a note and add it to your won keeper app. So we will be using a lot of tools apart from REACT such as JSX, props, Components, Containers, how to work with virtual DOM, state management and declarative programming including the use of React hooks such as useState. And the other big thing teaching how to use ES6 or ES2015 concepts. We will go further into javascript using destructuring, spread operator, map and filter, import export. This is another packed module in which at the end you will be very versed in REACT and ready to build some beautiful front end using this framework. Let's write some codes.
+
+We can start with codesandbox.io
+
+We will use code sandbox  to introduce new skill and practice. We will do a lot of skill practice to learn react. Once enough skill then the keeper app, and application of the skills.
+We will then setup our local environment and working on the local machine.
+
+### JSX
+We will be using codesandbox.io and the giving link. Once here we will not be touching the html file but the javascript file using react.
+Our html need to include a div with id root and a link to our js file.
+For the dependencies, before we usually install through through the terminal but here we will just search and use. The one very much needed are the react and reactdom. The next is to require it.
+
+var React = require("react");
+var ReactDOM = require("react-dom");
+
+ReactDOM.render(<h1>Hello World</h1>, document.getElementById('root')) // what to show, where to show it and a call back function
+
+This above is already a react code especially line 3. We've used the reac-dom render method to display an h1 inside the root div. The above display hello world on the browser.
+The remarkable thing here is that we've been able to write a plain HTML inside our javascript file. This without any angle brackets or the ejs template. This is jsx, react works by creating this jsx file where we have html withing a javascript file. Behind the scenes what happen is that the html is pick up by the compiler and get converted or compiled down to javascript. and the compiler comes from including the react module at the top. If we comment it out then nothing works. Now if we go inside the react, it has something called Babel. Babeljs.io
+Babel is a javascript compiler, its able to take next generation javascript like es6, 7, 8 to a script that every browser can understand. This includes conpiling JSX down to plain old Javascript. So on babel interface we can write crazy next gen javascript and in the split interface it will be converted to old plain javascript even the old Internet Explorer.
+
+So instead of the code below
+
+var h1 = document.createElement("h1");
+h1.innerHTML = "Hello World!";
+document.getElementById("root").appendChild(h1);
+
+The above code gives the same output as the line 3 of the react code above. The one of JSX does the work with 1 line of code what is done with 3 lines of code by plain javascript.
+
+But Babel goes further than just interpreting, it allows us to use ES6 OR ES 2015. and we can use some new construct that are available through this new version of Js and it's able to compile it down into bog standard normal Js. So the map function, arrow function are converted down to standard Js. This means when writing our code with the React module in place, we can write ES6 code without worrying about if our grandma who has Internet Explorer 5 will actually be able to see our hard work rendered, Babel will tax care of all that for us. This means we will be learning a lot more of ES6 javascript because we know that it wont break anything. Ando one of the latest features to come to Js is the import keyword. So instead of requiring and setting react to a variable, the new way is to import React from a module or a location. and we can do the same thing for react-dom.
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ With this we are able to modularize our code. You can take some time to learn more about this ES6 feature.
+Now that we have render the h1. what if we try to render another HTML element, the code will crash. This is because the method only take one HTML element as an argument. But we know their is a way to combine two HTML elements. This can be done by including it within a div element.
+ReactDOM.render(<div>
+  <h1>Hello World</h1>
+  <p>This is a paragraph</p>
+  </div>, document.getElementById('root'));
+SO it is as wasy as this to start using React.
+
+### JAVASCRIPT EXPRESSION IN JSX & ES6 TEMPLATE LITERALS
+We've already seen that we are able to embed html element  within javascript through JSX. But to learn more we need to go a little further. 
+
+say we have a variable that we want to insert.
+
+say we have a
+const name = 'Oluwaseyi';
+if we insert this directly into the html element then it will just be interpreted as a string within the html. So what do we do. Note we are already inside within a Js file and then use the react-dom to inject html. Now if we want to embed a javascript within the html all we need to do is put the variable or the Javascript within a set of curly braces.
+
+ReactDOM.render(<h1>Hello {name}!</h1>, document.getElementById("root"));
+
+With this JSX knows we are using a variable call name and not just an html content. We can input another variable
+import React from "react";
+import ReactDOM from "react-dom";
+
+const name = "Oluwaseyi";
+const luckyNumber = 5;
+
+ReactDOM.render(<div>
+  <h1>Hello {name}!</h1>
+  <p>My lucky number is {luckyNumber}</p>
+  </div>,
+  document.getElementById("root"));
+
+We can also go further within a set of curly braces and include some maths, or generate a random number
+
+    <p>My lucky number is {Math.floor(Math.random() * 10)}</p>
+
+We can add any Js expression within the HTML element but we can we can't write javascript statements. Like
+
+if (name === 'Oluwaseyi'){
+  return 5;
+} else if (name === 'Blue') {
+  return luckyNumber;
+}
+
+This is a statement and it would not work.
+
+The big difference between an expression and a statement is that an expression will be evaluated to a value, it will end equaling something after the code has been executed. While a statement instead is actually asking the computer to do some work to evaluate the statement and work out something.
+
+Say we want the h1 to say first name and last name.
+
+const lastName = "Idowu";
+const luckyNumber = 5;
+
+ReactDOM.render(
+  <div>
+    <h1>Hello {firstName} {lastName}!</h1>
+
+But note there are plenty of ways to achieve this using javascript. We can all the following which are all valid
+
+<h1>Hello {firstName + " " + lastName}</h1>
+
+So we are not limited to a single curly braces.
+
+So in ES6 we have something called template literals or string interpolation in other language. So basically injecting string into a piece of Js. The way we do this is to add a set of backticks and in-between the backticks we can add a dollar sign and another set of curly braces containing our literals.
+
+<h1>Hello {`${firstName} ${lastName}`}!</h1>
+
+In the above line of code, we have the content withing the backticks interpreted as a string using the ES6 template literals, then we got that string inserted in as javascript within the curly braces as JSX and then it's being inserted as a string into our h1 and then that's being inserted as Javascript code into a javascript file. Seems this is getting too deep and might be confusing but it's good to know the different options available then you go with the easiest one. So we will be practicing more JSX adding HTML to javascript and adding javascript to HTML and getting grips with JSX. So try and practice with the different methods and go ahead to learn more.
+
+Can you work on the below;
+
+//Create a react app from scratch.
+//It should display 2 paragraph HTML elements.
+//The paragraphs should say:
+//Created by YOURNAME.
+//Copyright CURRENTYEAR.
+//E.g.
+//Created by Angela Yu.
+//Copyright 2019.
+
+Note: functions are not valid as a react app.
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+const fName = "Oluwaseyi";
+const lName = "Idowu";
+
+const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+
+ReactDOM.render(
+  <div>
+    <p>
+      Created By {fName} {lName}
+    </p>
+    <p>Copyright {currentYear}</p>
+  </div>,
+  document.getElementById("root")
+);
+
+### JSX ATTRIBUTES & STYLING REACT ELEMENTS
+Our website is ugly because we dont have a styling yet. SO we will be looking at styling with while working with JSX.
+Note if we just write some styles and use the class in our JSX it migth works but we have a warning in our Chrome developer tool, we have have a warning that says Invalid DOM property 'calss'. Did you mean 'className'?. This is because the the JSX file is compiled down to Js file. and in Js the properties to access all the class that exist is Element.className. Now react does a lot behind but yet it is not the best, so what we will do is chnage our class to className.
+
+It is important to note that
+does not work
+.heading {
+  color: red;
+}
+
+but this work
+.heading {
+  color: #cc0a0a;
+}
+
+then our javascript source link in our HTML file should be change to text/JSX instead of text/javascript.
+
+Also in HTML global attributes we dont use camelCase but because this is compiled to Js then we stick with Js convention - camelCase. Even for HTML global attributes.
+
+contenteditable is an HTML global attribute but when we want to use it in JSX HTML tag we write it in camelCase - contentEditable and if this is set to true we can edit the content of the element on the browser. Also spellcheck HTML attribute will be spellCheck and can be set to true or false to make the browser do a spell check or not.
+In all the most attribute we will use more is the className.
+Also, because we were writing JSX does not invalidate what we already know in HTML or CSS, No. We can still write our pure CSS styling. We can target any HTML element and style it as we want or use any class or id as the case may be.
+Let's add three image and style it with CSS. In the same way we can inject javascript within our in our JSX
+we can have. Let's pick an image from https://picsum.photos/
+
+const img = 'https://picsum.photos/id/237/200/300'; // specific image
+
+const img = 'https://picsum.photos/200'; // gives random image anytime it loads.
+
+Then in our img element we can set the src to the image constant.
+
+<img src={img}></img>
+
+This works because it's JSX. Remember we can't do this in pure HTML. And another thing to note is that HTML can be forgiven in misplacing some closing tag but JSX is not. Any mistake leads to an error.
+So we have seen how to use HTML attributes in JSX making them camel case.
+
+<img src={img + "?grayscale"} alt=""></img>
+The above is possible because we are in JSX.
+
+You can take time to play with the element and styling to get familiar with it.
+
+### INLINE STYLING FOR REACT ELEMENT
+In the last section we see how we can style through the CSS file. So can we style our react components using the inline styling? We already know if it was HTML it is totally possible to add styling inline but this is JSX.
+When we apply an inline styling we get an error. This is totally because this is JSX and not HTML. We will need to supply the styling in form of javascript object i.e within curly braces and a key value pair. The attribute as a key and the value as string and each of this key value pair are separated by a comma and not a semi colon as we used to have it in the style sheets.
+
+e.g <p style={{color: 'blue'}}>Cool random image refresh to change it</p>
+
+You might be wondering why do we ever need an inline styling when even the documentation has suggested we use className from our CSS stylesheet to apply styling, this is useful in other to trigger a style change on the run. You might want to make a quick change due to some user inputs or activities. This is where inline styling comes in.
+We can also go ahead and put our style object in a constant then add more styles to it.
+
+const styles = {color: 'blue',
+backgroundColor: 'pink',
+width: '50%'
+}
+
+then in our HTML element
+<p style={styles}>Cool random image refresh to change it</p>
+
+Notice in the above, normally in CSS we use kabab-case i.e lowercase lowewercase seperated by a dash but to use this properties correctly in JSX we have to change that to camelCase. This means background-color now becomes backgroundColor.
+Also our values becomes a string. So instead of writing just 20px as in CSS, it becomes '20px'. The spaces are preserved but it is included within a quotation mark.
+This is interesting because once we apply the style, if we want anything changed we can just do it within the avriable and it get's loaded immediately. This is why we might need inline styling.
+Take some time to practice with the inline styling using acceptable JSX format. So take some time to play with everything we have mentioned or go through.
+
+### REACT STYLING PRACTICE
+Let applied what we have learnt, solve the question below. Solve it before looking at the solution
+
+//Create a React app from scratch.
+//Show a single h1 that says "Good morning" if between midnight and 12PM.
+//or "Good Afternoon" if between 12PM and 6PM.
+//or "Good evening" if between 6PM and midnight.
+//Apply the "heading" style in the styles.css
+//Dynamically change the color of the h1 using inline css styles.
+//Morning = red, Afternoon = green, Night = blue.
+
+
+
+<!-- import React from "react";
+import ReactDOM from "react-dom";
+
+const currentDate = new Date();
+const dayTime = currentDate.getHours();
+let greetings = "";
+let appliedCol = "";
+
+if (dayTime >= 0 && dayTime <= 11) {
+  greetings = "Morning";
+  appliedCol = "red";
+} else if (dayTime >= 12 && dayTime <= 17) {
+  greetings = "Afternoon";
+  appliedCol = "green";
+} else {
+  greetings = "Evening";
+  appliedCol = "blue";
+}
+
+ReactDOM.render(
+  <h1 className="heading" style={{ color: `${appliedCol}` }}>
+    Good {greetings}
+  </h1>,
+  document.getElementById("root")
+); -->
+
+// SOLUTION 2
+<!-- 
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const date = new Date();
+const currentTime = date.getHours();
+
+let greeting;
+
+const customStyle = {
+  color: ""
+}
+
+if (currentTime < 12) {
+  greeting = "Good Morning";
+  customStyle.color = "red";
+} else if (currentTime < 18) {
+  greeting = "Good Afternoon";
+  customStyle = "green";
+} else {
+  greeting = "Good Night";
+  customStyle.color = "blue";
+}
+
+ReactDOM.render(
+  <h1 className="heading" style={customStyle}>{greeting}</h1>,
+  document.getElementById("root")
+); -->
+
+### REACT COMPONENTS
+Up till now we have been prasing the use of react component but never use anyone. Here we will learn all about react component.
+
+Remember in our last styling challenge we have a long code which we have to scroll to see through and reseach has it that the more you have to scroll and the longer a single file is, the harder it is to understand the code that's in it. Components helps us to break the code into small components and we also get the benefit of reusing each of these components when we need the same functionality, which happens a lot on the web.
+
+Say we have the code below, let's see how we will break it into react components.
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.render(
+  <div>
+    <h1>My Favourite Foods</h1>
+    <ul>
+      <li>Bacon</li>
+      <li>Jamon</li>
+      <li>Noodles</li>
+    </ul>
+  </div>,
+  document.getElementById("root")
+);
+
+The first thing is to create a heading components.
+ Though it's a simple h1 but in reality it get's very long and lots of contents.
+
+ What to do is to create a function, the function would have a name and in react convention, we use the Pascal case that is to have the first word capitalize. In this case our function name will be
+ Heading
+
+ function Heading(){
+  return <h1>My Favourite Foods</h1>
+ }
+
+ All that this function will do is to return an h1 element.
+
+Now we can use this custom heading component inside my react code as if it was an HTML element.
+
+So how code will now look as below.
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.render(
+  <div>
+    <Heading></Heading>
+    <ul>
+      <li>Bacon</li>
+      <li>Jamon</li>
+      <li>Noodles</li>
+    </ul>
+  </div>,
+  document.getElementById("root")
+);
+
+The pascal naming convention of react components helps react to differentiate between the custom components that we're building versus the HTML elements we are trying to get hold of that exist in the DOM.
+Now that we have created our Heading component and insert it into our website as an HTML element, it shows up exactly in the same position. Behind the scenes is once it gets to the Heading line, it looks for the custom component called heading find it, trigger the function and output the h1. Also for a convention, if the component do not have any child elements, then we can make it a self closing tag.
+instead of <Heading></Heading> we have <Heading />
+Note the single space.
+A good place to check this practices is the Airbnb React/JSX Style Guide: https://github.com/airbnb/javascript/tree/master/react
+Though the browser doesn't care but it is good to have a good practice in writing a clean code other developers can look through easily.
+
+Though we have make an heading component but it is still sitting in our .js file. If we have many of them, our .js file we surely get cluttered. So we will use an ES6 feature  where we put it in a different file and then import it just like we do for react and reactDOM but here we will be doing the importing and exporting ourselves.
+So we will create a new file with the name of our component with .jsx extension. Like Heading.jsx. So this is how we will handle all our component we will be using moving forward.
+Again by convection, we will leave the index.js as a plain JavaScript file even when we wre using some react and jsx in it. Then we will have all our components separated into individual files with the JSX extension. So let's move our heading into the Heading.jsx file. Now to use the file we will import React from 'react'. This is what we will do for all .jsx file we will create.
+
+import React from "react";
+
+function Heading() {
+  return <h1>My Favourite Foods</h1>;
+}
+
+The above is the content of our Heading.jsx file.
+
+So how do we get the index.js file to use the Heading.jsx file. We will use the ES6 import and export feature. In our component file we will add export default Heading; 
+
+import React from "react";
+
+function Heading() {
+  return <h1>My Favourite Foods</h1>;
+}
+
+export default Heading;
+
+Now the file is creating an heading function and exporting it to any file that needs it. For the file that needs it that is in our index.js file, we will add import Heading from './heading.jsx' Notice the relative file path. Now in ES6, the extension of the file is absolutely optional so no need to include it. Don't forget that both our index.js file and all our components are to be in the same folder i.e the src folder.
+
+For a challenge, create a List component so that we can have 
+<List /> in place of our list in our index.js file.
+
+below is our List.jsx file which we then use in our index.js file
+
+import React from 'react';
+
+function List(){
+  return (
+  <ul>
+  <li>Bacon</li>
+  <li>Jamon</li>
+  <li>Noodles</li>
+</ul>
+);
+}
+
+export default List;
+
+Now it is important to know that in many of normal React developmennt, they dont have any HTML tag or element in the index.js file. Instead what you will have is a custom component called App. Instead of any other thing.
+
+So we will have a file named App.jsx which will be where we will import all our other components. Then in our index.js file we will only have the App as the only tag present.
+See the contents of the files below
+
+import React from 'react';
+import Heading from '../Heading';
+import List from './List';
+App.jsx
+
+import React from 'react';
+import Heading from '../Heading';
+import List from './List';
+
+function App(){
+  return (
+    <div>
+    <Heading />
+    <List />
+  </div>
+  );
+}
+
+export default App;
+
+index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+
+ReactDOM.render(<App />, document.getElementById("root"));
+
+The index.js has no custom code ahter than rendering the react App component. Then in our App.jsx we have the start of our component tree and all our components and that's where we'll see HTML elements and our custom components.
+
+SO in this lesson we've seen how we can split up a simple page, making our code modular and also reusable components. We can then use the components again and again. We can learn about props to start customizing our components.
+
+In reality we always have many component files inside a React app. In other to avoid a long list of components in our src folder we can create a new folder called components in the src folder and drag all our component files inside there. At the same time we can break down our components folder into sub folder to make things more easier.
+Note: As we make folder and subfolder dont forget to always handle the relative path while importing the files.
+In further lesson we will work with more react components.
+
+#### PRACTICE
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+const date = new Date();
+const currentTime = date.getHours();
+
+let greeting;
+
+const customStyle = {
+  color: ""
+};
+
+if (currentTime < 12) {
+  greeting = "Good Morning";
+  customStyle.color = "red";
+} else if (currentTime < 18) {
+  greeting = "Good Afternoon";
+  customStyle.color = "green";
+} else {
+  greeting = "Good Night";
+  customStyle.color = "blue";
+}
+
+ReactDOM.render(
+  <h1 className="heading" style={customStyle}>
+    {greeting}
+  </h1>,
+  document.getElementById("root")
+);
+
+
+For a practice on React component. Can you separate the above into components using what we have learnt before now.
+
+
+### JAVASCRIPT ES6 - IMPORT, EXPORT & MODULES.
+Wonder what the word import and export we've been using is. This will be a quick dive into modules, import and export. This will help us to understand what we are doing and what is happening behind the scenes.
+Let's use this simple project to learn that.
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.render(
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>,
+  document.getElementById("root")
+);
+
+All this displays at the moment is three bullet points. In the last section we have seen that we are able to create files that added packaged bits of functionalities which we can then import into a different file.
+
+Let's create a file called math.js and store the value of pi=3.14 within it. Now say we want to lay hold on the value of pi and display it in our tab, we will have to somehow export the value from the math.js file. Our math.js now becomes a new module and we can export whenever we want to use it else where. We can just add export default and add whatever value we want to export in this case it is pi.
+
+const pi = 3.1415962;
+
+export default pi;
+
+Now in our index.js file we will import pi from math.js . Since we have import pi then let's use it in our first bullet. Here in the math.js file we export default, a single value which is the pi.
+
+Now when we are importing anything that is the default, we can name it anything anything at all. Only that I need to be consistent in using the set name of the value. Look at it below.
+
+import React from "react";
+import ReactDOM from "react-dom";
+import pie from './math.js';
+
+ReactDOM.render(
+  <ul>
+    <li>{pie}</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>,
+  document.getElementById("root")
+);
+
+
+Now say we have multiple things in our math.js how do we export multiple things. Whatever we specify in the export default is what is always imported but if we want it to have more thing  we can add another export specifying all other things we want to export within curly braces.
+
+export {doublePi, triplePi};
+
+So now in our index.js file I can use my default pi whatever we call it. Whatever we call it is what the value is set to during the import. Now if I want to get hold of the other things that are being exported from the math.js file, In our import line, I can add a comma after pi, then add other things I want to import within curly braces,
+
+import pi, {doublePi, tripplePi}
+
+To read more:
+https://stackoverflow.com/questions/31354559/using-node-js-require-vs-es6-import-export
+

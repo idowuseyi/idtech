@@ -15,13 +15,13 @@ let workItems = [];
 
 app.get("/", function(req, res){
 
-    let day = date.getDate();
+    const day = date.getDate();
     
     res.render("list", {listTitle: day, newListItems: items});
 });
 
 app.post("/", function(req, res){
-    let item = req.body.newItem;
+    const item = req.body.newItem;
     
     if (req.body.list === "Work") {
         workItems.push(item);
@@ -36,6 +36,10 @@ app.post("/", function(req, res){
 app.get("/work", function(req, res){
     res.render("list", {listTitle: "Work List", newListItems: workItems});
   });
+
+app.get("/about", function(req, res){
+    res.render("about");
+})
 
 app.listen(3000, function(){
     console.log("Server started and running on port 3000...")
