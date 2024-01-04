@@ -1,0 +1,17 @@
+{
+  "name": "google-outh2",
+  "version": "1.0.0",
+  "description": "googleOauth2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Oluwaseyi",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "passport-google-oauth": "^2.0.0"
+  }
+}

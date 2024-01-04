@@ -23,7 +23,7 @@ inline css is the most powerul, folowed by internal and then external css
   Div is used to split our layout into diff. parts. It does not have a height unless specified but takes the height of its content or elements withing it.
 
 Every html tag is a box. You can see this with pesticide a chrome extension from pesticide.io. Each box must have a width and heigth to be visible.
-Note: Don't forget that there is no wbpage without a style. This is because the browser have a style it applies on the element. Most times this has to be overwritten to effect some changes.
+Note: Don't forget that there is no webpage without a style. This is because the browser have a style it applies on the element. Most times this has to be overwritten to effect some changes.
 
 
 
@@ -4226,6 +4226,17 @@ You can ensure to add your custom domain name, privacy policy page and other det
 Clicl save and continue to create credential. The one we will choose is OAuth client ID. At the en of this setup we should have our client ID and client secret. Then we save those in our .env file in our project.
 Now we can continue setting up our project.
 
+In our code once we click on login with google, the google auth reguest for the user email to use and use that to authenticate the user. The secret page is then displayed. Note since we are using the findOrCreate a new user is always created anytime this user sign in.
+
+The next thing is to save their their googleId so the findOrCreate will find this user using their googleId and authenticate them without creating a new document in our DB.
+
+In doing this, in our DB we only have the user unique googleID and nothing else, this makes it saver for us and more secure. We have nothing to bother about and this is a great idea. Google do all the work to keep the user safe. 
+
+Also note that since we already save the session. The user can aesily get authorized even when they log out and log in again.
+
+#### LETTING USERS SUBMIT SECRETS
+So far we have enabled all forms of security an we are left with adding the functionalities that is needed i.e letting user add secrets.
+We need to add a route for the /submit
 
 ## REACT
 
@@ -4616,6 +4627,7 @@ See the contents of the files below
 import React from 'react';
 import Heading from '../Heading';
 import List from './List';
+
 App.jsx
 
 import React from 'react';
@@ -4733,8 +4745,741 @@ export {doublePi, triplePi};
 
 So now in our index.js file I can use my default pi whatever we call it. Whatever we call it is what the value is set to during the import. Now if I want to get hold of the other things that are being exported from the math.js file, In our import line, I can add a comma after pi, then add other things I want to import within curly braces,
 
-import pi, {doublePi, tripplePi}
+import pi, {doublePi, tripplePi} from './math.js';
 
-To read more:
+In the case of the names within the braces, we can't just name them anything or name them anyhow else it wont be recognised from the list of exports. There can only be oe default export per file and for the others we have to callled them their exact names. Then we can use the other items exported in our file. We can use them by their exact names and a parenthesis to activate it.  
+
+import React from "react";
+import ReactDOM from "react-dom";
+import pi, { doublePi, triplePi } from "./math.js";
+
+ReactDOM.render(
+  <ul>
+    <li>{pi}</li>
+    <li>{doublePi()}</li>
+    <li>{triplePi()}</li>
+  </ul>,
+  document.getElementById("root")
+);
+
+Now we have all the value of pi.
+
+What the concept of import and export allowed us to do it splitiing up our large Javascript files into individual more manageable components. The react compnents leverage from this and this is not new to ES6 because we are able to use require. We set a variable = require any module. In a way it is good to note that the require is from node and not javascript itself. You an use the stack overflow link below to learn more.
+
+Learn more:
 https://stackoverflow.com/questions/31354559/using-node-js-require-vs-es6-import-export
 
+ So when we are not sure of ES6 compatibility on the browser side then we should stick with require but here Babel does the work at the background.
+
+ Also if you dont want to be specifying every bits of item to be imported in your import statement, you can use the wildcard * instead of setting any names in your import statement.
+
+ import * as pi from './math.js';
+
+ If I console.log(pi) it will be an object and has a default properties pi and others including doublePi and tripplePi. We can slightly adjust our code using the above.
+
+import React from "react";
+import ReactDOM from "react-dom";
+import * as pi from './math';
+
+ReactDOM.render(
+  <ul>
+    <li>{pi.default}</li>
+    <li>{pi.doublePi()}</li>
+    <li>{pi.triplePi()}</li>
+  </ul>,
+  document.getElementById("root")
+);
+
+Uding the wildcard is mostly discouraged because it makes you love the default export. Not using the wildcard allows us to set another name for the export default. And if we want to make things better, we can just put each of the functions in a separate files. This will allow to export them as default and make it easy for error detection at any time. This will help us to have more modularity.
+
+Rmemeber to go through it to comprehend it more.
+
+For a challenge!
+Say we have a calculator.js with function for addition, butraction, division and multiplication, how do we re-write this code to properly load all the functions and run without any error.
+
+
+index.js
+import React from "react";
+import ReactDOM from "react-dom";
+
+//Import the add, multiply, subtract and divide functions
+//from the calculator.js file.
+//If successful, your website should look the same as the Final.png
+
+ReactDOM.render(
+  <ul>
+    <li>{add(1, 2)}</li>
+    <li>{multiply(2, 3)}</li>
+    <li>{subtract(7, 2)}</li>
+    <li>{divide(5, 2)}</li>
+  </ul>,
+  document.getElementById("root")
+);
+
+calculator.js
+function add(n1, n2) {
+  return n1 + n2;
+}
+
+function multiply(n1, n2) {
+  return n1 * n2;
+}
+
+function subtract(n1, n2) {
+  return n1 - n2;
+}
+
+function divide(n1, n2) {
+  return n1 / n2;
+}
+
+
+Attempt before checking the solution below
+
+our new calculator.js file now becomes.
+
+function add(n1, n2) {
+  return n1 + n2;
+}
+
+function multiply(n1, n2) {
+  return n1 * n2;
+}
+
+function subtract(n1, n2) {
+  return n1 - n2;
+}
+
+function divide(n1, n2) {
+  return n1 / n2;
+}
+
+export default add;
+export {add, multiply, subtract, divide};
+
+
+Having our calculator.js file as above makes the two index.js file below to work as the solution.
+
+import React from "react";
+import ReactDOM from "react-dom";
+import {add, multiply, subtract, divide} from './calculator'
+
+//Import the add, multiply, subtract and divide functions
+//from the calculator.js file.
+//If successful, your website should look the same as the Final.png
+
+//console.log(calculator);
+
+ReactDOM.render(
+  <ul>
+    <li>{add(1, 2)}</li>
+    <li>{multiply(2, 3)}</li>
+    <li>{subtract(7, 2)}</li>
+    <li>{divide(5, 2)}</li>
+  </ul>,
+  document.getElementById("root")
+);
+
+
+using wildcard
+
+import React from "react";
+import ReactDOM from "react-dom";
+import * as calculator from './calculator';
+
+//Import the add, multiply, subtract and divide functions
+//from the calculator.js file.
+//If successful, your website should look the same as the Final.png
+
+console.log(calculator);
+
+ReactDOM.render(
+  <ul>
+    <li>{calculator.add(1, 2)}</li>
+    <li>{calculator.multiply(2, 3)}</li>
+    <li>{calculator.subtract(7, 2)}</li>
+    <li>{calculator.divide(5, 2)}</li>
+  </ul>,
+  document.getElementById("root")
+);
+
+
+## SETTING UP YOUR LOCAL ENVIRONMENT FOR REACT FEVELOPMENT
+
+There are only four steps that are required to start creating react apps on windows.
+1. Check Node is Up to Date
+2. Install VSCode
+3. Create React App
+4. Run App
+
+#### 1
+Go to nodejs.org
+check the latest version, check your installed version using `node --version` if not up to date or not installed. Go to the site and installed the latest version.
+You can install the hyper terminal or gitbash.
+
+#### 2
+VSCode is a free and open source code editor popular for using with react. You can use any code editor or environment you also like. 
+To install vscode go to visualstudio.com and follow the installation guide. It's very easy and simple. Once installed and opened, you can easily have your preferences set up.
+Regardless of the editor, you can go to the link below and install all the extension that would be needed for ease in development.
+https://babeljs.io/docs/en/editors
+
+Check the specified vscode extension or the one for your editor.
+
+In vscode by the left pane, click on extension and search for the specified extension then install it. You can also install file icon to get your icon to change in our file array.
+
+#### 3.
+To create a react app we are going to follow the instruction on their website.
+https://reactjs.org/docs/create-a-new-react-app.html
+
+#### 4.
+The next thing is to run the app. cd into my-app and then run npm start
+
+
+### REACT PROPS
+
+Say we want to build a contact app. The contact have name, contact and their pictures.
+
+### REACT PROPS
+
+Same way html element has properties, react components can act as a customized html elements which can have properties.
+
+    <input
+      id="fName"
+      placeholder="Enter your first name."
+      value="Oluwaseyi Idowu"
+    />
+
+
+
+### MAPPING DATA TO COMPONENTS
+The map function is a javascript function that is usedul in getting element from an array.
+
+import React from "react";
+import Card from "./Card";
+import Avatar from "./Avatar";
+import contacts from "../contacts";
+
+function createCard(contact) {
+  return (
+    <Card
+      name={contact.name}
+      img={contact.imgURL}
+      tel={contact.phone}
+      email={contact.email}
+    />
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <Avatar img="https://media.licdn.com/dms/image/C4D03AQEqO-DCyNzttg/profile-displayphoto-shrink_200_200/0/1558356723329?e=1707350400&v=beta&t=J7a1IAK9yVq_2TemgpIoKx01DZyDDitsNpBY-HWJRqA" />
+      <h1 className="heading">My Contacts</h1>
+
+data mapped using
+      {contacts.map(createCard)}
+
+former hardcoded components
+      {/* <Card
+        name={contacts[0].name}
+        img={contacts[0].imgURL}
+        tel={contacts[0].phone}
+        email={contacts[0].email}
+      />
+      <Card
+        name={contacts[1].name}
+        img={contacts[1].imgURL}
+        tel={contacts[1].phone}
+        email={contacts[1].email}
+      />
+      <Card
+        name={contacts[2].name}
+        img={contacts[2].imgURL}
+        tel={contacts[2].phone}
+        email={contacts[2].email}
+      /> */}
+    </div>
+  );
+}
+
+export default App;
+
+in react each of the map child should have a unique key
+
+In a nutshell, in react index.js render our App.jsx which renders all our component. In a component we can hava a component render another component.
+
+In the root folder, their two folder public & src and our package.json file
+public ={index.html, styles}
+src={components folder, index.js and also all other js files}
+
+
+To set properties, first we need to we will need to use the component and then set some custom properties in that component all in our app.jsx
+We can give those properties some value. Then we can find this properties available to that component inside our react dev tools. Then we can go inside that specific component and give it a parameter props which will then allow us to use the properties passed down to it. 
+
+Say we have a component call Note.jsx, and in our App.jsx we have add some properties to the component
+<Note title="some value" content="some values"/>
+
+These properties i.e title and content added to this Note component is now available and accessible through props in the Note component.
+
+Note(props)
+
+<htmltag>{props.title}</htmltag>
+<htmltag>{props.content}</htmltag>
+
+Any typos here can make you miss out on the content that is where the react dev tools can be very useful
+
+The next thing is to make our app render multiple content.
+To do this we need a a js files supplying the data. It will contain an array of objects. We will export the variable in this file and now we can import it in our App.jsx
+
+Though we can create many of the Note component in our App.jsx and hardpick the values from the variable we imported but in other to save time and effort, we can use the map function to dynamically pick all the values and render them.
+
+To do this, once we have export and import the data file, we can console log it in our App.jsx. Then we will create a function that returns a component that uses the props we already set.
+
+Then in the App() we will use the map function
+
+let's say our data js file is called notes.js
+
+we can have a function 
+function createNotes(noteItem) {
+  return <Note key={noteItem.key} title={noteItem.title} content={noteItem.content} />
+}
+
+Now in our App() div we will have
+{notes.map(createNotes)}
+
+This should work just fine. We can simplify it further by including our function directly inside the map function using arrow function.
+
+{notes.map(noteItem => <Note key={noteItem.key} title={noteItem.title} content={noteItem.content} />
+)}
+
+The key was included because React demands a key for all entries.
+
+### REACT CONDITIONAL RENDERING WITH THE TENARY OPERATOR & AND OPERATOR
+Say we have a user login page. In this we will want to render different interface based on whether the user is logged in or not. To do this we migth need to have some conditions that determine what is rendered considering whether the user is logged in or not. How do we render different react components depending on some conditions? This is what we will learn here.
+
+Say we have a variable say 
+isLoggedIn = false 
+This can be set to true if some conditions are met and when true or false a different component is rendered on the page.
+
+We can think of using a function
+
+App.jsx
+var isLoggedIn = false;
+
+function renderConditionally() {
+  if (isLoggedIn === true) {
+    return (<Greetings />)
+  } else {
+    return (<Form />)
+  }
+}
+
+Then in our App() <div>{renderConditionally()}</div>
+
+Note each of the pages should be in different components.
+
+If we decide to place our function within the position where it is called then there will be an error. This is because our code has some statement 
+
+TENARY OPERATOR
+CONDITION ? DO IF TRUE : DO IF FALSE
+
+isCloudy === true ? bringUmbrella() : bringSunscreen()
+
+imHungry === true ? findSomethingChop() : continueWorking() 
+
+if isLoggedIn === true ? greeting() : form()
+
+So instead of statement, we now have three expressions, the condition, what to do if true and what to do if not true. This makes the whole thing an expression.
+
+SO now we delete the renderconditionally function and used tenary operator to fit it in where we call the function.
+
+{isLoggedIn ? <Greeting /> : <Form />}
+
+What about when we dont want to render anything at all.
+
+{currentTime > 12 ? <h1>Why are you still working?</h1> : null}
+
+THE && OPERATOR
+The easier way is to use the && operator
+
+EXPRESSION && EXPRESSION 
+Checks two expressions if they are true and then do something.
+
+If one of the expression is false, Javascript do not bother about the second. The whole expression is evaluated to false.
+
+React leverage on this a lot
+
+(CONDITION && EXPRESSION)
+true && EXPRESSION
+false && EXPRESSION
+
+This does the same thing with the tenary operator above.
+
+{currentTime > 12 && <h1>Why are you still working?</h1>}
+
+Why is because the first condition is checked and since it is true then next expression after the && is executed and this for react means to render something on the screen. But if the left handside operator is true then there is no point in looking at the right side this for react means nothing is rendered interpreting to null.
+
+### STATE IN REACT - DECLARATIVE VS IMPERATIVE PROGRAMMING
+So far we have learnt how to buld components using React, extract those components into smaller pieces and pass properties to reuse them. What we are yet to do is make our app more interaactive. To do that we have to understand the concept of state.
+
+UI = f(State)
+What the user sees is a function of the state of your app.
+Consider this analogy, think about the difference between Ice and Water, they are basically the same thing like same React component but they will change state based on the temperature. If the temperature goes up, then ice turns into water and if the temperature goes down the water turns back into ice. In this case you could think of the Ice as the User Interface (UI), and depending on what the value of that state is, if the temperature was minus 10 degrees both in farenheit and in celcius then we will have ice and if we change the temperture to say 60 degrees, then our ice is going to turn into water. So the UI changes based on the change in state.
+
+With code, we will keep track of a variable say temperature and change the state of our UI based on the value of that variable. Say we created a todoList and a list item with a single paragraph of text. What we want is to for the text to have a linethrough or a strike out when clicked. In this case we might have a state variable called isDone initially set to false. But when the user clicks on the to-do list then we switch the value of that variable from false to true. And what we want our paragraph element to do is to change its appearance in the UI to reflect this and to have the strikethrough styling.
+
+Say we have this in our App
+
+import React from "react"
+
+function App() {
+
+var isDone = false;
+
+  return <p style={{textDecoration: "line-through"}}>Cook food</p>
+}
+
+export default App;
+
+since we dont want a line through all the time we but only when the variable is true. We can put the style in a variable.
+
+function App() {
+
+var isDone = false;
+
+const strikeThrough = {textDecoration: "line-through"}
+  
+  return <p style={isDone ? strikeThrough : null }>Cook food</p>
+}
+
+
+In the above we use the tenary operator. We can also use the && operator like below.
+
+function App() {
+
+var isDone = false;
+
+const strikeThrough = {textDecoration: "line-through"}
+  
+  return <p style={isDone && strikeThrough}>Cook food</p>
+}
+
+The important thing here is that we have a user interface that is dependent on a state variable.
+
+This type of programming is often known as declarative programming. We're declaring when we're writing our code how our user interface should look under different conditions depenedent upon the state.
+
+#### IMPERATIVE PROGRAMMING
+This type of programming is what we have been doing all along when using Javascript and and any DOM manipulation technique or library like JQuery. When we say document.getElementById() and we tap into its properties and then set it equal to something. This is us imperatively telling this element to do something different.
+
+document.getElementById("root").style.textDecoration = "line-through";
+
+
+function App() {
+
+  
+  return <p >Cook food</p>
+}
+
+we can leave that as it is above and go into our index.js
+
+and taap into the document DOM, get element by Id and tap into the style property then change it.
+
+document.getElementById("root").style.textDecoration = "line-through"
+
+Once the line of code above get executed the style is applied.
+
+And very often what we've been doing is effectively creating some sort of listener. We can do that in our App.jsx component.
+
+import React from "react";
+
+function strike() {
+  document.getElementById("root).style.textDecoration="line-through";
+}
+
+function strike() {
+  document.getElementById("root).style.textDecoration="null";
+}
+
+function App() {
+  return (
+    <div>
+    <p>Cook food</p>
+    <button onClick={strike()}>change to strike through</button>
+    <button onClick={unStrike()}>Remove strike through</button>
+    </div>)
+}
+
+if the button is clicked then the style is applied. At the same time we can have a button that change it back. In this case when I click the change to strike through button the line-through is applied and when I click the Remove strike through button the style is removed. This is very imperative. This is getting hold of an item and setting it to a new value each time we want the change to happen.
+
+If we go back to our former style where we keep track of a variable, we can just change the variable value and the style is applied and removed. isDone to true or isDone to false. But this does not work until the components are re-rendered. This is why we need something called hooks. React hooks are functions that allow us to effectively hook into the state of our app and read or modify it. The most commonly used state management in React is the Use-state. We will learn this in the next lesson.
+
+### REACT useState
+
+we can have a button and onClick we call a function that change a variable. The changes in this value though we can see it on the console but do not render on UI. One way we can do this is to call our ReactDOM.render function in our increase function.
+
+index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+var count = 0;
+
+function increase() {
+  count++;
+  console.log("count");
+}
+
+ReactDOM.render(
+  <div className="container">
+    <h1>{count}</h1>
+    <button onClick={increase}>+</button>
+  </div>,
+  document.getElementById("root")
+);
+
+
+calling the render function inside the increase function to render the change to the UI.
+
+var count = 0;
+
+function increase() {
+  count++;
+  ReactDOM.render(
+    <div className="container">
+      <h1>{count}</h1>
+      <button onClick={increase}>+</button>
+    </div>,
+    document.getElementById("root")
+  );
+}
+
+ReactDOM.render(
+  <div className="container">
+    <h1>{count}</h1>
+    <button onClick={increase}>+</button>
+  </div>,
+  document.getElementById("root")
+);
+
+
+This is kind of re-rendering everything that is on the screen and the whole thing is inefficient. The whole code mobbed up and we have an unnecessary repeated code.
+How do we solve this problem. This is where React Hooks comes in and there's a hook called useState that is perfect for the solution. The rule for hook is that it must be used in a functional component. This means we have to create a function that renders a component and then inside that component we can use hooks. So let's move our code into our App.jsx
+
+Now here in our modified App.jsx
+
+import React from "react";
+
+function App() {
+  var count = 0;
+
+  function increase() {
+    count++;
+  }
+
+  return (
+    <div className="container">
+      <h1>{count}</h1>
+      <button onClick={increase}>+</button>
+    </div>
+  );
+}
+
+export default App;
+
+We will call state and I'm going to set the state to React in place of our var. The useState function comes from the react module. We can use it as React.useState() or we import it directly while importing React.
+
+#### WHAT EXACTLY IS useState
+
+import React, { useState } from "react";
+
+function App() {
+  const state = useState();
+
+  function increase() {
+    //count++;
+  }
+
+  return (
+    <div className="container">
+      <h1>0</h1>
+      <button onClick={increase}>+</button>
+    </div>
+  );
+}
+
+export default App;
+
+Let's console.log the value of state. What is inside the useState is our initial starting state. To get hold of that value, since it's the first item when we console.log our state, we can just get hold of it with state[0]. Now since the value is inside React component, we can use it our value in place of count. So anytime it is updated it is changed on the UI automatically in our h1. We just tell our h1 to track our state value, once it changes our h1 is re-rendered.
+
+  const state = useState(13);
+
+  console.log(state);
+  function increase() {
+    //count++;
+  }
+
+  return (
+    <div className="container">
+      <h1>{state[0]}</h1>
+      <button onClick={increase}>+</button>
+    </div>
+  );
+}
+
+This is more efficient than our former code which call ReactDOM.render and this only update the parts that need to be changed.
+
+Becasue the output of useState is an array we are forced to write our code this way using the square brackets which is very ugly. It might bring some error later. A way to handle this is using using the ES6 Destructuring.
+
+#### ES6 DESTRUCTURING
+Destructuring allows us to destructure a complex structure. So the complex thing in Javascript are objects and arrays.
+
+say we have a const rgb = some array.
+
+const rgb = [9, 132, 227]
+
+instead of using [] to access the items which on a long run will mean something else in our code we can use array destructuring. Let's see the destructure array.
+
+const [red, green, blue] = [9, 132, 227]
+What will happen is that each of the names are mapped to the values on the other side in the specific order it was arranged,
+
+so if we logged blue, the thrird value is seen. This can be very helpful in for values in our useState.
+
+const [count] = useState();
+
+so to access the value inside the state we can now use count to access the value.
+
+Though we can change the initial value, how do we change the value later one. Remember that the array that gets returned fro this function has two items. The first one is a value and the second one is a function. we can give the function a name. Let's calll it setCount because that's what it will do.
+This is the function that will be used to update this value inside our state. Now in our increase function we can call setCount and pass it a value.
+
+import React, { useState } from "react";
+
+function App() {
+  const [count, setCount] = useState(3432);
+
+  function increase() {
+    setCount(count++);
+  }
+
+  return (
+    <div className="container">
+      <h1>{count}</h1>
+      <button onClick={increase}>+</button>
+    </div>
+  );
+}
+
+export default App;
+
+
+what will happen here is that once the + button is clicked the increase function is called which run the seCount function using value input into it. A way to have an increase is use count++ as the input value of the increase function.
+
+Let's add a decrease button.
+
+import React, { useState } from "react";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  function increase() {
+    setCount(count++);
+  }
+
+  function decrease() {
+    setCount(count--);
+  }
+  return (
+    <div className="container">
+      <h1>{count}</h1>
+      <button onClick={increase}>+</button>
+      <button onClick={decrease}>-</button>
+    </div>
+  );
+}
+
+export default App;
+
+So useState from React hook helps us to update the state of our App dynamically. We import useState, set the initial value using the first item in the useState array, then use the second item which is a function to update the value of count.
+
+ES6 DESTRUCTURING
+
+data.js
+
+const cars = [
+  {
+    model: "Honda Civic",
+    //The top colour refers to the first item in the array below:
+    //i.e. hondaTopColour = "black"
+    coloursByPopularity: ["black", "silver"],
+    speedStats: { topSpeed: 140, zeroToSixty: 8.5 },
+  },
+  {
+    model: "Tesla Model 3",
+    coloursByPopularity: ["red", "white"],
+    speedStats: { topSpeed: 150, zeroToSixty: 3.2 },
+  },
+];
+
+export default cars;
+
+
+index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import cars from "./practice";
+
+const [honda, tesla] = cars;
+
+const {
+  hModel,
+  coloursByPopularity: [hondaTopColour],
+  speedStats: { topSpeed: hondaTopSpeed },
+} = honda;
+
+const {
+  tModel,
+  coloursByPopularity: [teslaTopColour],
+  speedStats: { topSpeed: teslaTopSpeed },
+} = tesla;
+
+console.log();
+
+ReactDOM.render(
+  <table>
+    <tr>
+      <th>Brand</th>
+      <th>Top Speed</th>
+    </tr>
+    <tr>
+      <td>{tesla.model}</td>
+      <td>{teslaTopSpeed}</td>
+      <td>{teslaTopColour}</td>
+    </tr>
+    <tr>
+      <td>{honda.model}</td>
+      <td>{hondaTopSpeed}</td>
+      <td>{hondaTopColour}</td>
+    </tr>
+  </table>,
+  document.getElementById("root")
+);
+
+
+### EVENT HANDLING IN REACT
+
+Details During Registeration
+newUser {
+Firstname: "", Surname: "", email: "", phoneNumber 
+}
+
+Testimony schema
+new testimony: {
+id: "Unique ID",
+Dates: {DateSubmitted: "grabbed from present date", dateofMiracle: "fromUser", miracleDuration: "instant/overAPeriod"},
+miracleDetails: "Long Text",
+needsPerfectionorFurtherMiracles: "yes/no",
+ifYes: "Details"
+requestPrayers/Counselling: "yes/no",
+ifYes: 
+
+}
