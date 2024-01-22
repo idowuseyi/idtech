@@ -5467,6 +5467,8 @@ ReactDOM.render(
 
 ### EVENT HANDLING IN REACT
 
+
+schema for testify app
 Details During Registeration
 newUser {
 Firstname: "", Surname: "", email: "", phoneNumber 
