@@ -4,6 +4,8 @@ import React from "react";
 import { Button } from "./ui/button";
 import { signIn } from "next-auth/react";
 
+console.log("Hi");
+
 type Props = {
     text: string
 }
@@ -11,6 +13,7 @@ type Props = {
 const SignInButton = ({ text }: Props) => {
     return (
         <Button onClick={() => {
+            console.log("Clicked");
             signIn("google").catch(console.error);
         }}>
             { text }
