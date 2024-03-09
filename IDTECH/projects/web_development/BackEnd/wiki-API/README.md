@@ -1,4 +1,4 @@
-# BLOG RESTAPI
+# WIKI - Simple Wikipedia-like API 
 ### Description:
 - A RESTful API for a blog implementing the CRUD operation in all articles and single article.
 - Built with Express
