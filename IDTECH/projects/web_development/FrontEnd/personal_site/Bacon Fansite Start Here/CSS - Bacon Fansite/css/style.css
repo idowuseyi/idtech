@@ -1,0 +1,44 @@
+/* you can only have a single instance of an id but there can be multiple of class.
+class is used to apply style to a group of items while id is used to apply style to a specific item. id is used to apply style to a single element.
+Both id and classes are specific and they take more priority than any tag.
+a particular id can only come once in a styling. Also an html tag can only have one id but as many class as possible
+So ids are to be used sparingly
+
+There are pseudo classes, this are related to state change of a tag. E.g hover. This always come with colum at the front. e.g :hover
+/**************TAG SELECTORS *******************/
+
+
+h1 {
+  color: red;
+  font-size: 100px;
+}
+
+/*
+img {
+  background-color: red;
+}
+*/
+
+/**************** CLASS SELECTORS **************************/
+.sec-par {
+  color: blue;
+}
+
+.thd-par {
+  color: green;
+}
+
+.withbg {
+  background-color: black;
+}
+
+/**************** ID SELECTOR ****************/
+
+#heading {
+  color: blueviolet;
+}
+
+/*********** PSEUDO CLASSES ***************/
+img:hover {
+  color: chartreuse;
+}

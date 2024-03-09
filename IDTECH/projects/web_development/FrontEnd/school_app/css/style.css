@@ -1,0 +1,293 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+  background-color: #f9a71f;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav li {
+  margin-right: 20px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Hero Section Styles */
+.hero {
+  background-color: #2d96b2;
+  color: #fff;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #f9a71f;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.cta-button:hover {
+  background-color: #e8950b;
+}
+
+/* About Us Section Styles */
+.about-us {
+  background-color: #fff;
+  padding: 80px 0;
+  color: #333;
+}
+
+.about-us h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.section-content p {
+  margin-bottom: 20px;
+}
+
+.section-image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+/* Programs Section */
+.programs {
+  background-color: #ffe5b4;
+  padding: 80px 0;
+}
+
+.programs h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.program-card {
+  text-align: center;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.program-card img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.program-card h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.program-card p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Admissions Section */
+.admissions {
+  background-color: #c7e4ff;
+  padding: 80px 0;
+}
+
+.admissions h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.admissions-info {
+  text-align: center;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.admissions-info h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.admissions-info p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Contact Section */
+/* Contact Section */
+.contact {
+  background-color: #e2f3c5;
+  padding: 80px 0;
+}
+
+.contact h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.contact-form {
+  margin-bottom: 40px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.submit-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #2ecc71;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #27ae60;
+}
+
+.contact-details {
+  text-align: center;
+}
+
+.contact-details h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.contact-details p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+
+/* Footer Section */
+footer {
+  background-color: #ffebaf;
+  padding: 30px 0;
+  color: #333;
+}
+
+footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-links ul,
+.footer-social ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.footer-links li,
+.footer-social li {
+  margin-right: 10px;
+}
+
+.footer-links a,
+.footer-social a {
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.footer-social a i {
+  color: #333;
+  font-size: 24px;
+}
+
+.footer-bottom p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Add additional styling as needed */
+
+
+/* Add styles for other sections (programs, admissions, faculty, testimonials, contact, footer) as needed */

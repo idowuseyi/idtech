@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* adding custom classes*/
+
+* {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* to add a style to all specific tag add it to the base layer
+for one on specific component add it to the component layer
+for utilities that tailwind doesnt cover by default add it to the utilities layer */
+
+/* say we are adding a custom styling to our card component */
+
+@layer components {
+  /* we can then write custom styling here */
+  
+  .card {
+    @apply flex items-center justify-center;
+  /* The utilities layer can be used to overwrite stylings on the components layer */
+    width: 300px;
+    height: 100px;
+    background-color: theme("colors.twitter-blue");
+    border-radius: 8px;
+    border: 0.7px solid #eee;
+    box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.1), 0 2px 6px -2px rgba(0, 0, 0, 0.2);
+  }
+
+}
